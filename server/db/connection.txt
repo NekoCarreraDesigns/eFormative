@@ -1,0 +1,5 @@
+The connection.js file contains code that connects to to the mongoDB database for the app.
+dependencies are declared at the top of the file, with variables for the file next
+followed by modularization of some methods for database connection. the connect methods
+has been deprecated, and will be replaced when the new method comes out. functions when
+completed either send an error message or a success message to the console. 
