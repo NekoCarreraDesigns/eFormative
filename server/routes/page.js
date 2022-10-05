@@ -34,10 +34,10 @@ pageRoutes.route("/user/add").post(function (req, response) {
     username: req.body.username,
     password: req.body.password,
   };
-  db_connect.collection("users").insertOne(userObj, function (req, response) {
+  db_connect.collection("users").insertOne(userObj, function (err, res) {
     if (err) throw err;
     console.log("User has been added!");
-    response.json(res);
+    res.json(userObj);
   });
 });
 
