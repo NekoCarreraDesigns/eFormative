@@ -15,7 +15,7 @@ const db = require("./db/connection");
 // function to make the server listen
 app.listen(port, () => {
   db.connectToServer(function (error, res) {
-    if (error) console.log(res.status(404));
+    if (error) throw error;
   });
   console.log(`Server is listening on ${port}`);
 });
