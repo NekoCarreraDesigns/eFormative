@@ -6,7 +6,7 @@ const pageRoutes = express.Router();
 const db = require("../db/connection");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
-// routes for page with queries to database
+// routes for users with queries to database
 pageRoutes.route("/user").get(function (req, res) {
   let db_connect = db.getDb("users");
   db_connect
@@ -37,7 +37,7 @@ pageRoutes.route("/user/add").post(function (req, response) {
   db_connect.collection("users").insertOne(userObj, function (err, res) {
     if (err) throw err;
     console.log("User has been added!");
-    res.json(userObj);
+    response.json(userObj);
   });
 });
 
@@ -45,7 +45,7 @@ pageRoutes.route("/user/update/:id").post(function (req, response) {
   let db_connect = db.getDb();
   let addQuery = { _id: ObjectId(req.params.id) };
   let newValues = {
-    $set: {
+    set: {
       name: req.name.body,
       username: req.username.body,
     },
@@ -55,11 +55,11 @@ pageRoutes.route("/user/update/:id").post(function (req, response) {
     .updateOne(addQuery, newValues, function (err, res) {
       if (err) throw err;
       console.log("Update Successful!");
-      response.json(res);
+      // response.json();
     });
 });
 
-pageRoutes.route("/:id").delete((req, response) => {
+pageRoutes.route("/user/:id").delete((req, response) => {
   let db_connect = db.getDb();
   let deleteQuery = { _id: ObjectId(req.params.id) };
   db_connect.collection("users").deleteOne(deleteQuery, function (err, obj) {
