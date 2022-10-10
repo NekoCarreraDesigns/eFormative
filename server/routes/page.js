@@ -42,21 +42,21 @@ pageRoutes.route("/user/add").post(function (req, response) {
   });
 });
 
-pageRoutes.route("/user/update/:id").post(function (req, response) {
+pageRoutes.route("/user/update/:id").put(function (req, response) {
   let db_connect = db.getDb();
   let addQuery = { _id: ObjectId(req.params.id) };
   let newValues = {
     $set: {
-      name: req.name.body,
-      username: req.username.body,
+      name: req.body.name,
+      username: req.body.username,
     },
   };
   db_connect
     .collection("users")
-    .updateOne(addQuery, newValues, function (err, res) {
-      if (err) throw err;
+    .updateOne(addQuery, newValues, function (err, result) {
+      if (err) res.status(404);
       console.log("Update Successful!");
-      // response.json();
+      response.json(result);
     });
 });
 
@@ -121,9 +121,9 @@ pageRoutes.route("/reviews/update/:id").put(function (req, response) {
   let updatePostQuery = { _id: ObjectId(req.params.id) };
   let newPostValues = {
     $set: {
-      sellerName: req.sellerName.body,
-      productName: req.productName.body,
-      review: req.review.body,
+      sellerName: req.body.sellerName,
+      productName: req.body.productName,
+      review: req.body.review,
     },
   };
   db_connect
@@ -169,7 +169,7 @@ pageRoutes.route("/items/sold/:id").get(function (req, res) {
   });
 });
 
-pageRoutes.route("/items/update/:id").post(function (req, res) {
+pageRoutes.route("/items/update/:id").put(function (req, res) {
   let db_connect = db.getDb();
   let updateItemQuery = { _id: ObjectId(req.params.id) };
   let newItemValues = {
