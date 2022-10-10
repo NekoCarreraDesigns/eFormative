@@ -163,7 +163,7 @@ pageRoutes.route("/market").get(function (req, res) {
 pageRoutes.route("/items/sold/:id").get(function (req, res) {
   let db_connect = db.getDb();
   let itemQuery = { _id: ObjectId(req.params.id) };
-  db_connect.collection("items").findOne(itemQuery, function (req, result) {
+  db_connect.collection("items").findOne(itemQuery, function (err, result) {
     if (err) res.status(404);
     res.json(result);
   });
@@ -181,7 +181,7 @@ pageRoutes.route("/items/update/:id").post(function (req, res) {
   };
   db_connect
     .collection("items")
-    .updateOne(updateItemQuery, newItemValues, function (req, result) {
+    .updateOne(updateItemQuery, newItemValues, function (err, result) {
       if (err) res.status(404);
       console.log("Item updated!");
       res.json(result);
@@ -191,11 +191,12 @@ pageRoutes.route("/items/update/:id").post(function (req, res) {
 pageRoutes.route("/items/add").post(function (req, res) {
   let db_connect = db.getDb();
   let itemObj = {
+    sellerName: req.body.sellerName,
     product: req.body.product,
     price: req.body.price,
     description: req.body.description,
   };
-  db_connect.collection("items").insertOne(itemObj, function (req, result) {
+  db_connect.collection("items").insertOne(itemObj, function (err, result) {
     if (err) res.status(404);
     console.log("Item added!");
     res.json(result);
@@ -207,7 +208,7 @@ pageRoutes.route("/items/:id").delete(function (req, res) {
   let removeItemQuery = { _id: ObjectId(req.params.id) };
   db_connect
     .collection("items")
-    .deleteOne(removeItemQuery, function (req, result) {
+    .deleteOne(removeItemQuery, function (err, result) {
       if (err) res.status(404);
       console.log("Item deleted!");
       res.json(result);
