@@ -1,12 +1,21 @@
-import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Market from "./pages/Market/Market";
+import Reviews from "./pages/Reviews/Reviews";
+import Sell from "./pages/Sell/Sell";
 
 function App() {
   return (
-    <div className='App'>
-      <header>
-        <p>eFormative ya bish</p>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/market' element={<Market />}></Route>
+        <Route path='/reviews' element={<Reviews />}></Route>
+        <Route path='/sell' element={<Sell />}></Route>
+      </Routes>
+    </>
   );
 }
 
