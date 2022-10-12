@@ -2,3 +2,38 @@
     text-align: center;
     font-size: 40px;
 }
+
+.sell-page-paragraph, .new-seller-paragraph {
+    font-size: 30px;
+    text-align: center;
+}
+
+.sell-form-div {
+    margin-left: 650px;
+}
+
+.sell-page-form {
+    align-content: center;
+}
+
+.username-input, .user-password-input {
+    height: 30px;
+    width: 300px;
+    margin-top: 30px;
+    border-radius: 10px;
+    
+}
+
+.user-login-submit-button {
+    border-radius: 10px;
+    height: 30px;
+    width: 80px;
+    margin: 60px;
+}
+
+.user-signup-redirect {
+    border-radius: 10px;
+    height: 50px;
+    width: 200px;
+    margin-left: 700px;
+}
