@@ -1,0 +1,17 @@
+.navbar {
+    background-color: rgba(123, 225, 144, 0.5);
+    height: 100px;
+}
+
+.inner-navbar {
+    padding-top: 60px;
+}
+
+.navbar-link {
+    padding: 10px;
+    font-size: 30px;
+}
+
+.navbar-link:hover {
+    color: rgb(12, 121, 250);
+}
