@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Sell.css";
 
 const Sell = () => {
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/signup`;
+    navigate(path);
+  };
+
   return (
     <>
       <h1 className='sell-page-header'>Sell</h1>
@@ -29,7 +36,9 @@ const Sell = () => {
         </form>
       </div>
       <p className='new-seller-paragraph'>New sellers please sign up here</p>
-      <button className='user-signup-redirect'>signup</button>
+      <button className='user-signup-redirect' onClick={routeChange}>
+        signup
+      </button>
     </>
   );
 };
