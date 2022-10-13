@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import Market from "./pages/Market/Market";
 import Reviews from "./pages/Reviews/Reviews";
 import Sell from "./pages/Sell/Sell";
+import Signup from "./pages/Signup/Signup";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/market' element={<Market />}></Route>
         <Route path='/reviews' element={<Reviews />}></Route>
         <Route path='/sell' element={<Sell />}></Route>
+        <Route path='/signup' element={<Signup />}></Route>
       </Routes>
     </>
   );
