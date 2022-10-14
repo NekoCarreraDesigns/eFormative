@@ -4,9 +4,14 @@ import "./Sell.css";
 
 const Sell = () => {
   let navigate = useNavigate();
-  const routeChange = () => {
+  const signUpRedirect = () => {
     let path = `/signup`;
     navigate(path);
+  };
+
+  const sellerRedirect = () => {
+    let sellerPath = `/seller`;
+    navigate(sellerPath);
   };
 
   return (
@@ -30,13 +35,16 @@ const Sell = () => {
             placeholder='please enter password'
             name='user-password'></input>
           <br />
-          <button className='user-login-submit-button' type='submit'>
+          <button
+            className='user-login-submit-button'
+            type='submit'
+            onClick={sellerRedirect}>
             Login
           </button>
         </form>
       </div>
       <p className='new-seller-paragraph'>New sellers please sign up here</p>
-      <button className='user-signup-redirect' onClick={routeChange}>
+      <button className='user-signup-redirect' onClick={signUpRedirect}>
         signup
       </button>
     </>
