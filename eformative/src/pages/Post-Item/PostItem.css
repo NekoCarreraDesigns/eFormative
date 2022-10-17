@@ -1,0 +1,25 @@
+.post-item-header, .post-item-paragraph {
+    text-align: center;
+    font-size: 40px;
+}
+
+.post-item-form-div {
+    align-items: center;
+}
+
+.item-name-input, .item-price-input {
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+}
+
+.post-item-textarea {
+    height: 400px;
+    width: 600px;
+}
+
+.add-item-button, .upload-picture-video-button {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+}
