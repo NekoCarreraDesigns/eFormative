@@ -18,11 +18,11 @@ const Seller = () => {
       </button>
       <div className='items-sold-div'>
         <h1 className='items-sold-header'>Items Sold</h1>
-        <img alt='item' placeholder='100x100'></img>
+        <img alt='item' src='http://placehold.jp/150x150.png'></img>
       </div>
       <div className='items-selling-div'>
         <h1 className='items-selling-header'>Items Selling</h1>
-        <img alt='sale-item' placeholder='100x100'></img>
+        <img alt='sale-item' src='http://placehold.jp/150x150.png'></img>
       </div>
     </>
   );
