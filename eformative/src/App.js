@@ -6,6 +6,7 @@ import Reviews from "./pages/Reviews/Reviews";
 import Sell from "./pages/Sell/Sell";
 import Signup from "./pages/Signup/Signup";
 import Seller from "./pages/Seller/Seller";
+import PostItem from "./pages/Post-Item/PostItem";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/sell' element={<Sell />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/seller' element={<Seller />}></Route>
+        <Route path='/post-item' element={<PostItem />}></Route>
       </Routes>
     </>
   );
