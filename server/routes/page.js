@@ -1,5 +1,6 @@
 // dependencies
 const express = require("express");
+const bcrypt = require("bcrypt");
 // router middleware
 const pageRoutes = express.Router();
 // database connection
@@ -7,6 +8,25 @@ const db = require("../db/connection");
 const models = require("../db/models");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
+
+pageRoutes.route("/seller").post(async (req, response) => {
+  const { fullName, username, password } = req.body;
+  const hash = await bcrypt.hash(password, 13);
+  let db_connect = db.getDb();
+  let newUserObj = {
+    fullName: req.body.fullName,
+    username: req.body.username,
+    password: hash,
+  };
+  db_connect
+    .collection("users")
+    .insertOne(newUserObj, async function (err, res) {
+      if (err) res.send(404);
+      console.log("hello new user!");
+      response.json(res);
+    });
+});
+
 // routes for users with queries to database
 pageRoutes.route("/user").get(function (req, res) {
   let db_connect = db.getDb("users");
