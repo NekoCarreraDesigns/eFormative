@@ -1,10 +1,6 @@
 const bcrypt = require("bcrypt");
+const ObjectId = require("mongodb").ObjectId;
+const express = require("express");
 
-const login = async () => {
-  const password = "password1";
-  const hash = await bcrypt.hash(password, 13);
-  const isMatch = await bcrypt.compare("password1", hash);
-  console.log(isMatch);
-};
-
-login();
+app.use(express.json());
+const app = express();
