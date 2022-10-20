@@ -8,7 +8,7 @@ const db = require("../db/connection");
 const models = require("../db/models");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
-
+// user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
   const { fullName, username, password } = req.body;
   const hash = await bcrypt.hash(password, 13);
@@ -25,6 +25,30 @@ pageRoutes.route("/seller").post(async (req, response) => {
       console.log("hello new user!");
       response.json(res);
     });
+});
+
+pageRoutes.route("/sign-in").get(async (req, response) => {
+  let db_connect = db.getDb();
+  let userObj = {
+    id: req.params.id,
+    username: req.body.username,
+    password: req.body.password,
+  };
+  const { username, password } = req.body;
+  if (!username) {
+    response.send("wrong username");
+    return;
+  }
+  const isValid = await bcrypt.compare(password, user.password);
+  if (isValid !== true) {
+    response.send("wrong username or password");
+    return;
+  }
+
+  db_connect.collection("users").findOne({}, async function (err, res) {
+    if (err) res.send(404);
+    response.json({ message: "Success!" });
+  });
 });
 
 // routes for users with queries to database
