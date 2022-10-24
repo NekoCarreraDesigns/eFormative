@@ -27,28 +27,15 @@ pageRoutes.route("/seller").post(async (req, response) => {
     });
 });
 
-pageRoutes.route("/sign-in").get(async (req, response) => {
+pageRoutes.route("/sign-in").post((req, res) => {
   let db_connect = db.getDb();
-  let userObj = {
-    id: req.params.id,
-    username: req.body.username,
-    password: req.body.password,
-  };
-  const { username, password } = req.body;
-  if (!username) {
-    response.send("wrong username");
-    return;
-  }
-  const isValid = await bcrypt.compare(password, user.password);
-  if (isValid !== true) {
-    response.send("wrong username or password");
-    return;
-  }
-
-  db_connect.collection("users").findOne({}, async function (err, res) {
-    if (err) res.send(404);
-    response.json({ message: "Success!" });
-  });
+  db_connect
+    .collection("users")
+    .find({ username: req.body.username }, function (err, users) {
+      if (!users) {
+        res.status(404).send("user not found");
+      }
+    });
 });
 
 // routes for users with queries to database
@@ -63,7 +50,7 @@ pageRoutes.route("/user").get(function (req, res) {
     });
 });
 
-pageRoutes.route("/user/:id").get(function (req, res) {
+pageRoutes.route("/user/:id").get(function (req, es) {
   let db_connect = db.getDb();
   let myQuery = { _id: ObjectId(req.params.id) };
   db_connect.collection("users").findOne(myQuery, function (err, result) {
