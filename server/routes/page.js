@@ -1,13 +1,23 @@
 // dependencies
 const express = require("express");
 const bcrypt = require("bcrypt");
+const mongoose = require("mongoose");
 // router middleware
 const pageRoutes = express.Router();
 // database connection
 const db = require("../db/connection");
-const models = require("../db/models");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
+
+const app = express();
+
+mongoose.connect(process.env.ATLAS_URI);
+
+const UserModel = new mongoose.model("users", {
+  username: String,
+  password: String,
+});
+
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
   const { fullName, username, password } = req.body;
@@ -16,6 +26,7 @@ pageRoutes.route("/seller").post(async (req, response) => {
   let newUserObj = {
     fullName: req.body.fullName,
     username: req.body.username,
+    email: req.body.email,
     password: hash,
   };
   db_connect
@@ -27,15 +38,26 @@ pageRoutes.route("/seller").post(async (req, response) => {
     });
 });
 
-pageRoutes.route("/sign-in").post((req, res) => {
+pageRoutes.route("/sign-in").post(async (req, res) => {
   let db_connect = db.getDb();
   db_connect
     .collection("users")
-    .find({ username: req.body.username }, function (err, users) {
-      if (!users) {
-        res.status(404).send("user not found");
+    .find({ username: req.body.username })
+    .toArray(async (err, res) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      let user = {
+        username: req.body.username,
+        password: req.body.password,
+      };
+      if (!user) {
+        return res.status(400).send("User name is invalid");
       }
     });
+  res.status(200).send("successful login");
+  return;
 });
 
 // routes for users with queries to database
