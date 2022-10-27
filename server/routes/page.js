@@ -33,8 +33,15 @@ pageRoutes.route("/seller").post(async (req, response) => {
     .collection("users")
     .insertOne(newUserObj, async function (err, res) {
       if (err) res.send(404);
-      console.log("hello new user!");
-      response.json(res);
+      if (username) {
+        response.json({ message: "username already exists" });
+        response.end();
+        return;
+      } else {
+        console.log("hello new user!");
+        response.json(res);
+        return;
+      }
     });
 });
 
@@ -43,21 +50,25 @@ pageRoutes.route("/sign-in").post(async (req, res) => {
   db_connect
     .collection("users")
     .find({ username: req.body.username })
-    .toArray(async (err, res) => {
-      if (err) {
-        console.log(err);
+    .toArray(async (err, user) => {
+      if (err) res.status(404).send("not found");
+      if (!user[3]) {
+        res.status(400).send("wrong user");
         return;
-      }
-      let user = {
-        username: req.body.username,
-        password: req.body.password,
-      };
-      if (!user) {
-        return res.status(400).send("User name is invalid");
+      } else {
+        const isMatch = bcrypt.compareSync(
+          req.body.login_password,
+          user[3].password
+        );
+        if (!isMatch) {
+          res.status(400).send("Wrong password");
+          return;
+        } else {
+          res.status(200).send("Successful login");
+          return;
+        }
       }
     });
-  res.status(200).send("successful login");
-  return;
 });
 
 // routes for users with queries to database
