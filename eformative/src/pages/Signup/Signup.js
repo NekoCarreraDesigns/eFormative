@@ -24,11 +24,13 @@ const Signup = () => {
             name='userName'></input>
           <br />
           <input
+            type='password'
             className='password-input'
             placeholder='please enter a password'
             name='password0'></input>
           <br />
           <input
+            type='password'
             className='password-re-enter-input'
             placeholder='please re-enter password'
             name='password1'></input>
