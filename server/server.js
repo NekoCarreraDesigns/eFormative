@@ -1,5 +1,6 @@
 // dependencies for app
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
 // configuration for dotenv
@@ -8,6 +9,8 @@ require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 3001;
 // express middleware
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./routes/page"));
 // connection for the db
