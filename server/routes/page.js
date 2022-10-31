@@ -13,10 +13,10 @@ const app = express();
 
 mongoose.connect(process.env.ATLAS_URI);
 
-const UserModel = new mongoose.model("users", {
-  username: String,
-  password: String,
-});
+// const UserModel = new mongoose.model("users", {
+// username: String,
+// password: String,
+// });
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
