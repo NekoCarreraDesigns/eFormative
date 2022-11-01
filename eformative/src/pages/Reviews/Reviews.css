@@ -11,3 +11,18 @@
 .reviews-div {
     font-size: 24px;
 }
+
+.search-filters-div {
+    background-color: rgba(150,150,150, 0.6);
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+.seller-filter-div, .product-filter-input {
+    margin-left: 20px;
+    text-align: center;
+}
+
+.search-filter-header {
+    text-align: center;
+}
