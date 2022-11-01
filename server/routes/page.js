@@ -136,7 +136,7 @@ pageRoutes.route("/user/:id").delete((req, response) => {
 
 // routes for reviews of sellers and product
 pageRoutes.route("/reviews").get(function (req, res) {
-  let db_connect = db.getDb();
+  let db_connect = db.getDb("reviews");
   db_connect
     .collection("reviews")
     .find({})
@@ -148,7 +148,7 @@ pageRoutes.route("/reviews").get(function (req, res) {
 
 pageRoutes.route("/seller/reviews/:id").get(function (req, res) {
   let db_connect = db.getDb();
-  let sellerQuery = { _id: ObjectId(req.params.id) };
+  let sellerQuery = { sellerName: req.params.sellerName };
   db_connect.collection("reviews").findOne(sellerQuery, function (err, result) {
     if (err) res.status(404);
     res.json(result);
@@ -157,7 +157,7 @@ pageRoutes.route("/seller/reviews/:id").get(function (req, res) {
 
 pageRoutes.route("/product/reviews/:id").get(function (req, res) {
   let db_connect = db.getDb();
-  let productQuery = { _id: ObjectId(req.params.id) };
+  let productQuery = { productName: req.params.productName };
   db_connect
     .collection("reviews")
     .findOne(productQuery, function (err, result) {
