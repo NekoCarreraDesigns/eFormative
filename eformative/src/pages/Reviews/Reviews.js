@@ -1,11 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Reviews.css";
 
 const sellerFilter = () => {
   fetch("/seller/reviews/:id").then((response) => response.json());
 };
 const Reviews = () => {
+  let navigate = useNavigate();
+  const postReview = () => {
+    let postPath = `/post-reviews`;
+    navigate(postPath);
+  };
+
   const [reviews, setReview] = useState();
 
   useEffect(() => {
@@ -32,6 +39,9 @@ const Reviews = () => {
             placeholder='search by product name'></input>
           <button className='search-filters-product-button'>
             Search Product
+          </button>
+          <button className='post-review-button' onClick={postReview}>
+            Post Review
           </button>
         </div>
       </div>
