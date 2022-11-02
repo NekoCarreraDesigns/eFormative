@@ -2,22 +2,17 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./Reviews.css";
 
+const sellerFilter = () => {
+  fetch("/seller/reviews/:id").then((response) => response.json());
+};
 const Reviews = () => {
   const [reviews, setReview] = useState();
-  const [seller, setSeller] = useState();
 
   useEffect(() => {
     fetch("/reviews")
       .then((res) => res.json())
       .then((reviews) => setReview(reviews));
   });
-
-  const sellerFilter = () => {
-    fetch("/seller/reviews/:id")
-      .then((response) => response.json())
-      .then((seller) => setSeller(seller));
-    console.log(seller);
-  };
 
   return (
     <>
