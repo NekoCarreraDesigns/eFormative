@@ -1,0 +1,17 @@
+.post-review-header {
+    text-align: center;
+}
+
+.seller-name-input, .product-name-input {
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.user-post-review-textarea {
+    height: 400px;
+    width: 600px;
+}
+
+
+
