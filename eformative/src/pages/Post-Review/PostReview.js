@@ -1,36 +1,70 @@
 import React from "react";
-import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 import "./PostReview.css";
 
-const PostReview = () => {
-  const postBody = {
-    sellerName: "Candace",
-    productName: "E-Scooter",
-    review: "hated it!",
-  };
-  useEffect(() => {
-    fetch("/product/reviews/post", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(postBody),
+const sellerInput = document.querySelector("input");
+const productInput = document.getElementById("product-name");
+const area = document.querySelector("textarea");
+
+const addReview = () => {
+  axios
+    .post("/product/reviews/post", {
+      sellerName: sellerInput.value,
+      productName: productInput.value,
+      review: area.value,
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  });
+    .then((res) => {
+      console.log(res);
+      alert("Review has been added");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+// figure out to add eventlistener without being null, to prevent page refresh
+// form.addEventListener("click", (event) => {
+//   addReview();
+//   event.preventDefault();
+// });
+
+const PostReview = () => {
+  const [input, setInput] = useState("");
+  const inputHandler = (event) => {
+    setInput(event.target.value);
+  };
+
   return (
     <>
       <h1 className='post-review-header'>Post A Review</h1>
-      <input type='text' placeholder='please enter your name'></input>
-      <br />
-      <input type='text' placeholder='product being reviewed'></input>
-      <br />
-      <button>Upload Photo or video</button>
-      <br />
-      <textarea className='user-post-review-textarea'></textarea>
-      <br />
-      <button onClick={useEffect}>Submit</button>
+      <form>
+        <input
+          className='seller-name-input'
+          id='seller-name'
+          type='text'
+          placeholder='please enter your name'></input>
+        <br />
+        <input
+          className='product-name-input'
+          id='product-name'
+          type='text'
+          placeholder='product being reviewed'></input>
+        <br />
+        <button className='upload-button'>Upload Photo or video</button>
+        <br />
+        <textarea
+          maxLength={300}
+          className='user-post-review-textarea'
+          id='review-text-area'
+          onChange={inputHandler}></textarea>
+        <br />
+        <span className='character-count-span'>
+          {300 - input.length} characters left
+        </span>
+        <br />
+        <button onClick={addReview}>Submit</button>
+      </form>
     </>
   );
 };
