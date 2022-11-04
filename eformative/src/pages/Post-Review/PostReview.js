@@ -38,7 +38,7 @@ const PostReview = () => {
   return (
     <>
       <h1 className='post-review-header'>Post A Review</h1>
-      <form>
+      <form className='post-review-form'>
         <input
           className='seller-name-input'
           id='seller-name'
@@ -63,7 +63,9 @@ const PostReview = () => {
           {300 - input.length} characters left
         </span>
         <br />
-        <button onClick={addReview}>Submit</button>
+        <button className='post-review-button' onClick={addReview}>
+          Submit
+        </button>
       </form>
     </>
   );
