@@ -6,12 +6,35 @@
     height: 30px;
     width: 200px;
     border-radius: 10px;
+    margin-top: 20px;
 }
 
 .user-post-review-textarea {
     height: 400px;
-    width: 600px;
+    width: 700px;
+    border-radius: 5px;
 }
 
+.post-review-button {
+    border-radius: 5px;
+    height: 25px;
+    width: 100px;
+    margin-left: 300px;
+}
+
+.post-review-button:hover {
+    background-color: rgba(224, 5, 5, 0.8);
+}
+
+.upload-button {
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.post-review-form {
+    align-items: center;
+    margin-left: 400px;
+}
 
 
