@@ -6,7 +6,7 @@
     height: 30px;
     width: 200px;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .user-post-review-textarea {
@@ -29,7 +29,9 @@
 .upload-button {
     border-radius: 5px;
     height: 30px;
-    margin-top: 10px;
+    float: right;
+    margin-right: 495px;
+    
 }
 
 .post-review-form {
@@ -37,4 +39,8 @@
     margin-left: 400px;
 }
 
-
+.character-count-span {
+    color: rgba(255, 0, 0, 0.7);
+    float: right;
+    margin-right: 495px;
+}
