@@ -14,16 +14,14 @@ const Market = () => {
     <>
       <h1 className='market-page-header'>Market</h1>;
       {items?.map((item, sellerItem) => (
-        <div key={sellerItem}>
-          <h1 className='item-header'>
-            {" "}
-            Seller: {item.sellerName}, Product: {item.product}
-          </h1>
+        <div className='item-card' key={sellerItem}>
           <div>
+            <h1 className='item-seller-header'> Seller: {item.sellerName}</h1>
+            <h2 className='item-product-header'>Product: {item.product}</h2>
             <h3 className='item-price-header'>{item.price}</h3>
             <img alt='product' src='http://placehold.jp/150x150.png'></img>
+            <p className='item-description-paragraph'>{item.description}</p>
           </div>
-          <p className='item-description-paragraph'>{item.description}</p>
         </div>
       ))}
     </>
