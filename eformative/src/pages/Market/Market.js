@@ -13,6 +13,26 @@ const Market = () => {
   return (
     <>
       <h1 className='market-page-header'>Market</h1>;
+      <div className='market-filter-div'>
+        <div className='market-filter-input-div'>
+          <h2 className='market-search-filters-header'>Search filters</h2>
+          <input
+            className='market-filter-input'
+            type='text'
+            placeholder='search by seller'></input>
+          <button>Seller Search</button>
+          <input
+            className='market-filter-input'
+            type='text'
+            placeholder='search by product'></input>
+          <button>Product Search</button>
+          <input
+            className='market-filter-input'
+            type='text'
+            placeholder='search by price'></input>
+          <button>Price Search</button>
+        </div>
+      </div>
       {items?.map((item, sellerItem) => (
         <div className='item-card' key={sellerItem}>
           <div className='item'>
