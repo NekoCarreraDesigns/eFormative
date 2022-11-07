@@ -40,7 +40,7 @@ const Reviews = () => {
           <button className='search-filters-product-button'>
             Search Product
           </button>
-          <button className='post-review-button' onClick={postReview}>
+          <button className='post-review-button-redirect' onClick={postReview}>
             Post Review
           </button>
         </div>
