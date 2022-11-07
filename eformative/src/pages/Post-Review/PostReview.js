@@ -60,7 +60,7 @@ const PostReview = () => {
           onChange={inputHandler}></textarea>
         <br />
         <span className='character-count-span'>
-          {300 - input.length} characters left
+          <strong>{300 - input.length} characters left</strong>
         </span>
         <br />
         <button className='post-review-button' onClick={addReview}>
