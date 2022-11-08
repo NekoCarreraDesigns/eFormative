@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./Market.css";
 
+const priceFilter = () => {
+  console.log("clicked");
+};
+
+const productFilter = () => {
+  console.log("clicked");
+};
+
+const sellerFilter = () => {
+  console.log("clicked");
+};
+
 const Market = () => {
   const [items, setItems] = useState();
 
@@ -20,17 +32,17 @@ const Market = () => {
             className='market-filter-input'
             type='text'
             placeholder='search by seller'></input>
-          <button>Seller Search</button>
+          <button onClick={sellerFilter}>Seller Search</button>
           <input
             className='market-filter-input'
             type='text'
             placeholder='search by product'></input>
-          <button>Product Search</button>
+          <button onClick={productFilter}>Product Search</button>
           <input
             className='market-filter-input'
             type='text'
             placeholder='search by price'></input>
-          <button>Price Search</button>
+          <button onClick={priceFilter}>Price Search</button>
         </div>
       </div>
       {items?.map((item, sellerItem) => (
