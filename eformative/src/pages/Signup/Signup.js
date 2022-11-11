@@ -18,8 +18,8 @@ const Signup = () => {
       })
       .then((res) => {
         console.log(res);
-        alert("Successful Sign Up");
-        window.location.replace("http://localhost:3000/post-item");
+        // figure out how to redirect to post-item page
+        // upon successful login
       })
       .catch((err) => {
         console.log(err);
