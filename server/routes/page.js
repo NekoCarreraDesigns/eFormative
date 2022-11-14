@@ -49,17 +49,14 @@ pageRoutes.route("/sign-in").post(async (req, res) => {
   let db_connect = db.getDb();
   db_connect
     .collection("users")
-    .find({ username: req.body.username })
+    .find({})
     .toArray(async (err, user) => {
       if (err) res.status(404).send("not found");
-      if (!user[3]) {
+      if (!user) {
         res.status(400).send("wrong user");
         return;
       } else {
-        const isMatch = bcrypt.compareSync(
-          req.body.login_password,
-          user[3].password
-        );
+        const isMatch = bcrypt.compareSync(req.body.password, user.password);
         if (!isMatch) {
           res.status(400).send("Wrong password");
           return;
