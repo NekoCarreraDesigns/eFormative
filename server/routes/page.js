@@ -47,25 +47,18 @@ pageRoutes.route("/seller").post(async (req, response) => {
 
 pageRoutes.route("/sign-in").post(async (req, res) => {
   let db_connect = db.getDb();
-  db_connect
-    .collection("users")
-    .find({})
-    .toArray(async (err, user) => {
-      if (err) res.status(404).send("not found");
-      if (!user) {
-        res.status(400).send("wrong user");
-        return;
-      } else {
-        const isMatch = bcrypt.compareSync(req.body.password, user.password);
-        if (!isMatch) {
-          res.status(400).send("Wrong password");
-          return;
-        } else {
-          res.status(200).send("Successful login");
-          return;
-        }
-      }
-    });
+  let userQuery = {
+    username: req.body.username,
+    password: req.body.password,
+  };
+  db_connect.collection("users").findOne(userQuery, async (err, res) => {
+    if (err) {
+      res.status(400).send("wrong username or password");
+      console.log("wrong username or password");
+    } else {
+      console.log("login successful");
+    }
+  });
 });
 
 // routes for users with queries to database
