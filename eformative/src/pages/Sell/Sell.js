@@ -10,15 +10,10 @@ const Sell = () => {
     navigate(path);
   };
 
-  const sellerRedirect = () => {
-    let sellerPath = `/seller`;
-    navigate(sellerPath);
-  };
-
   const userSignIn = (event) => {
+    let sellerPath = `/seller`;
     const usernameInput = document.getElementById("username");
     const userPasswordInput = document.getElementById("user-password");
-
     event.preventDefault();
     axios
       .post("/sign-in", {
@@ -27,13 +22,13 @@ const Sell = () => {
       })
       .then((response) => {
         response.json({ message: "login successful" });
-        sellerRedirect();
       })
       .catch((err) => {
         if (err) {
           console.log(err);
         }
       });
+    navigate(sellerPath);
   };
 
   return (
