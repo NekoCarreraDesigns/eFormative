@@ -1,22 +1,12 @@
 // dependencies
 const express = require("express");
 const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
 // router middleware
 const pageRoutes = express.Router();
 // database connection
 const db = require("../db/connection");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
-
-const app = express();
-
-mongoose.connect(process.env.ATLAS_URI);
-
-// const UserModel = new mongoose.model("users", {
-// username: String,
-// password: String,
-// });
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
