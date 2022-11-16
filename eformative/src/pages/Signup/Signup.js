@@ -1,8 +1,12 @@
 import React from "react";
 import axios from "axios";
 import "./Signup.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  let navigate = useNavigate();
+  let postItemPath = `/post-item`;
+
   const fullNameInput = document.querySelector("input");
   const usernameInput = document.getElementById("userName");
   const userEmailInput = document.getElementById("email");
@@ -22,6 +26,7 @@ const Signup = () => {
       .catch((err) => {
         console.log(err);
       });
+    navigate(postItemPath);
   };
 
   return (
