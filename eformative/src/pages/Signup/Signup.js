@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import Parse from "parse/dist/parse.min.js";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   let navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null);
   let postItemPath = `/post-item`;
 
   const fullNameInput = document.querySelector("input");
@@ -21,12 +23,20 @@ const Signup = () => {
         password: passwordInput0.value,
       })
       .then((res) => {
-        console.log(res);
+        res.json({ message: "Sign Up Successful" });
+        console.log(currentUser);
+        getCurrentUser();
       })
       .catch((err) => {
-        console.log(err);
+        if (err) throw err;
       });
     navigate(postItemPath);
+
+    const getCurrentUser = async () => {
+      const currentUser = await Parse.User.current();
+      setCurrentUser(currentUser);
+      return currentUser;
+    };
   };
 
   return (
