@@ -63,9 +63,9 @@ pageRoutes.route("/user").get(function (req, res) {
     });
 });
 
-pageRoutes.route("/user/:id").get(function (req, es) {
+pageRoutes.route("/user/:id").get(function (req, res) {
   let db_connect = db.getDb();
-  let myQuery = { _id: ObjectId(req.params.id) };
+  let myQuery = { username: req.body.username };
   db_connect.collection("users").findOne(myQuery, function (err, result) {
     if (err) throw err;
     res.json(result);
