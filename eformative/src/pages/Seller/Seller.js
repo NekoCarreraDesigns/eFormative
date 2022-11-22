@@ -1,24 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Seller.css";
 
 const Seller = () => {
   const [user, setUser] = useState("");
   let navigate = useNavigate();
+
   const postItemRedirect = () => {
     let postItemPath = `/post-item`;
     navigate(postItemPath);
   };
 
   const handleLogout = (event) => {
-    setUser("");
+    setUser(" ");
     navigate("/sell");
     console.log("logged out");
   };
 
+  useEffect(() => {
+    fetch("/user")
+      .then((res) => res.json())
+      .then((user) => setUser(user));
+  });
+
   return (
     <>
-      <h1 className='seller-page-header'>Welcome! {user.fullName}</h1>
+      <div>
+        {Object.values(user).map((user, displayUser) => (
+          <h1 key={displayUser} className='seller-page-header'>
+            Welcome, {user.fullName}!
+          </h1>
+        ))}
+      </div>
       <button className='post-item-button' onClick={postItemRedirect}>
         Post an item to sell
       </button>
