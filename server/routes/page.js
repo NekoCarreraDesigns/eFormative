@@ -204,9 +204,18 @@ pageRoutes.route("/market").get(function (req, res) {
     });
 });
 // this is for the seller page, to show items the user has sold
-pageRoutes.route("/items/sold/:id").get(function (req, res) {
+pageRoutes.route("/items/sold/").get(function (req, res) {
   let db_connect = db.getDb();
-  let itemQuery = { _id: ObjectId(req.params.id) };
+  let itemQuery = { itemSold: true };
+  db_connect.collection("items").findOne(itemQuery, function (err, result) {
+    if (err) res.status(404);
+    res.json(result);
+  });
+});
+
+pageRoutes.route("/items/selling/").get(function (req, res) {
+  let db_connect = db.getDb();
+  let itemQuery = { itemSold: false };
   db_connect.collection("items").findOne(itemQuery, function (err, result) {
     if (err) res.status(404);
     res.json(result);
@@ -239,6 +248,7 @@ pageRoutes.route("/items/add").post(function (req, res) {
     product: req.body.product,
     price: req.body.price,
     description: req.body.description,
+    itemSold: false,
   };
   db_connect.collection("items").insertOne(itemObj, function (err, result) {
     if (err) res.status(404);
