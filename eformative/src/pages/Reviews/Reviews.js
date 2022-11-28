@@ -1,16 +1,31 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Reviews.css";
 
-const sellerFilter = () => {
-  fetch("/seller/reviews/:id").then((response) => response.json());
-};
 const Reviews = () => {
   let navigate = useNavigate();
   const postReview = () => {
     let postPath = `/post-reviews`;
     navigate(postPath);
+  };
+
+  const sellerFilter = () => {
+    const sellerSearchInput = document.getElementById("seller-search");
+
+    axios
+      .get("/seller/reviews/:id", {
+        sellerName: sellerSearchInput.value,
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/seller-reviews");
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+    console.log("clicked");
   };
 
   const [reviews, setReview] = useState();
@@ -27,7 +42,10 @@ const Reviews = () => {
       <div className='search-filters-div'>
         <div className='seller-filter-div'>
           <h2 className='search-filters-header'>Search filters</h2>
-          <input type='text' placeholder='search by seller name'></input>
+          <input
+            id='seller-search'
+            type='text'
+            placeholder='search by seller name'></input>
           <button
             className='search-filters-seller-button'
             onClick={sellerFilter}>
