@@ -4,7 +4,6 @@ import "./Seller.css";
 
 const Seller = () => {
   const [user, setUser] = useState("");
-  const [sold, setSold] = useState({ itemSold: false });
 
   let navigate = useNavigate();
 
@@ -17,10 +16,6 @@ const Seller = () => {
     setUser(" ");
     navigate("/sell");
     console.log("logged out");
-  };
-
-  const markAsSold = () => {
-    const data = { itemSold: true };
   };
 
   useEffect(() => {
