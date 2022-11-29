@@ -5,10 +5,16 @@ import axios from "axios";
 import "./Reviews.css";
 
 const Reviews = () => {
+  const [input, setInput] = useState(" ");
   let navigate = useNavigate();
   const postReview = () => {
     let postPath = `/post-reviews`;
     navigate(postPath);
+  };
+
+  const inputHandler = (event) => {
+    let lowerCase = event.target.value.toLowerCase();
+    setInput(lowerCase);
   };
 
   const sellerFilter = () => {
@@ -45,7 +51,8 @@ const Reviews = () => {
           <input
             id='seller-search'
             type='text'
-            placeholder='search by seller name'></input>
+            placeholder='search by seller name'
+            onChange={inputHandler}></input>
           <button
             className='search-filters-seller-button'
             onClick={sellerFilter}>
