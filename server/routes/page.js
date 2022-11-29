@@ -128,7 +128,10 @@ pageRoutes.route("/reviews").get(function (req, res) {
 
 pageRoutes.route("/seller/reviews/:id").get(function (req, res) {
   let db_connect = db.getDb();
-  let sellerQuery = { sellerName: req.body.sellerName };
+  let sellerQuery = {
+    sellerName: req.body.sellerName,
+    review: req.body.review,
+  };
   db_connect.collection("reviews").findOne(sellerQuery, function (err, result) {
     if (err) res.status(404);
     res.json(result);
