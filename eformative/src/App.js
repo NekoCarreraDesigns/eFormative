@@ -8,6 +8,7 @@ import Signup from "./pages/Signup/Signup";
 import Seller from "./pages/Seller/Seller";
 import PostItem from "./pages/Post-Item/PostItem";
 import PostReview from "./pages/Post-Review/PostReview";
+import SellerReviews from "./pages/Seller-Reviews/SellerReviews";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/seller' element={<Seller />}></Route>
         <Route path='/post-item' element={<PostItem />}></Route>
         <Route path='/post-reviews' element={<PostReview />}></Route>
+        <Route path='/seller-reviews' element={<SellerReviews />}></Route>
       </Routes>
     </>
   );
