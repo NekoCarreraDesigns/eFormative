@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.seller-name-input, .product-name-input {
+.seller-name-input, .product-name-input, .seller-review-input {
     height: 30px;
     width: 200px;
     border-radius: 10px;
