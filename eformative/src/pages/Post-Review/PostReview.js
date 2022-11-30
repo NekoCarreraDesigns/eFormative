@@ -3,21 +3,32 @@ import { useState } from "react";
 import axios from "axios";
 import "./PostReview.css";
 
-const sellerInput = document.querySelector("input");
-const productInput = document.getElementById("product-name");
-const area = document.querySelector("textarea");
-
 const addReview = () => {
+  const reviewerNameInput = document.getElementById("seller-name");
+  const productInput = document.getElementById("product-name");
+  const sellerReviewInput = document.getElementById("seller-review");
+  const area = document.querySelector("textarea");
+
   axios
-    .post("/product/reviews/post", {
-      sellerName: sellerInput.value,
-      productName: productInput.value,
-      review: area.value,
-    })
-    .then((res) => {
-      console.log(res);
-      alert("Review has been added");
-    })
+    .all([
+      axios.post("/seller/reviews", {
+        reviewerName: reviewerNameInput.value,
+        sellerName: sellerReviewInput.value,
+        review: area.value,
+      }),
+      axios.post("/product/reviews/post", {
+        reviewerName: reviewerNameInput.value,
+        sellerName: sellerReviewInput.value,
+        productName: productInput.value,
+        review: area.value,
+      }),
+    ])
+    .then(
+      axios.spread((res) => {
+        console.log(res);
+        alert("Review has been added");
+      })
+    )
     .catch((err) => {
       console.log(err);
     });
@@ -30,7 +41,7 @@ const addReview = () => {
 // });
 
 const PostReview = () => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(" ");
   const inputHandler = (event) => {
     setInput(event.target.value);
   };
@@ -38,7 +49,7 @@ const PostReview = () => {
   return (
     <>
       <h1 className='post-review-header'>Post A Review</h1>
-      <form className='post-review-form'>
+      <form onSubmit={addReview} className='post-review-form'>
         <input
           className='seller-name-input'
           id='seller-name'
@@ -51,6 +62,11 @@ const PostReview = () => {
           type='text'
           placeholder='product being reviewed'></input>
         <br />
+        <input
+          className='seller-review-input'
+          type='text'
+          placeholder='seller being reviewed'
+          id='seller-review'></input>
         <button className='upload-button'>Upload Photo or video</button>
         <br />
         <textarea
@@ -63,7 +79,7 @@ const PostReview = () => {
           <strong>{300 - input.length} characters left</strong>
         </span>
         <br />
-        <button className='post-review-button' onClick={addReview}>
+        <button className='post-review-button' type='submit'>
           Submit
         </button>
       </form>
