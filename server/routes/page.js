@@ -126,9 +126,10 @@ pageRoutes.route("/reviews").get(function (req, res) {
     });
 });
 
-pageRoutes.route("/seller/reviews/:id").get(function (req, res) {
+pageRoutes.route("/seller/reviews").get(function (req, res) {
   let db_connect = db.getDb();
   let sellerQuery = {
+    reviewerName: req.body.reviewerName,
     sellerName: req.body.sellerName,
     review: req.body.review,
   };
@@ -152,6 +153,7 @@ pageRoutes.route("/product/reviews/:id").get(function (req, res) {
 pageRoutes.route("/product/reviews/post").post(function (req, res) {
   let db_connect = db.getDb();
   let postObj = {
+    reviewerName: req.body.reviewerName,
     sellerName: req.body.sellerName,
     productName: req.body.productName,
     review: req.body.review,
