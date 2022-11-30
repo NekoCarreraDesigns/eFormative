@@ -3,14 +3,15 @@ import React, { useState, useEffect } from "react";
 import "./SellerReviews.css";
 
 const SellerReviews = () => {
-  const [seller, setSeller] = useState([]);
+  const [seller, setSeller] = useState();
   useEffect(() => {
     getSellerReview();
-  }, []);
+  });
 
   const getSellerReview = async () => {
-    const { data } = await axios.get("/seller/reviews/:id");
+    const { data } = await axios.get("/seller/reviews");
     setSeller(data);
+    console.log(data);
   };
 
   return (
