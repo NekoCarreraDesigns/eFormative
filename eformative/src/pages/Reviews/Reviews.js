@@ -21,7 +21,7 @@ const Reviews = () => {
     const sellerSearchInput = document.getElementById("seller-search");
 
     axios
-      .get("/seller/reviews/:id", {
+      .get("/seller/reviews", {
         sellerName: sellerSearchInput.value,
       })
       .then((response) => {
@@ -52,6 +52,7 @@ const Reviews = () => {
             id='seller-search'
             type='text'
             placeholder='search by seller name'
+            input={input}
             onChange={inputHandler}></input>
           <button
             className='search-filters-seller-button'
@@ -73,7 +74,8 @@ const Reviews = () => {
       {reviews?.map((review, userReview) => (
         <div key={userReview}>
           <h1 className='reviews-header'>
-            Seller: {review.sellerName}, Product: {review.productName}
+            Reviewer: {review.reviewerName}, Seller: {review.sellerName},
+            Product: {review.productName}
           </h1>{" "}
           <div className='reviews-div'>{review.review}</div> <hr />
         </div>
