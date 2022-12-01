@@ -11,7 +11,7 @@ const addReview = () => {
 
   axios
     .all([
-      axios.post("/seller/reviews", {
+      axios.post("/seller/reviews/post", {
         reviewerName: reviewerNameInput.value,
         sellerName: sellerReviewInput.value,
         review: area.value,
