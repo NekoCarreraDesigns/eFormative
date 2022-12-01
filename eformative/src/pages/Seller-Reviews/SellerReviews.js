@@ -19,7 +19,9 @@ const SellerReviews = () => {
       <h1 className='seller-reviews-header'>Seller Reviews</h1>
       {seller?.map((seller, reviewDisplay) => (
         <div key={reviewDisplay}>
-          <h1>{seller.sellerName}</h1>
+          <h1>
+            {seller.sellerName} {seller.reviewerName}
+          </h1>
           <p>{seller.review}</p>
         </div>
       ))}
