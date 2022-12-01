@@ -19,18 +19,9 @@ const Reviews = () => {
 
   const sellerFilter = () => {
     const sellerSearchInput = document.getElementById("seller-search");
+    axios.get("/seller/reviews", { sellerName: sellerSearchInput.value });
+    navigate("/seller-reviews");
 
-    axios
-      .get("/seller/reviews", {
-        sellerName: sellerSearchInput.value,
-      })
-      .then((response) => {
-        console.log(response);
-        navigate("/seller-reviews");
-      })
-      .catch((err) => {
-        if (err) throw err;
-      });
     console.log("clicked");
   };
 
