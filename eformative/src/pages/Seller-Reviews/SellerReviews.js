@@ -1,18 +1,14 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./SellerReviews.css";
 
 const SellerReviews = () => {
   const [seller, setSeller] = useState();
-  useEffect(() => {
-    getSellerReview();
-  });
 
-  const getSellerReview = async () => {
-    const { data } = await axios.get("/seller/reviews");
-    setSeller(data);
-    console.log(data);
-  };
+  useEffect(() => {
+    fetch("/seller/reviews")
+      .then((res) => res.json())
+      .then((seller) => setSeller(seller));
+  });
 
   return (
     <>
