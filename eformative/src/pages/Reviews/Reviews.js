@@ -17,11 +17,12 @@ const Reviews = () => {
     setInput(lowerCase);
   };
 
-  const sellerFilter = () => {
+  const sellerFilter = async () => {
     const sellerSearchInput = document.getElementById("seller-search");
-    axios.get("/seller/reviews", { sellerName: sellerSearchInput.value });
+    await axios.get("/reviews", {
+      sellerReview: sellerSearchInput.value,
+    });
     navigate("/seller-reviews");
-
     console.log("clicked");
   };
 
