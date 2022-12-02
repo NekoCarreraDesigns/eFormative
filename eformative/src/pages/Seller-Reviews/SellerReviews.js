@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import "./SellerReviews.css";
 
 const SellerReviews = () => {
-  const [seller, setSeller] = useState();
+  const [sellers, setSellers] = useState("");
 
-  useEffect(() => {
-    fetch("/seller/reviews")
-      .then((res) => res.json())
-      .then((seller) => setSeller(seller));
-  });
+  axios
+    .get("/seller/reviews")
+    .then((res) => res.json())
+    .then((sellers) => setSellers(sellers));
 
   return (
     <>
       <h1 className='seller-reviews-header'>Seller Reviews</h1>
-      {seller?.map((seller, reviewDisplay) => (
+      {Object.values(sellers).map((sellers, reviewDisplay) => (
         <div key={reviewDisplay}>
           <h1>
-            {seller.sellerName} {seller.reviewerName}
+            Seller: {sellers.sellerName}, Reviewed by: {sellers.reviewerName}
           </h1>
-          <p>{seller.review}</p>
+          <p>{sellers.SellerReview}</p>
         </div>
       ))}
     </>
