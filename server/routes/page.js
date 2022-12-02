@@ -131,10 +131,10 @@ pageRoutes.route("/seller/reviews/post").post(function (req, res) {
   let sellerQuery = {
     reviewerName: req.body.reviewerName,
     sellerName: req.body.sellerName,
-    review: req.body.review,
+    SellerReview: req.body.review,
   };
   db_connect
-    .collection("reviews")
+    .collection("sellerReviews")
     .insertOne(sellerQuery, function (err, result) {
       if (err) res.status(404);
       res.json(result);
@@ -144,7 +144,7 @@ pageRoutes.route("/seller/reviews/post").post(function (req, res) {
 pageRoutes.route("/seller/reviews").get(function (req, res) {
   let db_connect = db.getDb();
   db_connect
-    .collection("reviews")
+    .collection("sellerReviews")
     .find({})
     .toArray(function (err, result) {
       if (err) {
