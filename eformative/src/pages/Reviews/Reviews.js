@@ -5,8 +5,10 @@ import axios from "axios";
 import "./Reviews.css";
 
 const Reviews = () => {
-  const [input, setInput] = useState(" ");
+  const [input, setInput] = useState("");
+  const [reviews, setReview] = useState();
   let navigate = useNavigate();
+
   const postReview = () => {
     let postPath = `/post-reviews`;
     navigate(postPath);
@@ -17,16 +19,22 @@ const Reviews = () => {
     setInput(lowerCase);
   };
 
-  const sellerFilter = async () => {
+  const sellerFilter = () => {
     const sellerSearchInput = document.getElementById("seller-search");
-    await axios.get("/reviews", {
+    axios.get("/seller/reviews", {
       sellerReview: sellerSearchInput.value,
     });
     navigate("/seller-reviews");
     console.log("clicked");
   };
 
-  const [reviews, setReview] = useState();
+  const productFilter = async () => {
+    const productSearchInput = document.getElementById("product-search");
+    await axios.get("/reviews", { productName: productSearchInput.value });
+    navigate("/product-reviews");
+    console.log("clicked");
+    return productFilter;
+  };
 
   useEffect(() => {
     fetch("/reviews")
@@ -54,8 +62,13 @@ const Reviews = () => {
           <input
             className='product-filter-input'
             type='text'
-            placeholder='search by product name'></input>
-          <button className='search-filters-product-button'>
+            placeholder='search by product name'
+            id='product-search'
+            input={input}
+            onChange={inputHandler}></input>
+          <button
+            className='search-filters-product-button'
+            onClick={productFilter}>
             Search Product
           </button>
           <button className='post-review-button-redirect' onClick={postReview}>
