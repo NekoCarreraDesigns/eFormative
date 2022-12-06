@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Market.css";
 
 const priceFilter = () => {
+  const priceFilterSearchInput = document.getElementById("price-search-bar");
+  axios.get("/market/price", { price: priceFilterSearchInput.value });
   console.log("clicked");
 };
 
 const productFilter = () => {
+  const productFilterSearchInput =
+    document.getElementById("product-search-bar");
+  axios.get("/market/products", {
+    productName: productFilterSearchInput.value,
+  });
   console.log("clicked");
 };
 
 const sellerFilter = () => {
+  const sellerFilterSearchInput = document.getElementById("seller-search-bar");
+  axios.get("/market/sellers", { sellerName: sellerFilterSearchInput.value });
   console.log("clicked");
 };
 
@@ -31,17 +41,20 @@ const Market = () => {
           <input
             className='market-filter-input'
             type='text'
-            placeholder='search by seller'></input>
+            placeholder='search by seller'
+            id='seller-search-bar'></input>
           <button onClick={sellerFilter}>Seller Search</button>
           <input
             className='market-filter-input'
             type='text'
-            placeholder='search by product'></input>
+            placeholder='search by product'
+            id='product-search-bar'></input>
           <button onClick={productFilter}>Product Search</button>
           <input
             className='market-filter-input'
             type='text'
-            placeholder='search by price'></input>
+            placeholder='search by price'
+            id='price-search-bar'></input>
           <button onClick={priceFilter}>Price Search</button>
         </div>
       </div>
