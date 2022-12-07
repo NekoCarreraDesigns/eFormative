@@ -236,6 +236,20 @@ pageRoutes.route("/market/sellers").get(function (req, res) {
       res.json(res);
     });
 });
+
+pageRoutes.route("/market/products").get(function (req, res) {
+  let db_connect = db.getDb();
+  db_connect
+    .collection("items")
+    .findOne({ productName: req.body.productName })
+    .toArray(function (err, res) {
+      if (err) {
+        console.log(err);
+      }
+      res.json(res);
+    });
+});
+
 // this is for the seller page, to show items the user has sold
 pageRoutes.route("/items/sold/").get(function (req, res) {
   let db_connect = db.getDb();
