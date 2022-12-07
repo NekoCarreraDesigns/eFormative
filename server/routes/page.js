@@ -250,6 +250,19 @@ pageRoutes.route("/market/products").get(function (req, res) {
     });
 });
 
+pageRoutes.route("/market/price").get(function (req, res) {
+  let db_connect = db.getDb();
+  db_connect
+    .collection("items")
+    .findOne({ price: req.body.price })
+    .toArray(function (err, res) {
+      if (err) {
+        console.log(err);
+      }
+      res.json(res);
+    });
+});
+
 // this is for the seller page, to show items the user has sold
 pageRoutes.route("/items/sold/").get(function (req, res) {
   let db_connect = db.getDb();
