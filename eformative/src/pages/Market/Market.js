@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Market.css";
 
 const priceFilter = () => {
   const priceFilterSearchInput = document.getElementById("price-search-bar");
   axios.get("/market/price", { price: priceFilterSearchInput.value });
-  console.log("clicked");
-};
-
-const productFilter = () => {
-  const productFilterSearchInput =
-    document.getElementById("product-search-bar");
-  axios.get("/market/products", {
-    productName: productFilterSearchInput.value,
-  });
   console.log("clicked");
 };
 
@@ -24,8 +16,22 @@ const sellerFilter = () => {
 };
 
 const Market = () => {
+  let navigate = useNavigate();
   const [items, setItems] = useState();
 
+  const productFilter = (data) => {
+    const productFilterSearchInput =
+      document.getElementById("product-search-bar");
+    axios
+      .get("/market/products", {
+        productName: productFilterSearchInput.value,
+      })
+      .then((res) => res.json(data))
+      .then(() => {
+        navigate("/market/products/search");
+      });
+    console.log("clicked");
+  };
   useEffect(() => {
     fetch("/market")
       .then((res) => res.json())
