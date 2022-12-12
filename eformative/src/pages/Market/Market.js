@@ -26,10 +26,8 @@ const Market = () => {
       .get("/market/products", {
         productName: productFilterSearchInput.value,
       })
-      .then((res) => res.json(data))
-      .then(() => {
-        navigate("/market/products/search");
-      });
+      .then((res) => res.json(data));
+    navigate("/market/products/");
     console.log("clicked");
   };
   useEffect(() => {
