@@ -228,12 +228,11 @@ pageRoutes.route("/market/sellers").get(function (req, res) {
   let db_connect = db.getDb();
   db_connect
     .collection("items")
-    .findOne({ sellerName: req.body.sellerName })
+    .find({})
     .toArray(function (err, res) {
       if (err) {
-        console.log(err);
+        res.send(404);
       }
-      res.json(res);
     });
 });
 
@@ -241,12 +240,11 @@ pageRoutes.route("/market/products").get(function (req, res) {
   let db_connect = db.getDb();
   db_connect
     .collection("items")
-    .findOne({ productName: req.body.productName })
+    .find({})
     .toArray(function (err, res) {
       if (err) {
         console.log(err);
       }
-      res.json(res);
     });
 });
 
@@ -254,12 +252,11 @@ pageRoutes.route("/market/price").get(function (req, res) {
   let db_connect = db.getDb();
   db_connect
     .collection("items")
-    .findOne({ price: req.body.price })
+    .find({})
     .toArray(function (err, res) {
       if (err) {
         console.log(err);
       }
-      res.json(res);
     });
 });
 
