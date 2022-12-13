@@ -10,6 +10,8 @@ import PostItem from "./pages/Post-Item/PostItem";
 import PostReview from "./pages/Post-Review/PostReview";
 import SellerReviews from "./pages/Seller-Reviews/SellerReviews";
 import ProductReview from "./pages/Product-Reviews/ProductReview";
+import MarketPrice from "./pages/Market-Price/MarketPrice";
+import MarketProducts from "./pages/Market-Products/MarketProducts";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path='/post-reviews' element={<PostReview />}></Route>
         <Route path='/seller-reviews' element={<SellerReviews />}></Route>
         <Route path='/product-reviews' element={<ProductReview />}></Route>
+        <Route path='/market/price' element={<MarketPrice />}></Route>
+        <Route path='/market/products' element={<MarketProducts />}></Route>
       </Routes>
     </>
   );
