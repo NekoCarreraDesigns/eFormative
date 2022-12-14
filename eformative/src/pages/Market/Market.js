@@ -3,33 +3,63 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Market.css";
 
-const priceFilter = () => {
-  const priceFilterSearchInput = document.getElementById("price-search-bar");
-  axios.get("/market/price", { price: priceFilterSearchInput.value });
-  console.log("clicked");
-};
-
-const sellerFilter = () => {
-  const sellerFilterSearchInput = document.getElementById("seller-search-bar");
-  axios.get("/market/sellers", { sellerName: sellerFilterSearchInput.value });
-  console.log("clicked");
-};
-
 const Market = () => {
   let navigate = useNavigate();
   const [items, setItems] = useState();
+
+  const priceFilter = (data) => {
+    const priceFilterSearchInput = document.getElementById("price-search-bar");
+    axios
+      .get("/market", { price: priceFilterSearchInput.value })
+      .then((res) => {
+        res.json(res);
+        console.log(data);
+      })
+      .catch((res, err) => {
+        if (err) {
+          res.status(404).send("cannot be found");
+        }
+      });
+    navigate("/market/price");
+    console.log("clicked price");
+  };
+
+  const sellerFilter = () => {
+    const sellerFilterSearchInput =
+      document.getElementById("seller-search-bar");
+    axios
+      .get("/market", { sellerName: sellerFilterSearchInput.value })
+      .then((res) => {
+        res.json(res);
+      })
+      .catch((res, err) => {
+        if (err) {
+          res.status(404).send("cannot be found");
+        }
+      });
+    navigate("/market/sellers");
+    console.log("clicked seller");
+  };
 
   const productFilter = (data) => {
     const productFilterSearchInput =
       document.getElementById("product-search-bar");
     axios
-      .get("/market/products", {
+      .get("/market", {
         productName: productFilterSearchInput.value,
       })
-      .then((res) => res.json(data));
+      .then((res) => {
+        res.json(data);
+      })
+      .catch((res, err) => {
+        if (err) {
+          res.status(404).send("cannot be found");
+        }
+      });
     navigate("/market/products/");
     console.log("clicked");
   };
+
   useEffect(() => {
     fetch("/market")
       .then((res) => res.json())
