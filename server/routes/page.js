@@ -230,10 +230,9 @@ pageRoutes.route("/market/sellers").get(function (req, res) {
     .collection("items")
     .find({})
     .toArray(function (err, res) {
-      if (err) {
-        res.send(404);
-      }
+      if (err) res.send(404);
     });
+  res.json(res);
 });
 
 pageRoutes.route("/market/products").get(function (req, res) {
@@ -242,9 +241,7 @@ pageRoutes.route("/market/products").get(function (req, res) {
     .collection("items")
     .find({})
     .toArray(function (err, res) {
-      if (err) {
-        console.log(err);
-      }
+      if (err) res.send(404);
     });
 });
 
@@ -254,10 +251,9 @@ pageRoutes.route("/market/price").get(function (req, res) {
     .collection("items")
     .find({})
     .toArray(function (err, res) {
-      if (err) {
-        console.log(err);
-      }
+      if (err) res.send(404);
     });
+  res.json(res);
 });
 
 // this is for the seller page, to show items the user has sold
