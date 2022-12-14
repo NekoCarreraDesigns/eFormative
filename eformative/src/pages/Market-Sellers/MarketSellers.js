@@ -5,7 +5,7 @@ const MarketSellers = () => {
   const [searchSellers, setSearchSellers] = useState();
 
   useEffect(() => {
-    fetch("/market/sellers")
+    fetch("/market")
       .then((res) => res.json())
       .then((searchSellers) => setSearchSellers(searchSellers));
   });
@@ -15,11 +15,7 @@ const MarketSellers = () => {
       <h1 className='market-sellers-header'>View Sellers</h1>
       {searchSellers?.map((searchSellers, displaySearchSellers) => (
         <div key={displaySearchSellers}>
-          <ul>
-            <li>
-              <a href='/seller/:id'>{searchSellers.sellerName}</a>
-            </li>
-          </ul>
+          <a href='/seller/:id'>{searchSellers.sellerName}</a>
         </div>
       ))}
     </>
