@@ -5,7 +5,7 @@ const MarketPrice = () => {
   const [price, setPrice] = useState();
 
   useEffect(() => {
-    fetch("/market/products")
+    fetch("/market")
       .then((res) => res.json())
       .then((price) => setPrice(price));
   });
@@ -15,10 +15,9 @@ const MarketPrice = () => {
       <h1 className='market-price-header'>View by price</h1>
       {price?.map((price, displayPrice) => (
         <div key={displayPrice}>
-          <ul>
-            <li>{price.price}</li>
-            <li>{price.productName}</li>
-          </ul>
+          <a href='/item/:id'>
+            {price.price} {price.product}
+          </a>
         </div>
       ))}
     </>
