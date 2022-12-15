@@ -15,7 +15,8 @@ const MarketPrice = () => {
       <h1 className='market-price-header'>View by price</h1>
       {price?.map((price, displayPrice) => (
         <div key={displayPrice}>
-          <a href='/item/:id'>
+          <img alt='price' src='http://placehold.jp/150x150.png'></img>
+          <a className='price-link' href='/item/:id'>
             {price.price} {price.product}
           </a>
         </div>
