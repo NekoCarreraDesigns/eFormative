@@ -15,7 +15,10 @@ const MarketSellers = () => {
       <h1 className='market-sellers-header'>View Sellers</h1>
       {searchSellers?.map((searchSellers, displaySearchSellers) => (
         <div key={displaySearchSellers}>
-          <a href='/seller/:id'>{searchSellers.sellerName}</a>
+          <img alt='user' src='http://placehold.jp/150x150.png'></img>
+          <a className='sellers-link' href='/seller/:id'>
+            {searchSellers.sellerName}
+          </a>
         </div>
       ))}
     </>
