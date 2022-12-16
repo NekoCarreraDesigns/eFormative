@@ -10,15 +10,13 @@ const Market = () => {
   const priceFilter = (data) => {
     const priceFilterSearchInput = document.getElementById("price-search-bar");
     axios
-      .get("/market", { price: priceFilterSearchInput.value })
+      .get("/market", { params: { price: priceFilterSearchInput.value } })
       .then((res) => {
-        res.json(res);
-        console.log(data);
+        setItems(res.data);
+        console.log(items);
       })
-      .catch((res, err) => {
-        if (err) {
-          res.status(404).send("cannot be found");
-        }
+      .catch((err) => {
+        console.error(err);
       });
     navigate("/market/price");
     console.log("clicked price");
@@ -28,28 +26,31 @@ const Market = () => {
     const sellerFilterSearchInput =
       document.getElementById("seller-search-bar");
     axios
-      .get("/market", { sellerName: sellerFilterSearchInput.value })
-      .then((res) => {
-        res.json(res);
+      .get("/market/sellers", {
+        params: { sellerName: sellerFilterSearchInput.value },
       })
-      .catch((res, err) => {
+      .then((res) => {
+        JSON.parse(res);
+      })
+      .catch((err) => {
         if (err) {
-          res.status(404).send("cannot be found");
+          console.log(err);
         }
       });
     navigate("/market/sellers");
     console.log("clicked seller");
+    return;
   };
 
-  const productFilter = (data) => {
+  const productFilter = () => {
     const productFilterSearchInput =
       document.getElementById("product-search-bar");
     axios
-      .get("/market", {
-        productName: productFilterSearchInput.value,
+      .get("/market/products", {
+        params: { product: productFilterSearchInput.value },
       })
       .then((res) => {
-        res.json(data);
+        JSON.parse(res);
       })
       .catch((res, err) => {
         if (err) {
@@ -58,11 +59,12 @@ const Market = () => {
       });
     navigate("/market/products/");
     console.log("clicked");
+    return;
   };
 
   useEffect(() => {
     fetch("/market")
-      .then((res) => res.json())
+      .then((res) => res.json(res))
       .then((items) => setItems(items));
   });
 
