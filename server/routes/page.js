@@ -243,13 +243,10 @@ pageRoutes.route("/market/products").get(function (req, res) {
   db_connect.collection("items").createIndex({ "$**": "text" });
   db_connect
     .collection("items")
-    .findOne({ $text: { $search: product } }, function (err, item) {
-      if (err) {
-        console.error(err);
-        res.send("Error");
-      } else if (!item) {
-        res.status(404).send("Not found");
-      }
+    .find({ $text: { $search: product } })
+    .toArray(function (err, products) {
+      if (err) res.send("Error");
+      console.log(products);
     });
 });
 
@@ -260,8 +257,9 @@ pageRoutes.route("/market/price").get(function (req, res) {
   db_connect
     .collection("items")
     .find({ $text: { $search: price } })
-    .toArray(function (err, res) {
-      if (err) res.send(404);
+    .toArray(function (err, prices) {
+      if (err) res.send("error");
+      console.log(prices);
     });
 });
 
