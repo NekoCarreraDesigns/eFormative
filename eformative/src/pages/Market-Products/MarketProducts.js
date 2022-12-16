@@ -5,7 +5,7 @@ const MarketProducts = () => {
   const [product, setProduct] = useState();
 
   useEffect(() => {
-    fetch("/market")
+    fetch("/market/products")
       .then((res) => res.json())
       .then((product) => setProduct(product));
   });
