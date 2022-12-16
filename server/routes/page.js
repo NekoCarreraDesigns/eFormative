@@ -226,34 +226,43 @@ pageRoutes.route("/market").get(function (req, res) {
 
 pageRoutes.route("/market/sellers").get(function (req, res) {
   let db_connect = db.getDb();
+  let sellerName = req.query.sellerName;
+  db_connect.collection("items").createIndex({ "$**": "text" });
   db_connect
     .collection("items")
-    .find({})
-    .toArray(function (err, res) {
-      if (err) res.send(404);
+    .find({ $text: { $search: sellerName } })
+    .toArray(function (err, sellers) {
+      if (err) res.send("Error");
+      console.log(sellers);
     });
-  res.json(res);
 });
 
 pageRoutes.route("/market/products").get(function (req, res) {
   let db_connect = db.getDb();
+  let product = req.query.product;
+  db_connect.collection("items").createIndex({ "$**": "text" });
   db_connect
     .collection("items")
-    .find({})
-    .toArray(function (err, res) {
-      if (err) res.send(404);
+    .findOne({ $text: { $search: product } }, function (err, item) {
+      if (err) {
+        console.error(err);
+        res.send("Error");
+      } else if (!item) {
+        res.status(404).send("Not found");
+      }
     });
 });
 
 pageRoutes.route("/market/price").get(function (req, res) {
   let db_connect = db.getDb();
+  let price = req.query.price;
+  db_connect.collection("items").createIndex({ "$**": "text" });
   db_connect
     .collection("items")
-    .find({})
+    .find({ $text: { $search: price } })
     .toArray(function (err, res) {
       if (err) res.send(404);
     });
-  res.json(res);
 });
 
 // this is for the seller page, to show items the user has sold
