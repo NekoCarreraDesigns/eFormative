@@ -5,7 +5,7 @@ const MarketSellers = () => {
   const [searchSellers, setSearchSellers] = useState();
 
   useEffect(() => {
-    fetch("/market")
+    fetch("/market/sellers")
       .then((res) => res.json())
       .then((searchSellers) => setSearchSellers(searchSellers));
   });
