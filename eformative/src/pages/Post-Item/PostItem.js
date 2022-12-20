@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./PostItem.css";
 
@@ -6,6 +6,7 @@ const sellerPostInput = document.querySelector("input");
 const productNamePostInput = document.getElementById("item-name");
 const priceInput = document.getElementById("item-price");
 const productDescriptionArea = document.querySelector("textarea");
+const imageInput = document.getElementById("image-input");
 
 const addItem = (event) => {
   axios
@@ -13,6 +14,7 @@ const addItem = (event) => {
       sellerName: sellerPostInput.value,
       product: productNamePostInput.value,
       price: priceInput.value,
+      image: imageInput.value,
       description: productDescriptionArea.value,
     })
     .then((res) => {
@@ -27,8 +29,21 @@ const addItem = (event) => {
 
 const PostItem = () => {
   const [inputArea, setInputArea] = useState("");
+  const [images, setImages] = useState([]);
+  const [imageURL, setImageURL] = useState([]);
   const characterCounter = (event) => {
     setInputArea(event.target.value);
+  };
+
+  useEffect(() => {
+    if (images.length < 1) return;
+    const newImageURL = [];
+    images.forEach((image) => newImageURL.push(URL.createObjectURL(image)));
+    setImageURL(newImageURL);
+  }, [images]);
+
+  const onImageChange = (event) => {
+    setImages([...event.target.files]);
   };
 
   return (
@@ -48,11 +63,15 @@ const PostItem = () => {
             id='item-name'
             placeholder='Please input item name'></input>
           <br />
-          <button
-            className='upload-picture-video-button'
-            name='post-item-picture-video'>
-            Upload a picture or video
-          </button>
+          <input
+            type='file'
+            multiple
+            accept='image/*'
+            className='upload-picture-video-input'
+            id='image-input'
+            name='post-item-picture-video'
+            placeholder='upload an image or a video'
+            onChange={onImageChange}></input>
           <br />
           <input
             className='item-price-input'
