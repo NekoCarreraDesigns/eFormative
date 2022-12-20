@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.item-name-input, .item-price-input, .seller-name-post-input {
+.item-name-input, .item-price-input, .seller-name-post-input, .upload-picture-video-input {
     border-radius: 10px;
     width: 200px;
     height: 30px;
@@ -18,7 +18,7 @@
     width: 600px;
 }
 
-.add-item-button, .upload-picture-video-button {
+.add-item-button {
     width: 200px;
     height: 30px;
     border-radius: 10px;
