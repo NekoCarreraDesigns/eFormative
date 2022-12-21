@@ -307,6 +307,7 @@ pageRoutes.route("/items/add").post(function (req, res) {
     sellerName: req.body.sellerName,
     product: req.body.product,
     price: req.body.price,
+    image: req.body.image,
     description: req.body.description,
     itemSold: false,
   };
@@ -327,6 +328,15 @@ pageRoutes.route("/items/:id").delete(function (req, res) {
       console.log("Item deleted!");
       res.json(result);
     });
+});
+
+pageRoutes.route("/images").post(function (req, res) {
+  let db_connect = db.getDb();
+  let image = req.body.image;
+  db_connect.collection("items").insertOne(image, function (err, res) {
+    if (err) res.send("error");
+    console.log(res);
+  });
 });
 
 module.exports = pageRoutes;
