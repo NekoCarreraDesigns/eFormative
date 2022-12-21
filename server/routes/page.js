@@ -22,15 +22,22 @@ pageRoutes.route("/seller").post(async (req, response) => {
   db_connect
     .collection("users")
     .insertOne(newUserObj, async function (err, res) {
-      if (err) res.send(404);
-      if (username) {
-        response.json({ message: "username already exists" });
-        response.end();
-        return;
+      if (err) {
+        console.error(err);
+        response.status(500).send({ error: "internal server error" });
       } else {
-        console.log("hello new user!");
-        response.json(res);
-        return;
+        db_connect
+          .collection("users")
+          .findOne({ username: req.body.username }, function (err, res) {
+            if (err) {
+              console.error(err);
+              response.status(500).send({ error: "internal server err" });
+            } else if (res !== null) {
+              response.status(400).send({ message: "username already exists" });
+            } else {
+              response.json({ message: "hello new user!" });
+            }
+          });
       }
     });
 });
@@ -333,9 +340,17 @@ pageRoutes.route("/items/:id").delete(function (req, res) {
 pageRoutes.route("/images").post(function (req, res) {
   let db_connect = db.getDb();
   let image = req.body.image;
-  db_connect.collection("items").insertOne(image, function (err, res) {
-    if (err) res.send("error");
-    console.log(res);
+  db_connect.collection("items").insertOne(image, function (err) {
+    if (err) {
+      console.error(err);
+      res
+        .status(500)
+        .send({ error: "internal server error, process cannot be executed" });
+    } else if (!req.body.image) {
+      res.status(400).send({ message: "must have image to upload" });
+    } else {
+      res.send({ message: "upload successful" });
+    }
   });
 });
 
