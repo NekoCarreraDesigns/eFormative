@@ -44,37 +44,46 @@ pageRoutes.route("/seller").post(async (req, response) => {
 
 pageRoutes.route("/sign-in").post(async (req, res) => {
   let db_connect = db.getDb();
-  let userQuery = {
-    username: req.body.username,
-    password: req.body.password,
-  };
-  db_connect.collection("users").findOne(userQuery, async (err, res) => {
-    if (err) {
-      res.status(400).send("wrong username or password");
-      console.log("wrong username or password");
-    } else {
-      console.log("login successful");
-    }
-  });
+  const { username, password } = req.body;
+  if (!req.body.username || !req.body.password) {
+    res.status(400).send({ message: "username and password required" });
+  }
+  const user = await db_connect.collection("users").findOne({ username });
+  if (!user) {
+    res.status(404).send({ message: "user not found" });
+    return;
+  }
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) {
+    res.status(401).send({ message: "password is incorrect" });
+  } else {
+    res.status(200).send({ message: "sign in successful!" });
+  }
 });
 
 // routes for users with queries to database
 pageRoutes.route("/user").get(function (req, res) {
-  let db_connect = db.getDb("users");
-  db_connect
-    .collection("users")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) throw err;
-      res.json(result);
-    });
+  try {
+    let db_connect = db.getDb("users");
+    db_connect
+      .collection("users")
+      .find({})
+      .toArray(function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+  } catch (err) {
+    res.status(500).send({ message: "internal server error" });
+  }
 });
 
 pageRoutes.route("/user/:id").get(function (req, res) {
   let db_connect = db.getDb();
-  let myQuery = { username: req.body.username };
+  let myQuery = { _id: req.params.id };
   db_connect.collection("users").findOne(myQuery, function (err, result) {
-    if (err) throw err;
+    if (err) {
+      res.status(400).send({ message: "User not found!" });
+    }
     res.json(result);
   });
 });
@@ -86,8 +95,14 @@ pageRoutes.route("/user/add").post(function (req, response) {
     username: req.body.username,
     password: req.body.password,
   };
+  if (!req.body.name || !req.body.username || !req.body.password) {
+    res.status(400).send({ message: "name, username, and password required!" });
+    return;
+  }
   db_connect.collection("users").insertOne(userObj, function (err, res) {
-    if (err) throw err;
+    if (err) {
+      res.status(500).send({ message: "internal server error!" });
+    }
     console.log("User has been added!");
     response.json(userObj);
   });
@@ -105,32 +120,50 @@ pageRoutes.route("/user/update/:id").put(function (req, response) {
   db_connect
     .collection("users")
     .updateOne(addQuery, newValues, function (err, result) {
-      if (err) res.status(404);
-      console.log("Update Successful!");
-      response.json(result);
+      if (err) {
+        console.error(err);
+        response.status(500).send({ message: "internal server error!" });
+      } else {
+        console.log("Update Successful!");
+      }
     });
 });
 
 pageRoutes.route("/user/:id").delete((req, response) => {
-  let db_connect = db.getDb();
-  let deleteQuery = { _id: ObjectId(req.params.id) };
-  db_connect.collection("users").deleteOne(deleteQuery, function (err, obj) {
-    if (err) throw err;
-    console.log("User deleted!");
-    response.json(obj);
-  });
+  try {
+    let db_connect = db.getDb();
+    let deleteQuery = { _id: ObjectId(req.params.id) };
+    db_connect.collection("users").deleteOne(deleteQuery, function (err, obj) {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "internal server error" });
+      }
+      console.log("User deleted!");
+      response.json(obj);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: "internal server error" });
+  }
 });
 
 // routes for reviews of sellers and product
 pageRoutes.route("/reviews").get(function (req, res) {
-  let db_connect = db.getDb("reviews");
-  db_connect
-    .collection("reviews")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) res.status(404);
-      res.json(result);
-    });
+  try {
+    let db_connect = db.getDb("reviews");
+    db_connect
+      .collection("reviews")
+      .find({})
+      .toArray(function (err, result) {
+        if (err) {
+          console.error(err);
+          res.status(500).send({ message: "internal server error" });
+        }
+        res.json(result);
+      });
+  } catch (err) {
+    res.status(404).send({ message: "Not found!" });
+  }
 });
 
 pageRoutes.route("/seller/reviews/post").post(function (req, res) {
@@ -138,36 +171,54 @@ pageRoutes.route("/seller/reviews/post").post(function (req, res) {
   let sellerQuery = {
     reviewerName: req.body.reviewerName,
     sellerName: req.body.sellerName,
-    SellerReview: req.body.review,
+    sellerReview: req.body.review,
   };
   db_connect
     .collection("sellerReviews")
     .insertOne(sellerQuery, function (err, result) {
-      if (err) res.status(404);
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "internal server error" });
+      }
       res.json(result);
     });
 });
 
 pageRoutes.route("/seller/reviews").get(function (req, res) {
-  let db_connect = db.getDb();
-  db_connect
-    .collection("sellerReviews")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) {
-        console.log(err);
+  try {
+    let db_connect = db.getDb();
+    db_connect
+      .collection("sellerReviews")
+      .find({})
+      .toArray(function (err, result) {
+        if (err) {
+          console.error(err);
+          res.status(500).send({ message: "internal server error" });
+          return;
+        }
         res.json(result);
-      }
-    });
+      });
+  } catch (err) {
+    console.error(err);
+    res.status(404).send({ message: "reviews not found" });
+  }
 });
 
 pageRoutes.route("/product/reviews/:id").get(function (req, res) {
   let db_connect = db.getDb();
-  let productQuery = { productName: req.params.productName };
+  let productQuery = { product: req.params.id };
   db_connect
     .collection("reviews")
-    .findOne(productQuery, function (err, result) {
-      if (err) res.status(404);
+    .find(productQuery)
+    .toArray(function (err, result) {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "internal server error" });
+        return;
+      }
+      if (!result) {
+        res.status(404).send({ message: "review not found!" });
+      }
       res.json(result);
     });
 });
@@ -177,45 +228,68 @@ pageRoutes.route("/product/reviews/post").post(function (req, res) {
   let postObj = {
     reviewerName: req.body.reviewerName,
     sellerName: req.body.sellerName,
-    productName: req.body.productName,
+    product: req.body.product,
     review: req.body.review,
   };
+  if (
+    !req.body.reviewerName ||
+    !req.body.sellerName ||
+    !req.body.product ||
+    !req.body.review
+  ) {
+    res.status(400).send({ message: "All fields are required" });
+  }
   db_connect.collection("reviews").insertOne(postObj, function (err, result) {
-    if (err) res.status(404);
+    if (err) {
+      console.error(err);
+      res.status(500).send({ message: "internal server error" });
+    }
     console.log("Review added!");
     res.json(result);
   });
 });
 
-pageRoutes.route("/reviews/update/:id").put(function (req, response) {
+pageRoutes.route("/reviews/update/:id").put(function (req, res) {
   let db_connect = db.getDb();
   let updatePostQuery = { _id: ObjectId(req.params.id) };
   let newPostValues = {
-    $set: {
-      sellerName: req.body.sellerName,
-      productName: req.body.productName,
-      review: req.body.review,
-    },
+    sellerName: req.body.sellerName,
+    productName: req.body.productName,
+    review: req.body.review,
   };
   db_connect
     .collection("reviews")
-    .updateOne(updatePostQuery, newPostValues, function (err, res) {
-      if (err) res.status(404);
+    .updateOne(updatePostQuery, newPostValues, function (err, result) {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "internal server error" });
+      }
       console.log("Update Successful!");
-      response.json(res);
+      res.json(result);
     });
 });
 
-pageRoutes.route("/reviews/:id").delete((req, response) => {
-  let db_connect = db.getDb();
-  let deleteReviewQuery = { _id: ObjectId(req.params.id) };
-  db_connect
-    .collection("reviews")
-    .deleteOne(deleteReviewQuery, function (err, obj) {
-      if (err) res.status(404);
-      console.log("Review deleted!");
-      response.json(obj);
-    });
+pageRoutes.route("/reviews/:id").delete((req, res) => {
+  try {
+    let db_connect = db.getDb();
+    let deleteReviewQuery = { _id: ObjectId(req.params.id) };
+    db_connect
+      .collection("reviews")
+      .deleteOne(deleteReviewQuery, function (err, result) {
+        if (err) {
+          console.error(err);
+          res.status(500).send({ message: "internal server error" });
+        }
+        if (result.deletedCount === 0) {
+          res.status(404).send({ message: "review not found" });
+        }
+        console.log("Review deleted!");
+        res.json(result);
+      });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ message: "invalid id" });
+  }
 });
 
 // routes for selling items on the page and the market
@@ -226,7 +300,10 @@ pageRoutes.route("/market").get(function (req, res) {
     .collection("items")
     .find({})
     .toArray(function (err, result) {
-      if (err) res.status(404);
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "internal server error" });
+      }
       res.json(result);
     });
 });
@@ -274,8 +351,11 @@ pageRoutes.route("/market/price").get(function (req, res) {
 pageRoutes.route("/items/sold/").get(function (req, res) {
   let db_connect = db.getDb();
   let itemQuery = { itemSold: true };
-  db_connect.collection("items").findOne(itemQuery, function (err, result) {
-    if (err) res.status(404);
+  db_connect.collection("items").find(itemQuery, function (err, result) {
+    if (err) {
+      console.error(err);
+      res.status(404).send({ message: "not found" });
+    }
     res.json(result);
   });
 });
@@ -283,8 +363,10 @@ pageRoutes.route("/items/sold/").get(function (req, res) {
 pageRoutes.route("/items/selling/").get(function (req, res) {
   let db_connect = db.getDb();
   let itemQuery = { itemSold: false };
-  db_connect.collection("items").findOne(itemQuery, function (err, result) {
-    if (err) res.status(404);
+  db_connect.collection("items").find(itemQuery, function (err, result) {
+    if (err) {
+      res.status(500).send({ message: "internal server error" });
+    }
     res.json(result);
   });
 });
@@ -293,16 +375,24 @@ pageRoutes.route("/items/update/:id").put(function (req, res) {
   let db_connect = db.getDb();
   let updateItemQuery = { _id: ObjectId(req.params.id) };
   let newItemValues = {
-    $set: {
-      product: req.body.product,
-      price: req.body.price,
-      description: req.body.description,
-    },
+    product: req.body.product,
+    price: req.body.price,
+    description: req.body.description,
   };
+  if (!req.body.product || !req.body.price || !req.body.description) {
+    res.status(400).send({ message: "all fields are required" });
+  }
   db_connect
     .collection("items")
     .updateOne(updateItemQuery, newItemValues, function (err, result) {
-      if (err) res.status(404);
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "internal server error" });
+      }
+      if (!result.modifiedCount === 0) {
+        console.error(err);
+        res.status(404).send("item cannot be found");
+      }
       console.log("Item updated!");
       res.json(result);
     });
