@@ -389,7 +389,7 @@ pageRoutes.route("/items/update/:id").put(function (req, res) {
         console.error(err);
         res.status(500).send({ message: "internal server error" });
       }
-      if (!result.modifiedCount === 0) {
+      if (result.modifiedCount === 0) {
         console.error(err);
         res.status(404).send("item cannot be found");
       }
@@ -408,23 +408,45 @@ pageRoutes.route("/items/add").post(function (req, res) {
     description: req.body.description,
     itemSold: false,
   };
+  if (
+    !req.body.sellerName ||
+    !req.body.product ||
+    !req.body.price ||
+    !req.body.description
+  ) {
+    res.status(400).send({ message: "all fields are required!" });
+  }
   db_connect.collection("items").insertOne(itemObj, function (err, result) {
-    if (err) res.status(404);
+    if (err) {
+      console.error(err);
+      res.status(500).send({ message: "internal server error" });
+    }
     console.log("Item added!");
     res.json(result);
   });
 });
 
 pageRoutes.route("/items/:id").delete(function (req, res) {
-  let db_connect = db.getDb();
-  let removeItemQuery = { _id: ObjectId(req.params.id) };
-  db_connect
-    .collection("items")
-    .deleteOne(removeItemQuery, function (err, result) {
-      if (err) res.status(404);
-      console.log("Item deleted!");
-      res.json(result);
-    });
+  try {
+    let db_connect = db.getDb();
+    let removeItemQuery = { _id: ObjectId(req.params.id) };
+    db_connect
+      .collection("items")
+      .deleteOne(removeItemQuery, function (err, result) {
+        if (err) {
+          console.error(err);
+          res.status(500).send({ message: "internal server error" });
+        }
+        if (result.deletedCount === 0) {
+          res.status(404).send({ message: "item not found" });
+        }
+        console.log("Item deleted!");
+        res.json(result);
+      });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ message: "select item to delete" });
+  }
 });
 
 pageRoutes.route("/images").post(function (req, res) {
