@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import OnImageChange from "../../images/images";
 import "./PostItem.css";
 
 const sellerPostInput = document.querySelector("input");
@@ -9,6 +10,7 @@ const productDescriptionArea = document.querySelector("textarea");
 const imageInput = document.getElementById("image-input");
 
 const addItem = (event) => {
+  event.preventDefault();
   axios
     .post("/items/add", {
       sellerName: sellerPostInput.value,
@@ -22,28 +24,16 @@ const addItem = (event) => {
       alert("Your item has been posted!");
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
+      return;
     });
-  event.preventDefault();
 };
 
 const PostItem = () => {
   const [inputArea, setInputArea] = useState("");
-  const [images, setImages] = useState([]);
-  const [imageURL, setImageURL] = useState([]);
+
   const characterCounter = (event) => {
     setInputArea(event.target.value);
-  };
-
-  useEffect(() => {
-    if (images.length < 1) return;
-    const newImageURL = [];
-    images.forEach((image) => newImageURL.push(URL.createObjectURL(image)));
-    setImageURL(newImageURL);
-  }, [images]);
-
-  const onImageChange = (event) => {
-    setImages([...event.target.files]);
   };
 
   return (
@@ -71,7 +61,7 @@ const PostItem = () => {
             id='image-input'
             name='post-item-picture-video'
             placeholder='upload an image or a video'
-            onChange={onImageChange}></input>
+            onChange={OnImageChange()}></input>
           <br />
           <input
             className='item-price-input'
