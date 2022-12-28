@@ -63,18 +63,15 @@ pageRoutes.route("/sign-in").post(async (req, res) => {
 
 // routes for users with queries to database
 pageRoutes.route("/user").get(function (req, res) {
-  try {
-    let db_connect = db.getDb("users");
-    db_connect
-      .collection("users")
-      .find({})
-      .toArray(function (err, result) {
-        if (err) throw err;
-        res.json(result);
-      });
-  } catch (err) {
-    res.status(500).send({ message: "internal server error" });
-  }
+  let db_connect = db.getDb("users");
+  const userId = req.user && req.user.id;
+  db_connect.collection("users").findOne({ _id: userId }, function (err, user) {
+    if (err) {
+      res.status(500).send("error fetching from database");
+    } else {
+      res.status(200).send(user);
+    }
+  });
 });
 
 pageRoutes.route("/user/:id").get(function (req, res) {
