@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../Sell";
 import { useNavigate } from "react-router-dom";
 import "./Seller.css";
 
 const Seller = () => {
-  const [user, setUser] = useState("");
-
+  const [user, setUser] = useState({});
+  const userData = useContext(UserContext);
   let navigate = useNavigate();
 
   const postItemRedirect = () => {
@@ -13,25 +14,30 @@ const Seller = () => {
   };
 
   const handleLogout = (event) => {
-    setUser(" ");
+    setUser({});
     navigate("/sell");
     console.log("logged out");
   };
 
   useEffect(() => {
-    fetch("/user")
-      .then((res) => res.json())
-      .then((user) => setUser(user));
-  });
+    if (user) {
+      fetch(`/user?username=${user}`)
+        .then((res) => res.json())
+        .then((user) => setUser(user));
+    }
+  }, [user]);
+
+  const storedUser = JSON.parse(sessionStorage.getItem("user"));
 
   return (
     <>
       <div>
-        {Object.values(user).map((user, displayUser) => (
-          <h1 key={displayUser} className='seller-page-header'>
-            Welcome, {user.fullName}!
-          </h1>
-        ))}
+        {storedUser &&
+          Object.values(userData).map((user, displayUser) => (
+            <h1 key={displayUser} className='seller-page-header'>
+              Welcome, {user.fullName}!
+            </h1>
+          ))}
       </div>
       <button className='post-item-button' onClick={postItemRedirect}>
         Post an item to sell
