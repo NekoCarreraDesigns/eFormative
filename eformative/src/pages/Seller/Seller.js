@@ -1,12 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../Sell";
+import React, { useEffect, useState } from "react";
+import jwt from "jsonwebtoken";
 import { useNavigate } from "react-router-dom";
 import "./Seller.css";
 
 const Seller = () => {
   const [user, setUser] = useState({});
-  const userData = useContext(UserContext);
+  const [items, setItems] = useState([]);
+
   let navigate = useNavigate();
+
+  function getCookie(name) {
+    let value = "; " + document.cookie;
+    let parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
 
   const postItemRedirect = () => {
     let postItemPath = `/post-item`;
@@ -20,24 +27,37 @@ const Seller = () => {
   };
 
   useEffect(() => {
-    if (user) {
-      fetch(`/user?username=${user}`)
-        .then((res) => res.json())
-        .then((user) => setUser(user));
+    const storedUser = JSON.parse(sessionStorage.getItem("user"));
+    if (!storedUser) {
+      return (
+        <div className='alert-div'>
+          <h1 className='alert'>User Not Found!</h1>
+        </div>
+      );
     }
-  }, [user]);
+    const popSecret = process.env.JWT_SECRET;
 
-  const storedUser = JSON.parse(sessionStorage.getItem("user"));
+    const token = getCookie("jwt");
+    if (!token) {
+      console.error("token not found");
+      return;
+    }
+    const decoded = jwt.verify(token, popSecret);
+    const decodedUser = decoded.user;
+    const username = decoded.user.username;
+    setUser(decodedUser);
+
+    fetch(`/items?username=${username}`)
+      .then((res) => res.json())
+      .then((items) => setItems(items));
+  }, []);
 
   return (
     <>
       <div>
-        {storedUser &&
-          Object.values(userData).map((user, displayUser) => (
-            <h1 key={displayUser} className='seller-page-header'>
-              Welcome, {user.fullName}!
-            </h1>
-          ))}
+        {user && (
+          <h1 className='seller-page-header'>Welcome, {user.fullName}!</h1>
+        )}
       </div>
       <button className='post-item-button' onClick={postItemRedirect}>
         Post an item to sell
@@ -45,14 +65,21 @@ const Seller = () => {
       <button className='logout-button' onClick={handleLogout}>
         Logout
       </button>
+
       <div className='items-sold-div'>
         <h1 className='items-sold-header'>Items Sold</h1>
         <img alt='item' src='http://placehold.jp/150x150.png'></img>
       </div>
-      <div className='items-selling-div'>
-        <h1 className='items-selling-header'>Items Selling</h1>
-        <img alt='sale-item' src='http://placehold.jp/150x150.png'></img>
-      </div>
+      {items?.map((item, displayItem) => (
+        <div key={displayItem} className='items-selling-div'>
+          <h1 className='items-selling-header'>Items Selling</h1>
+          <img alt='sale-item' src='http://placehold.jp/150x150.png'>
+            {item.image}
+          </img>
+          <h3>{item.product}</h3>
+          <h3>{item.price}</h3>
+        </div>
+      ))}
     </>
   );
 };
