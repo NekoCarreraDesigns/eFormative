@@ -1,12 +1,15 @@
 // dependencies
 const express = require("express");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 // router middleware
 const pageRoutes = express.Router();
 // database connection
 const db = require("../db/connection");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
+
+const secret = process.env.JWT_SECRET;
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
@@ -57,7 +60,11 @@ pageRoutes.route("/sign-in").post(async (req, res) => {
   if (!match) {
     res.status(401).send({ message: "password is incorrect" });
   } else {
-    res.status(200).send({ message: "sign in successful!" });
+    const token = jwt.sign({ user }, secret, {
+      expiresIn: "2h",
+    });
+    res.cookie("jwt", token, { httpOnly: true });
+    res.send({ message: "sign in successful" });
   }
 });
 
