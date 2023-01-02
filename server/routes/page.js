@@ -1,7 +1,7 @@
 // dependencies
 const express = require("express");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+
 // router middleware
 const pageRoutes = express.Router();
 // database connection
@@ -60,7 +60,7 @@ pageRoutes.route("/sign-in").post(async (req, res) => {
   if (!match) {
     res.status(401).send({ message: "password is incorrect" });
   } else {
-    const token = jwt.sign({ user }, secret, {
+    const token = jwtSimple.sign({ user }, secret, {
       expiresIn: "2h",
     });
     res.cookie("jwt", token, { httpOnly: true });
