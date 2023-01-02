@@ -10,6 +10,7 @@ import PostItem from "./pages/Post-Item/PostItem";
 import PostReview from "./pages/Post-Review/PostReview";
 import SellerReviews from "./pages/Seller-Reviews/SellerReviews";
 import ProductReview from "./pages/Product-Reviews/ProductReview";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/seller-reviews' element={<SellerReviews />}></Route>
         <Route path='/product-reviews' element={<ProductReview />}></Route>
       </Routes>
+      <Footer />
     </>
   );
 }
