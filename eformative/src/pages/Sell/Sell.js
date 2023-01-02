@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import jwt from "jsonwebtoken";
 import "./Sell.css";
 
 const Sell = () => {
   const [username, setUsername] = useState("");
   let navigate = useNavigate();
-  const secret = process.env.JWT_SECRET;
 
   const signUpRedirect = () => {
     let path = `/signup`;
@@ -24,20 +22,12 @@ const Sell = () => {
     const userPasswordInput = document.getElementById("user-password");
     event.preventDefault();
     try {
-      const response = await axios.post("/sign-in", {
+      await axios.post("/sign-in", {
         username: usernameInput.value,
         password: userPasswordInput.value,
       });
 
-      const token = response.data.token;
-      if (!token) {
-        console.error("token not found");
-        return;
-      }
-
-      const decoded = jwt.verify(token, secret);
-      const user = decoded.user;
-      sessionStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("user", JSON.stringify());
 
       navigate(sellerPath);
     } catch (err) {
