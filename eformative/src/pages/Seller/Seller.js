@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import jwt from "jsonwebtoken";
 import { useNavigate } from "react-router-dom";
 import "./Seller.css";
 
@@ -35,19 +34,8 @@ const Seller = () => {
         </div>
       );
     }
-    const popSecret = process.env.JWT_SECRET;
 
-    const token = getCookie("jwt");
-    if (!token) {
-      console.error("token not found");
-      return;
-    }
-    const decoded = jwt.verify(token, popSecret);
-    const decodedUser = decoded.user;
-    const username = decoded.user.username;
-    setUser(decodedUser);
-
-    fetch(`/items?username=${username}`)
+    fetch(`/items?username=`)
       .then((res) => res.json())
       .then((items) => setItems(items));
   }, []);
