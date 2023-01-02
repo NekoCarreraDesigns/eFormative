@@ -1,0 +1,9 @@
+.page-footer {
+    margin-top: 300px;
+    text-align: center;
+    background-color: rgba(12, 123, 123, 0.5);
+}
+
+.footer-small-print, .footer-header {
+    color: rgba(200, 233, 22, 0.8);
+}
