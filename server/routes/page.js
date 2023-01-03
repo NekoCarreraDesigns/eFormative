@@ -1,15 +1,14 @@
 // dependencies
 const express = require("express");
 const bcrypt = require("bcrypt");
-
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 // router middleware
 const pageRoutes = express.Router();
 // database connection
 const db = require("../db/connection");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
-
-const secret = process.env.JWT_SECRET;
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
@@ -45,28 +44,70 @@ pageRoutes.route("/seller").post(async (req, response) => {
     });
 });
 
-pageRoutes.route("/sign-in").post(async (req, res) => {
-  let db_connect = db.getDb();
-  const { username, password } = req.body;
-  if (!req.body.username || !req.body.password) {
-    res.status(400).send({ message: "username and password required" });
-  }
-  const user = await db_connect.collection("users").findOne({ username });
-  if (!user) {
-    res.status(404).send({ message: "user not found" });
-    return;
-  }
-  const match = await bcrypt.compare(password, user.password);
-  if (!match) {
-    res.status(401).send({ message: "password is incorrect" });
-  } else {
-    const token = jwtSimple.sign({ user }, secret, {
-      expiresIn: "2h",
-    });
-    res.cookie("jwt", token, { httpOnly: true });
-    res.send({ message: "sign in successful" });
-  }
+passport.use(
+  "user",
+  new LocalStrategy((username, password, done) => {
+    let db_connect = db.getDb();
+    db_connect
+      .collection("users")
+      .findOne({ username })
+      .then((user) => {
+        if (!user) {
+          return done(null, false, { message: "Incorrect username." });
+        }
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) {
+            return done(err);
+          }
+          if (isMatch) {
+            return done(null, user);
+          }
+          return done(null, false, { message: "Incorrect password." });
+        });
+      })
+      .catch((err) => {
+        return done(err);
+      });
+  })
+);
+
+passport.serializeUser((user, done) => {
+  done(null, user._id);
 });
+
+passport.deserializeUser((id, done) => {
+  let db_connect = db.getDb();
+  db_connect
+    .collection("users")
+    .findOne({ _id: id })
+    .then((user) => {
+      done(null, user);
+    })
+    .catch((err) => {
+      done(err);
+    });
+});
+
+pageRoutes.route("/sign-in").post(
+  passport.authenticate("user", {
+    failureRedirect: "/sell",
+    successRedirect: "/seller",
+    failureFlash: true,
+  }),
+  (req, res) => {
+    const userRequest = req.user;
+    try {
+      sessionStorage.setItem("user", userRequest);
+      res.cookie(userRequest, (maxAge = "2h"), { httpOnly: true });
+      res.status(200).send({ message: "Successful login!" });
+    } catch (err) {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "internal server error" });
+      }
+    }
+  }
+);
 
 // routes for users with queries to database
 pageRoutes.route("/user").get(function (req, res) {
