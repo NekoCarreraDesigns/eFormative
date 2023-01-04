@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import expressSession from "express-session";
 import "./Seller.css";
 
 const Seller = () => {
   const [user, setUser] = useState({});
   const [items, setItems] = useState([]);
+
+  const session = expressSession({ secret: "made of clay" });
+  const username = session.username;
 
   let navigate = useNavigate();
 
@@ -43,9 +47,7 @@ const Seller = () => {
   return (
     <>
       <div>
-        {user && (
-          <h1 className='seller-page-header'>Welcome, {user.fullName}!</h1>
-        )}
+        {user && <h1 className='seller-page-header'>Welcome, {username}!</h1>}
       </div>
       <button className='post-item-button' onClick={postItemRedirect}>
         Post an item to sell
