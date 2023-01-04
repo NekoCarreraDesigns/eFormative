@@ -1,5 +1,6 @@
 // dependencies
 const express = require("express");
+const session = require("express-session");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -9,6 +10,17 @@ const pageRoutes = express.Router();
 const db = require("../db/connection");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
+
+const app = express();
+
+app.use(
+  session({
+    secret: "made of clay",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  })
+);
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
@@ -45,7 +57,7 @@ pageRoutes.route("/seller").post(async (req, response) => {
 });
 
 passport.use(
-  "user",
+  "local",
   new LocalStrategy((username, password, done) => {
     let db_connect = db.getDb();
     db_connect
@@ -88,17 +100,24 @@ passport.deserializeUser((id, done) => {
     });
 });
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 pageRoutes.route("/sign-in").post(
-  passport.authenticate("user", {
+  passport.authenticate("local", {
     failureRedirect: "/sell",
     successRedirect: "/seller",
     failureFlash: true,
   }),
   (req, res) => {
     const userRequest = req.user;
+    req.session.username = req.user.username;
     try {
-      sessionStorage.setItem("user", userRequest);
-      res.cookie(userRequest, (maxAge = "2h"), { httpOnly: true });
+      sessionStorage.setItem("user", JSON.stringify(userRequest));
+      res.cookie("user", JSON.stringify(userRequest), {
+        httpOnly: true,
+        maxAge: "2h",
+      });
       res.status(200).send({ message: "Successful login!" });
     } catch (err) {
       if (err) {
