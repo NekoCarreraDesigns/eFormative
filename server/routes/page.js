@@ -1,9 +1,10 @@
 // dependencies
 const express = require("express");
-const session = require("express-session");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const sanitizeHtml = require("sanitize-html");
+const cookieParser = require("cookie-parser");
 // router middleware
 const pageRoutes = express.Router();
 // database connection
@@ -13,14 +14,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 const app = express();
 
-app.use(
-  session({
-    secret: "made of clay",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true },
-  })
-);
+app.use(cookieParser());
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
@@ -104,19 +98,28 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 pageRoutes.route("/sign-in").post(
+  (req, res, next) => {
+    if (!req.body.username || !req.body.password) {
+      res.status(400).send({ message: "Username or password is incorrect" });
+    }
+    next();
+  },
+  (req, res, next) => {
+    req.body.username = sanitizeHtml(req.body.username);
+    req.body.password = sanitizeHtml(req.body.password);
+    next();
+  },
   passport.authenticate("local", {
     failureRedirect: "/sell",
     successRedirect: "/seller",
     failureFlash: true,
   }),
   (req, res) => {
-    const userRequest = req.user;
-    req.session.username = req.user.username;
+    const userRequest = req.user.username;
     try {
-      sessionStorage.setItem("user", JSON.stringify(userRequest));
       res.cookie("user", JSON.stringify(userRequest), {
         httpOnly: true,
-        maxAge: "2h",
+        maxAge: "1h",
       });
       res.status(200).send({ message: "Successful login!" });
     } catch (err) {
