@@ -22,7 +22,7 @@ const Signup = () => {
       })
       .then((res) => {
         res.json({ message: "Sign Up Successful" });
-        navigate.push(postItemPath, { data: data });
+        navigate(postItemPath, { data: data });
         console.log(res);
       })
       .catch((err) => {
