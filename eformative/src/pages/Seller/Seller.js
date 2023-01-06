@@ -26,23 +26,18 @@ const Seller = () => {
   };
 
   useEffect(() => {
-    const storedUser = JSON.parse(sessionStorage.getItem("user"));
-    if (!storedUser) {
-      return (
-        <div className='alert-div'>
-          <h1 className='alert'>User Not Found!</h1>
-        </div>
-      );
-    }
-
-    fetch(`/items?username=`)
+    fetch(`/items`)
       .then((res) => res.json())
       .then((items) => setItems(items));
   }, []);
 
+  const username = "Nick";
+
   return (
     <>
-      <div>{user && <h1 className='seller-page-header'>Welcome, !</h1>}</div>
+      <div>
+        {user && <h1 className='seller-page-header'>Welcome, {username}!</h1>}
+      </div>
       <button className='post-item-button' onClick={postItemRedirect}>
         Post an item to sell
       </button>
