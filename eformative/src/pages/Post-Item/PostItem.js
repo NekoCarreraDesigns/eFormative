@@ -61,7 +61,7 @@ const PostItem = () => {
             id='image-input'
             name='post-item-picture-video'
             placeholder='upload an image or a video'
-            onChange={OnImageChange()}></input>
+            onChange={OnImageChange}></input>
           <br />
           <input
             className='item-price-input'
