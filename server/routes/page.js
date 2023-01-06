@@ -112,7 +112,6 @@ pageRoutes.route("/sign-in").post(
   passport.authenticate("local", {
     failureRedirect: "/sell",
     successRedirect: "/seller",
-    failureFlash: true,
   }),
   (req, res) => {
     const userRequest = req.user.username;
