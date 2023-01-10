@@ -17,8 +17,12 @@ app.use(require("./routes/page"));
 const db = require("./db/connection");
 // function to make the server listen
 app.listen(port, () => {
-  db.connectToServer(function (error, res) {
-    if (error) throw error;
+  db.connectToServer(function (err, res) {
+    if (err) {
+      res.status(500).send({ message: "internal server error" });
+    } else {
+      db.setUpSession(app);
+    }
   });
   console.log(`Server is listening on ${port}`);
 });
