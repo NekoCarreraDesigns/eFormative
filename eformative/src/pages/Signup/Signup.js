@@ -7,12 +7,12 @@ const Signup = () => {
   let navigate = useNavigate();
   let postItemPath = `/post-item`;
 
-  const fullNameInput = document.querySelector("input");
-  const usernameInput = document.getElementById("userName");
-  const userEmailInput = document.getElementById("email");
-  const passwordInput0 = document.getElementById("password0");
+  const userPostSignUp = () => {
+    const fullNameInput = document.querySelector("input");
+    const usernameInput = document.getElementById("userName");
+    const userEmailInput = document.getElementById("email");
+    const passwordInput0 = document.getElementById("password0");
 
-  const userPostSignUp = (data) => {
     axios
       .post("/seller", {
         fullName: fullNameInput.value,
@@ -22,8 +22,8 @@ const Signup = () => {
       })
       .then((res) => {
         res.json({ message: "Sign Up Successful" });
-        navigate(postItemPath, { data: data });
-        console.log(res);
+        alert("thanks for joining us!");
+        navigate(postItemPath);
       })
       .catch((err) => {
         if (err) throw err;
