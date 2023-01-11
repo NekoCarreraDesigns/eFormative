@@ -9,8 +9,6 @@ const db = require("../db/connection");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
 
-const app = express();
-
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, response) => {
   const { fullName, username, password } = req.body;
@@ -57,11 +55,6 @@ pageRoutes.route("/sign-in").post(
     req.body.password = sanitizeHtml(req.body.password);
     next();
   },
-  passport.authenticate("local", {
-    failureRedirect: "/sell",
-    successRedirect: "/seller",
-    failureFlash: true,
-  }),
   (req, res) => {
     req.session.username = req.user.username;
     try {
