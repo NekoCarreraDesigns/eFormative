@@ -2,6 +2,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const sanitizeHtml = require("sanitize-html");
+const { session, passport } = require("../auth");
 // router middleware
 const pageRoutes = express.Router();
 // database connection
@@ -10,7 +11,7 @@ const db = require("../db/connection");
 const ObjectId = require("mongodb").ObjectId;
 
 // user sign up that redirects to the seller page
-pageRoutes.route("/seller").post(async (req, response) => {
+pageRoutes.route("/seller").post(async (req, res) => {
   const { fullName, username, password } = req.body;
   const hash = await bcrypt.hash(password, 13);
   let db_connect = db.getDb();
@@ -22,26 +23,34 @@ pageRoutes.route("/seller").post(async (req, response) => {
   };
   db_connect
     .collection("users")
-    .insertOne(newUserObj, async function (err, res) {
+    .insertOne(newUserObj, async function (err, mongoRes) {
       if (err) {
         console.error(err);
-        response.status(500).send({ error: "internal server error" });
+        res.status(500).send({ error: "internal server error" });
       } else {
         db_connect
           .collection("users")
-          .findOne({ username: req.body.username }, function (err, res) {
+          .findOne({ username: req.body.username }, function (err, result) {
             if (err) {
               console.error(err);
-              response.status(500).send({ error: "internal server err" });
+              res.status(500).send({ error: "internal server error" });
             } else if (res !== null) {
-              response.status(400).send({ message: "username already exists" });
+              res.status(400).send({ message: "username already exists" });
             } else {
-              response.json({ message: "hello new user!" });
+              res.json({ message: "hello new user!" });
             }
           });
       }
     });
 });
+
+pageRoutes.use(
+  session({
+    secret: "Wednesday's child is full of woe",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 pageRoutes.route("/sign-in").post(
   (req, res, next) => {
@@ -55,10 +64,15 @@ pageRoutes.route("/sign-in").post(
     req.body.password = sanitizeHtml(req.body.password);
     next();
   },
+  passport.authenticate("local", {
+    failureRedirect: "/sign-in",
+    successRedirect: "/seller",
+    failureFlash: true,
+  }),
   (req, res) => {
-    req.session.username = req.user.username;
+    req.session.username = req.user;
     try {
-      res.cookie("user", JSON.stringify(req.user.username), {
+      res.cookie("user", JSON.stringify(req.session.username), {
         httpOnly: true,
         maxAge: "1h",
       });
