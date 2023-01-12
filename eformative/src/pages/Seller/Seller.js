@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Seller.css";
 
-const Seller = () => {
+const Seller = (props) => {
   const [user, setUser] = useState({});
   const [items, setItems] = useState([]);
-
   let navigate = useNavigate();
+
+  const SellerWrapper = () => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    return <Seller user={user} />;
+  };
 
   function getCookie(name) {
     let value = "; " + document.cookie;
@@ -20,23 +24,25 @@ const Seller = () => {
   };
 
   const handleLogout = (event) => {
-    setUser({});
+    event.preventDefault();
+    sessionStorage.removeItem("user");
     navigate("/sell");
     console.log("logged out");
   };
 
   useEffect(() => {
-    fetch(`/items`)
-      .then((res) => res.json())
-      .then((items) => setItems(items));
+    const userCookie = getCookie("user");
+    if (userCookie) {
+      setUser(JSON.parse(userCookie));
+    }
   }, []);
-
-  const username = "Nick";
 
   return (
     <>
       <div>
-        {user && <h1 className='seller-page-header'>Welcome, {username}!</h1>}
+        {user && (
+          <h1 className='seller-page-header'>Welcome, {user.firstName}!</h1>
+        )}
       </div>
       <button className='post-item-button' onClick={postItemRedirect}>
         Post an item to sell
@@ -49,16 +55,17 @@ const Seller = () => {
         <h1 className='items-sold-header'>Items Sold</h1>
         <img alt='item' src='http://placehold.jp/150x150.png'></img>
       </div>
-      {items?.map((item, displayItem) => (
-        <div key={displayItem} className='items-selling-div'>
-          <h1 className='items-selling-header'>Items Selling</h1>
-          <img alt='sale-item' src='http://placehold.jp/150x150.png'>
-            {item.image}
-          </img>
-          <h3>{item.product}</h3>
-          <h3>{item.price}</h3>
-        </div>
-      ))}
+      {items &&
+        items.map((item, displayItem) => (
+          <div key={displayItem} className='items-selling-div'>
+            <h1 className='items-selling-header'>Items Selling</h1>
+            <img alt='sale-item' src='http://placehold.jp/150x150.png'>
+              {item.image}
+            </img>
+            <h3>{item.product}</h3>
+            <h3>{item.price}</h3>
+          </div>
+        ))}
     </>
   );
 };
