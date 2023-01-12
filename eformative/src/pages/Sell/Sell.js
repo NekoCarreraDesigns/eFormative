@@ -22,16 +22,17 @@ const Sell = () => {
     const userPasswordInput = document.getElementById("user-password");
     event.preventDefault();
     try {
-      await axios.post("/sign-in", {
+      const { data } = await axios.post("/sign-in", {
         username: usernameInput.value,
         password: userPasswordInput.value,
       });
 
-      sessionStorage.setItem("user", JSON.stringify());
-
-      navigate(sellerPath);
+      if (data.message === "Successful Login!") {
+        sessionStorage.setItem("user", JSON.stringify(usernameInput.value));
+        navigate(sellerPath);
+      }
     } catch (err) {
-      if (err.response && err.response.status === 401) {
+      if (err.response && err.response.status === 400) {
         console.error("Invalid username or password");
       } else {
         console.error(err);
