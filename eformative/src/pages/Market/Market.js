@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Market.css";
+import {
+  Grid,
+  Card,
+  CardHeader,
+  CardMedia,
+  Typography,
+  CardContent,
+  CardActions,
+  Button,
+} from "@mui/material";
 
 const Market = () => {
   const [items, setItems] = useState([]);
@@ -46,25 +56,29 @@ const Market = () => {
           </form>
         </div>
       </div>
-      {displayedItems.length > 0 ? (
-        displayedItems.map((item, sellerItem) => (
-          <div className='item-card' key={sellerItem}>
-            <div className='item'>
-              <h1 className='item-seller-header'>{item.sellerName}</h1>
-              <h2 className='item-product-header'>{item.product}</h2>
-              <h3 className='item-price-header'>{item.price}</h3>
-              <img alt='product' src='http://placehold.jp/150x150.png'></img>
-              <p className='item-description-paragraph'>{item.description}</p>
-            </div>
-          </div>
-        ))
-      ) : (
-        <div className='alert-div'>
-          <p className='alert-paragraph'>
-            No results found! Could be a misspelling or it is not there
-          </p>
-        </div>
-      )}
+      <Grid container spacing={3}>
+        {displayedItems.map((item, index) => (
+          <Grid item xs={3} key={index}>
+            <Card variant='outlined' elevation={6} className='item-card'>
+              <CardHeader title={item.product} subheader={item.sellerName} />
+              <CardMedia
+                image='http://placehold.jp/150x150.png'
+                title={item.product}
+              />
+              <CardContent>
+                <Typography variant='body2' color='textSecondary' component='p'>
+                  {item.description}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size='small' color='primary'>
+                  {item.price}
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 };
