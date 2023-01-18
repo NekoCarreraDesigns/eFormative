@@ -10,9 +10,9 @@
 }
 
 .item-card {
-    height: 420px;
+    height: 400px;
     width: 400px;
-    box-shadow: 5px 3px 5px 3px;
+    box-shadow: 8px 4px 8px 4px;
     margin: 10px;
 }
 
@@ -28,5 +28,6 @@
 
 .market-filter-input, .market-filter-input-div {
     margin-left: 10px;
+    margin-bottom: 20px;
     text-align: center;
 }
