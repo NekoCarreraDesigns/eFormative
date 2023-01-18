@@ -12,10 +12,11 @@
 
 .home-location-button {
     height: 50px;
+    font-size: 20px;
     width: 200px;
     border-radius: 5px;
     margin-left: 785px;
-    margin-top: 80px;
+    margin-top: 75px;
 }
 
 .home-location-button:hover {
