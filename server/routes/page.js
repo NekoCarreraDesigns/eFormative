@@ -489,6 +489,45 @@ pageRoutes.route("/items/:id").delete(function (req, res) {
   }
 });
 
+pageRoutes.route("/items/saved").post(function (req, res) {
+  let db_connect = db.getDb();
+  let itemId = req.body.id;
+  db_connect
+    .collection("items")
+    .findOne({ _id: ObjectId(itemId) }, function (err, item) {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "internal server error" });
+      } else {
+        db_connect
+          .collection("savedItems")
+          .insertOne(item, function (err, result) {
+            if (err) {
+              console.error(err);
+              res.status(500).send({ message: "internal server error" });
+            } else {
+              res.json(item);
+            }
+          });
+      }
+    });
+});
+
+pageRoutes.route("/items/saved").get(function (req, res) {
+  let db_connect = db.getDb();
+  db_connect
+    .collection("savedItems")
+    .find({})
+    .toArray(function (err, savedItems) {
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      } else {
+        res.json(savedItems);
+      }
+    });
+});
+
 pageRoutes.route("/images").post(function (req, res) {
   let db_connect = db.getDb();
   let image = req.body.image;
