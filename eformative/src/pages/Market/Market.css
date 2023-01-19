@@ -28,6 +28,12 @@
 
 .market-filter-input, .market-filter-input-div {
     margin-left: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
+    border-radius: 10px;
+}
+
+.search-button, .clear-button {
+    border-radius: 10px;
+    background-color: rgba(123, 23, 243, 0.6);
 }
