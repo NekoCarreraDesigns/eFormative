@@ -12,9 +12,12 @@ import {
   Button,
   TextField,
   IconButton,
+  Snackbar,
+  CircularProgress,
 } from "@mui/material";
 
-// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Market = () => {
   const [items, setItems] = useState([]);
@@ -22,6 +25,8 @@ const Market = () => {
   const [displayedItems, setDisplayedItems] = useState([]);
   const [savedItems, setSavedItems] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -33,24 +38,22 @@ const Market = () => {
     fetchItems();
   }, [searchTerm]);
 
-  const handleSave = (itemId) => {
+  const handleSave = async (itemId) => {
     setLoading(true);
-    axios
-      .post("/items/saved", { itemId })
-      .then((response) => {
-        console.log(response);
-        setSavedItems([...savedItems, response.data]);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
+    <CircularProgress aria-busy='true' />;
+    try {
+      await axios.post("/items/saved", { itemId: itemId });
+      setSavedItems([...savedItems, itemId]);
+      setSuccessMessage("Item saved successfully");
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("Error saving item");
+    }
   };
 
   const handleSearch = (event) => {
     event.preventDefault();
-    const searchBarInput = event.target.value;
+    const searchBarInput = document.getElementById("search-bar");
     setSearchTerm(searchBarInput.value);
     setDisplayedItems(
       items.filter((item) => item.product.includes(searchTerm))
@@ -112,7 +115,7 @@ const Market = () => {
                 </CardContent>
                 <CardActions>
                   <IconButton onClick={() => handleSave(item.id)}>
-                    {/* <FavoriteBorderIcon /> */}
+                    <FontAwesomeIcon icon={faStar} size='1x' color='gold' />
                   </IconButton>
                 </CardActions>
               </Card>
@@ -125,6 +128,22 @@ const Market = () => {
             No results found! Could be a misspelling or it is not here
           </Typography>
         </div>
+      )}
+      {successMessage && (
+        <Snackbar
+          open={!!successMessage}
+          autoHideDuration={3000}
+          onClose={() => setSuccessMessage("")}
+          message={successMessage}
+        />
+      )}
+      {errorMessage && (
+        <Snackbar
+          open={!!errorMessage}
+          autoHideDuration={3000}
+          onClose={() => setErrorMessage("")}
+          message={errorMessage}
+        />
       )}
     </>
   );
