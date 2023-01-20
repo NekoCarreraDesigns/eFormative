@@ -2,6 +2,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const sanitizeHtml = require("sanitize-html");
+const mongoose = require("mongoose");
 const { session, passport } = require("../auth");
 // router middleware
 const pageRoutes = express.Router();
@@ -489,28 +490,46 @@ pageRoutes.route("/items/:id").delete(function (req, res) {
   }
 });
 
-pageRoutes.route("/items/saved").post(function (req, res) {
+pageRoutes.route("/items/saved/:id").post(function (req, res) {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).send({ message: "Invalid item id" });
+  }
   let db_connect = db.getDb();
-  let itemId = req.body.id;
-  db_connect
-    .collection("items")
-    .findOne({ _id: ObjectId(itemId) }, function (err, item) {
-      if (err) {
-        console.error(err);
-        res.status(500).send({ message: "internal server error" });
-      } else {
-        db_connect
-          .collection("savedItems")
-          .insertOne(item, function (err, result) {
-            if (err) {
-              console.error(err);
-              res.status(500).send({ message: "internal server error" });
-            } else {
-              res.json(item);
-            }
-          });
-      }
-    });
+  let savedItem = { _id: new mongoose.Types.ObjectId(req.params.id) };
+  db_connect.collection("items").findOne(savedItem, function (err, item) {
+    if (err) {
+      console.error(err);
+      res.status(500).send({ message: "internal server error" });
+    } else {
+      db_connect
+        .collection("savedItems")
+        .insertOne({ _id: item.id }, function (err, result) {
+          if (err) {
+            console.error(err);
+            res.status(500).send({ message: "internal server error" });
+          } else {
+            res.json(item);
+          }
+        });
+    }
+  });
+});
+
+pageRoutes.route("/items/saved").post(async function (req, res) {
+  try {
+    let db_connect = db.getDb();
+    let itemId = req.body.itemId;
+    let savedItem = { _id: ObjectId(itemId) };
+    let item = await db_connect.collection("items").findOne(savedItem);
+    if (!item) {
+      return res.status(404).send({ message: "item not found" });
+    }
+    await db_connect.collection("savedItems").insertOne(item);
+    res.json({ message: "item saved" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "internal server error" });
+  }
 });
 
 pageRoutes.route("/items/saved").get(function (req, res) {
@@ -518,6 +537,37 @@ pageRoutes.route("/items/saved").get(function (req, res) {
   db_connect
     .collection("savedItems")
     .find({})
+    .toArray(function (err, savedItems) {
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      } else {
+        res.json(savedItems);
+      }
+    });
+});
+
+pageRoutes.route("/items/saved/:id").get(function (req, res) {
+  let db_connect = db.getDb();
+  let itemId = req.params.id;
+  db_connect
+    .collection("savedItems")
+    .findOne({ _id: ObjectId(itemId) }, function (err, item) {
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      } else {
+        res.json(item);
+      }
+    });
+});
+
+pageRoutes.route("/items/saved/user/:userId").get(function (req, res) {
+  let db_connect = db.getDb();
+  let userId = req.params.userId;
+  db_connect
+    .collection("savedItems")
+    .find({ userId: userId })
     .toArray(function (err, savedItems) {
       if (err) {
         console.error(err);
