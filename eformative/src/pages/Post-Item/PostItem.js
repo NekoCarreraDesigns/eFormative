@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {
+  FormControl,
+  Button,
+  TextField,
+  TextareaAutosize,
+} from "@mui/material";
 import OnImageChange from "../../images/images";
 import "./PostItem.css";
 
-const sellerPostInput = document.querySelector("input");
+const sellerPostInput = document.getElementById("seller-input");
 const productNamePostInput = document.getElementById("item-name");
 const priceInput = document.getElementById("item-price");
-const productDescriptionArea = document.querySelector("textarea");
+const productDescriptionArea = document.getElementById("text-area");
 const imageInput = document.getElementById("image-input");
 
 const addItem = (event) => {
@@ -42,17 +48,21 @@ const PostItem = () => {
       <p className='post-item-paragraph'>Please post your item!</p>;
       <div className='post-item-form-div'>
         <form>
-          <input
-            className='seller-name-post-input'
-            type='text'
-            placeholder='please input your name'></input>
-          <br />
-          <input
-            className='item-name-input'
-            type='text'
-            id='item-name'
-            placeholder='Please input item name'></input>
-          <br />
+          <FormControl fullWidth>
+            <TextField
+              label='Please input your name'
+              variant='outlined'
+              className='seller-name-post-input'
+              id='seller-input'
+            />
+          </FormControl>
+          <FormControl fullWidth>
+            <TextField
+              label='Please input item name'
+              variant='outlined'
+              className='item-name-input'
+            />
+          </FormControl>
           <input
             type='file'
             multiple
@@ -61,27 +71,37 @@ const PostItem = () => {
             id='image-input'
             name='post-item-picture-video'
             placeholder='upload an image or a video'
-            onChange={OnImageChange}></input>
-          <br />
-          <input
-            className='item-price-input'
-            type='text'
-            id='item-price'
-            placeholder='Please input a price'></input>
-          <br />
-          <textarea
-            maxLength={300}
-            id='post-item-area'
-            className='post-item-textarea'
-            onChange={characterCounter}></textarea>
+            onChange={OnImageChange}
+          />
+          <FormControl fullWidth>
+            <TextField
+              label='Please input a price'
+              variant='outlined'
+              className='item-price-input'
+            />
+          </FormControl>
+          <FormControl fullWidth>
+            <TextareaAutosize
+              className='post-item-textarea'
+              onChange={characterCounter}
+              rowsMin={3}
+              id='text-area'
+              placeholder='Enter item description'
+              maxLength={300}
+            />
+          </FormControl>
           <br />
           <span className='character-count-post-span'>
             <strong>{300 - inputArea.length} characters left</strong>
           </span>
           <br />
-          <button className='add-item-button' onClick={addItem}>
+          <Button
+            variant='contained'
+            color='primary'
+            className='add-item-button'
+            onClick={addItem}>
             Post Item
-          </button>
+          </Button>
         </form>
       </div>
     </>
