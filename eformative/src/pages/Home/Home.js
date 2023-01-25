@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-import { div, Button } from "@mui/material";
 
 const Home = () => {
   const getLocation = () => {
@@ -18,75 +17,66 @@ const Home = () => {
           formative
         </h1>
         <p className='home-page-paragraph'>Help yourself, help the planet</p>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
-          <div>
+        <div className='image-container'>
+          <div className='image-row'>
             <img
-              style={{ flex: "1 1 200px", margin: "5px" }}
               className='image'
-              src='./assets/image001.jpg'
               alt='image1'
-            />
+              src='./assets/image001.jpg'></img>
           </div>
-          <div>
+          <div className='image-row'>
             <img
-              style={{ flex: "1 1 200px", margin: "5px" }}
               className='image'
-              src='./assets/image002.jpg'
-              alt='image2'
-            />
+              alt='image1'
+              src='./assets/image002.jpg'></img>
           </div>
-          <div>
+          <div className='image-row'>
             <img
-              style={{ flex: "1 1 200px", margin: "5px" }}
               className='image'
-              src='./assets/image003.jpg'
-              alt='image3'
-            />
+              alt='image1'
+              src='./assets/image003.jpg'></img>
           </div>
-          <div>
+          <div className='image-row'>
             <img
-              style={{ flex: "1 1 200px", margin: "5px" }}
               className='image'
-              src='./assets/image004.jpg'
-              alt='image4'
-            />
-          </div>
-          <div>
-            <img
-              style={{ flex: "1 1 200px", margin: "5px" }}
-              src='./assets/image005.jpg'
-              alt='image5'
-            />
-          </div>
-          <div>
-            <img
-              style={{ flex: "1 1 200px", margin: "5px" }}
-              className='image'
-              src='./assets/image006.jpg'
-              alt='image6'
-            />
-          </div>
-          <div>
-            <img
-              style={{ flex: "1 1 200px", margin: "5px" }}
-              className='image'
-              src='./assets/image007.jpg'
-              alt='image7'
-            />
+              alt='image1'
+              src='./assets/image004.jpg'></img>
           </div>
         </div>
-        <img
-          alt='electricity'
-          className='electric'
-          src='./assets/ElectricSymbol.jpg'></img>
-        <p>Electric products, News, and Reviews</p>
-        <Button
-          className='home-location-button'
-          color='success'
-          variant='contained'
-          onClick={getLocation}>
-          Find your market
-        </Button>
+        <div className='image-container'>
+          <div className='image-row'>
+            <img
+              className='image'
+              alt='image1'
+              src='./assets/image005.jpg'></img>
+          </div>
+          <div className='image-row'>
+            <img
+              className='image'
+              alt='image1'
+              src='./assets/image006.jpg'></img>
+          </div>
+          <div className='image-row'>
+            <img
+              className='image'
+              alt='image1'
+              src='./assets/image007.jpg'></img>
+          </div>
+        </div>
+        <div className='paragraph-container'>
+          <p className='second-page-paragraph'>
+            <img
+              alt='electricity'
+              className='electric'
+              src='./assets/ElectricSymbol.jpg'></img>
+            Electric products, News, and Reviews
+          </p>
+        </div>
+        <div className='button-container'>
+          <button className='home-location-button' onClick={getLocation}>
+            Find your market
+          </button>
+        </div>
       </div>
     </>
   );
