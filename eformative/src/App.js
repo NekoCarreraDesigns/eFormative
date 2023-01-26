@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
+import Logo from "./components/LogoHeader/Logo";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Market from "./pages/Market/Market";
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <Logo />
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/market' element={<Market />}></Route>
