@@ -1,0 +1,11 @@
+.page-header-logo {
+    text-align: center;
+    font-size: 40px;
+    color: rgba(30, 30, 150, 0.6);
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 10px;
+    height: 10px;
+}
