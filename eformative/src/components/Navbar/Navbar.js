@@ -17,6 +17,7 @@ const Navbar = () => {
         <a className='navbar-link' href='/sell'>
           Sell
         </a>
+        <img alt='logo' className='navbar-logo' src='./assets/eLogo.jpg'></img>
       </div>
     </nav>
   );
