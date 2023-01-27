@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import {
   FormControl,
-  Card,
   Button,
-  InputLabel,
+  TextareaAutosize,
   TextField,
   FormHelperText,
 } from "@mui/material";
@@ -12,8 +11,8 @@ import OnImageChange from "../../images/images";
 import "./PostItem.css";
 
 const sellerPostInput = document.getElementById("seller-input");
-const productNamePostInput = document.getElementById("item-name");
-const priceInput = document.getElementById("item-price");
+const productNamePostInput = document.getElementById("item-input");
+const priceInput = document.getElementById("item-input");
 const productDescriptionArea = document.getElementById("text-area");
 const imageInput = document.getElementById("image-input");
 
@@ -45,69 +44,77 @@ const PostItem = () => {
 
   return (
     <>
-      <h1 className='post-item-header'>Welcome!</h1>;
       <p className='post-item-paragraph'>Please post your item!</p>;
       <div className='post-item-form-div'>
-        <Card>
-          <form>
-            <FormControl fullWidth>
+        <form>
+          <FormControl>
+            <TextField
+              fullWidth
+              required
+              label='Please put your name'
+              variant='outlined'
+              className='seller-name-post-input'
+              id='seller-input'
+            />
+            <br />
+            <br />
+            <FormControl>
               <TextField
-                label='Please input your name'
+                fullWidth
+                required
+                label='Please input item name'
                 variant='outlined'
-                className='seller-name-post-input'
-                id='seller-input'
+                className='item-name-input'
+                id='item-input'
               />
-              <FormControl>
-                <TextField
-                  label='Please input item name'
-                  variant='outlined'
-                  className='item-name-input'
-                />
-                <br />
-                <InputLabel htmlFor='picture-input'>Picture/Video</InputLabel>
-                <input
-                  type='file'
-                  multiple
-                  accept='image/*'
-                  className='upload-picture-video-input'
-                  id='image-input'
-                  name='post-item-picture-video'
-                  placeholder='upload an image or a video'
-                  onChange={OnImageChange}
-                />
-              </FormControl>
+              <br />
+              <br />
               <FormHelperText>Upload a picture or video</FormHelperText>
-
-              <TextField
-                label='Please input a price'
-                variant='outlined'
-                className='item-price-input'
+              <input
+                type='file'
+                multiple
+                accept='image/*'
+                className='upload-picture-video-input'
+                id='image-input'
+                name='post-item-picture-video'
+                placeholder='upload an image or a video'
+                onChange={OnImageChange}
               />
-              <br />
-              <TextField
-                className='post-item-textarea'
-                onChange={characterCounter}
-                rowsMin={3}
-                id='text-area'
-                placeholder='Enter item description'
-                maxLength={300}
-              />
-
-              <br />
-              <span className='character-count-post-span'>
-                <strong>{300 - inputArea.length} characters left</strong>
-              </span>
-              <br />
-              <Button
-                variant='contained'
-                color='primary'
-                className='add-item-button'
-                onClick={addItem}>
-                Post Item
-              </Button>
             </FormControl>
-          </form>
-        </Card>
+
+            <TextField
+              required
+              fullWidth
+              label='Please input a price'
+              variant='outlined'
+              className='item-price-input'
+              id='price-input'
+            />
+            <br />
+            <br />
+            <TextareaAutosize
+              className='post-item-textarea'
+              onChange={characterCounter}
+              id='text-area'
+              placeholder='Enter item description'
+              maxLength={300}
+              style={{ width: "500px", height: "500px" }}
+            />
+
+            <br />
+            <span className='character-count-post-span'>
+              <strong>{300 - inputArea.length} characters left</strong>
+            </span>
+            <br />
+            <Button
+              variant='contained'
+              color='success'
+              className='add-item-button'
+              onClick={addItem}>
+              Post Item
+            </Button>
+          </FormControl>
+        </form>
       </div>
     </>
   );
