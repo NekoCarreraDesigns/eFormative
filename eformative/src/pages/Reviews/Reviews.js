@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Pagination } from "@mui/material";
 import axios from "axios";
 import "./Reviews.css";
 
@@ -85,6 +86,12 @@ const Reviews = () => {
           <div className='reviews-div'>{review.review}</div> <hr />
         </div>
       ))}
+      <Pagination
+        style={{ marginLeft: "650px" }}
+        className='page-pagination'
+        color='primary'
+        variant='outlined'
+        count={20}></Pagination>
     </>
   );
 };
