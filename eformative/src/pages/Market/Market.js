@@ -9,6 +9,7 @@ import {
   Typography,
   CardContent,
   CardActions,
+  Pagination,
   Button,
   TextField,
   IconButton,
@@ -145,6 +146,12 @@ const Market = () => {
           message={errorMessage}
         />
       )}
+      <Pagination
+        style={{ marginLeft: "650px" }}
+        className='page-pagination'
+        color='primary'
+        variant='outlined'
+        count={20}></Pagination>
     </>
   );
 };
