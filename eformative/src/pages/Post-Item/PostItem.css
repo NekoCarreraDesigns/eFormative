@@ -1,9 +1,11 @@
 .post-item-header, .post-item-paragraph {
     text-align: center;
     font-size: 40px;
+    color: rgba(1, 33, 123, 0.6)
 }
 
 .post-item-form-div {
+    display: flex;
     align-items: center;
 }
 
@@ -11,6 +13,7 @@
     border-radius: 10px;
     width: 200px;
     height: 30px;
+    
 }
 
 .post-item-textarea {
