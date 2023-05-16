@@ -10,7 +10,6 @@ import {
   CardContent,
   CardActions,
   Pagination,
-  Button,
   TextField,
   IconButton,
   Snackbar,
@@ -35,10 +34,11 @@ const Market = () => {
         params: { search: searchTerm },
       });
       setItems(res.data);
+      setDisplayedItems(res.data);
     };
     fetchItems();
-  }, [searchTerm]);
-
+  }, []);
+ 
   const handleSave = async (itemId) => {
     setLoading(true);
     <CircularProgress aria-busy='true' />;
@@ -55,74 +55,72 @@ const Market = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     const searchBarInput = document.getElementById("search-bar");
-    setSearchTerm(searchBarInput.value);
+    const searchTerm = searchBarInput.value.toLowerCase();
     setDisplayedItems(
-      items.filter((item) => item.product.includes(searchTerm))
+      items.filter((item) => item.product.toLowerCase().includes(searchTerm))
     );
   };
 
   return (
     <>
-      <Typography variant='h3' className='market-page-header'>
-        Market
-      </Typography>
-      <div className='market-filter-div'>
-        <div className='market-filter-input-div'>
-          <form onSubmit={handleSearch}>
-            <TextField
-              className='market-filter-input'
-              type='text'
-              placeholder='search here'
-              id='search-bar'
-              value={searchTerm}></TextField>
-            <Button
-              variant='contained'
-              color='success'
-              size='medium'
-              className='search-button'
-              type='submit'>
-              Search
-            </Button>
-            <Button
-              className='clear-button'
-              variant='contained'
-              size='medium'
-              type='button'
-              color='error'
-              onClick={() => setSearchTerm("")}>
-              Clear
-            </Button>
-          </form>
+      <div className='hero-section'>
+        <h1 className='market-page-header'>
+          Market
+        </h1>
+        <div className='market-filter-div'>
+          <div className='market-filter-input-div'>
+            <form onSubmit={handleSearch}>
+              <TextField
+                className='market-filter-input'
+                type='text'
+                placeholder='What are you looking for?'
+                id='search-bar'
+                value={searchTerm}></TextField>
+              <div className='market-button-container'>
+              <button
+                className='search-button clear-btn-sm'
+                type='submit'
+              >
+                Search
+              </button>
+              <button
+                className='clear-button clear-btn-sm'
+                type='button'
+                onClick={() => setSearchTerm("")}
+              >
+                Clear
+              </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       {displayedItems.length > 0 ? (
-        <Grid container spacing={3}>
+        <div className='card-container'>
           {displayedItems.map((item, index) => (
-            <Grid item xs={3} key={index}>
-              <Card elevation={6} className='item-card'>
-                <CardHeader title={item.product} subheader={item.sellerName} />
-                <CardMedia
-                  image='http://placehold.jp/150x150.png'
-                  title={item.product}
-                />
-                <CardContent>
-                  <Typography
-                    variant='body2'
-                    color='textSecondary'
-                    component='p'>
-                    {item.description}
-                    {item.price}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <IconButton onClick={() => handleSave(item.id)}>
-                    <FontAwesomeIcon icon={faStar} size='1x' color='gold' />
-                  </IconButton>
-                </CardActions>
-              </Card>
-            </Grid>
+            <Card elevation={6} className='item-card' key={index}>
+              <CardHeader title={item.product} subheader={item.sellerName} />
+              <CardMedia
+                image='http://placehold.jp/150x150.png'
+                title={item.product}
+              />
+              <CardContent>
+                <Typography
+                  variant='body2'
+                  color='textSecondary'
+                  component='p'>
+                  {item.description}
+                  {item.price}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <IconButton onClick={() => handleSave(item.id)}>
+                  <FontAwesomeIcon icon={faStar} size='1x' color='gold' />
+                </IconButton>
+              </CardActions>
+            </Card>
           ))}
-        </Grid>
+        </div>
       ) : (
         <div className='alert-div'>
           <Typography variant='body1' className='alert-paragraph'>
@@ -146,12 +144,14 @@ const Market = () => {
           message={errorMessage}
         />
       )}
-      <Pagination
-        style={{ marginLeft: "650px" }}
-        className='page-pagination'
-        color='primary'
-        variant='outlined'
-        count={20}></Pagination>
+      <div className="page-pagination-container">
+        <Pagination
+          className='page-pagination'
+          color='primary'
+          variant='outlined'
+          count={20}>
+        </Pagination>
+      </div>
     </>
   );
 };

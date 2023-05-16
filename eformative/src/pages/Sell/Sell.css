@@ -1,39 +1,54 @@
+.sell-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80%;
+    text-align: center;
+    padding: 6vw 0 15vw;
+}
+  
 .sell-page-header {
     text-align: center;
-    font-size: 40px;
+    color: #ffffff;
+    padding-bottom: 50px
 }
-
-.sell-page-paragraph, .new-seller-paragraph {
-    font-size: 30px;
-    text-align: center;
+  
+.sell-page-paragraph {
+    color: #ffffff;
+    margin-bottom: 20px;
 }
-
+  
 .sell-form-div {
-    margin-left: 650px;
+    margin-bottom: 20px;
 }
-
+  
 .sell-page-form {
-    align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
-.username-input, .user-password-input {
-    height: 30px;
-    width: 300px;
-    margin-top: 30px;
-    border-radius: 10px;
-    
+  
+.username-input,
+.user-password-input {
+    min-width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
 }
-
+  
 .user-login-submit-button {
-    border-radius: 10px;
-    height: 30px;
-    width: 80px;
-    margin: 60px;
+    margin-top: 0px;
+}
+  
+.new-seller-paragraph {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+  
+.user-signup-redirect {
+    border: 2px solid #ffffff;
 }
 
-.user-signup-redirect {
-    border-radius: 10px;
-    height: 50px;
-    width: 200px;
-    margin-left: 700px;
+.user-signup-redirect:hover {
+    background-color: #ffffff1d;
 }

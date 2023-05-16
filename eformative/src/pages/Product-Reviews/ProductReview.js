@@ -10,15 +10,19 @@ const ProductReview = () => {
   });
   return (
     <>
-      <h1 className='product-review-header'>Product Reviews</h1>
-      {products?.map((products, productDisplay) => (
-        <div key={productDisplay}>
-          <h1>
-            Product:{products.productName}, Reviewer:{products.reviewerName}
-          </h1>
-          <p>{products.review}</p>
-        </div>
-      ))}
+      <div className='hero-section'>
+        <h1 className='product-review-header'>Product Reviews</h1>
+      </div>
+      <div className='reviews-container'>
+        {products?.map((products, productDisplay) => (
+          <div key={productDisplay} className='reviews-item'>
+            <h1 className='reviews-header'>
+              Product:{products.productName}, Reviewer:{products.reviewerName}
+            </h1>{" "}
+            <div className='reviews-div'>{products.review}</div> <hr />
+          </div>
+        ))}
+      </div>
     </>
   );
 };

@@ -1,46 +1,54 @@
 .post-review-header {
-    text-align: center;
+    color: #ffffff;
+    margin-top: 40px;
 }
-
-.seller-name-input, .product-name-input, .seller-review-input {
+  
+.review-container {
+    background-color: #ffffff;
+    padding: 4vw 0 10vw;
+    text-align: center;
+    width: 100%;
+}
+ 
+.form-control-wrapper {
+    display: flex;
+    justify-content: center;
+}
+  
+.custom-form-control {
+    width: 100%; 
+    max-width: 800px;
+}
+.seller-name-input,
+.product-name-input,
+.seller-review-input {
     height: 30px;
-    width: 200px;
-    border-radius: 10px;
     margin-top: 10px;
 }
-
+  
 .user-post-review-textarea {
-    height: 400px;
-    width: 700px;
+    min-height: 100px;
     border-radius: 5px;
 }
-
+  
 .post-review-button {
-    border-radius: 5px;
-    height: 25px;
-    width: 100px;
-    margin-left: 300px;
+    background-color: #478908;
+    margin: auto;
 }
 
 .post-review-button:hover {
-    background-color: rgba(224, 5, 5, 0.8);
+    
 }
-
+  
 .upload-button {
     border-radius: 5px;
     height: 30px;
     float: right;
-    margin-right: 495px;
-    
-}
-
-.post-review-form {
-    align-items: center;
-    margin-left: 400px;
+    margin-top: 10px;
 }
 
 .character-count-span {
-    color: rgba(255, 0, 0, 0.7);
+    font-size: 1rem;
+    color: #5f5f5f;
     float: right;
-    margin-right: 495px;
-}
+}  

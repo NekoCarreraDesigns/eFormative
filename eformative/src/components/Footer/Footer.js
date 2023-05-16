@@ -4,16 +4,13 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className='page-footer'>
-      <h3 className='footer-header'>
-        website made by Neko Carrera Designs. All rights reserved
-      </h3>
-      <p className='footer-paragraph'>
+      {/* <p className='footer-paragraph'>
         Thanks for visiting this website, we appreciate it. do you have a
         question or are you trying to report a problem with the site? Please
         email nekocarreradesigns@gmail.com
-      </p>
+      </p> */}
       <small className='footer-small-print'>
-        &copy; Neko Carrera Designs 2022
+        &copy; 2023 eformative  |  Website by <a href="mailto:nekocarreradesigns@gmail.com">Neko Carrera Designs</a> & <a href="https://hagercreative.com">HagerCreative</a>
       </small>
     </footer>
   );
