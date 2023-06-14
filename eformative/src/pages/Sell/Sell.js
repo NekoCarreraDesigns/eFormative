@@ -42,37 +42,38 @@ const Sell = () => {
 
   return (
     <>
-      <h1 className='sell-page-header'>Sell</h1>
-      <p className='sell-page-paragraph'>
-        Please login if you are a returning seller,
-        <br /> or sign up to become a new seller
-      </p>
-      <div className='sell-form-div'>
-        <form onSubmit={userSignIn} className='sell-page-form'>
-          <input
-            className='username-input'
-            type='text'
-            placeholder='please type username'
-            id='username'
-            value={username}
-            onChange={handleUsernameChange}></input>
-          <br />
-          <input
-            className='user-password-input'
-            placeholder='please enter password'
-            id='user-password'
-            type='password'></input>
-          <br />
-          <button className='user-login-submit-button' type='submit'>
-            Login
+      <div className='hero-section sell-container'>
+        <h1 className='sell-page-header'>Sell</h1>
+        {/* <p className='sell-page-paragraph'>
+          If you are a returning seller, please log in here.
+        </p> */}
+          <div className='sell-form-div'>
+            <form onSubmit={userSignIn} className='sell-page-form'>
+              <input
+                className='username-input text-input-white'
+                type='text'
+                placeholder='please type username '
+                id='username'
+                value={username}
+                onChange={handleUsernameChange}></input>
+              <br />
+              <input
+                className='user-password-input text-input-white'
+                placeholder='please enter password'
+                id='user-password'
+                type='password'></input>
+              <br />
+              <button className='clear-btn-green-border user-login-submit-button' type='submit'>
+                Login
+              </button>
+            </form>
+          </div>
+          <p className='new-seller-paragraph'>New sellers please sign up here.</p>
+          <button className='clear-btn-sm user-signup-redirect' onClick={signUpRedirect}>
+            signup
           </button>
-        </form>
       </div>
-      <p className='new-seller-paragraph'>New sellers please sign up here</p>
-      <button className='user-signup-redirect' onClick={signUpRedirect}>
-        signup
-      </button>
-    </>
+    </>      
   );
 };
 
