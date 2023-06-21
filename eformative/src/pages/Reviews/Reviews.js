@@ -45,53 +45,69 @@ const Reviews = () => {
 
   return (
     <>
-      <h1 className='reviews-page-header'>Reviews</h1>
-      <div className='search-filters-div'>
+      <div className='hero-section'>
+        <h1 className='reviews-page-header'>Reviews</h1>
+        <div className='search-filters-div'>
         <div className='seller-filter-div'>
-          <h2 className='search-filters-header'>Search filters</h2>
-          <input
-            id='seller-search'
-            type='text'
-            placeholder='search by seller name'
-            input={input}
-            onChange={inputHandler}></input>
-          <button
-            className='search-filters-seller-button'
-            onClick={sellerFilter}>
-            Search Seller
+          <div className='search-row'>
+            <div className='search-input-button'>
+              <input
+                id='seller-search'
+                className='text-input-white'
+                type='text'
+                placeholder='Search by seller name'
+                input={input}
+                onChange={inputHandler}
+              />
+              <button
+                className='clear-btn-sm search seller-search-button'
+                onClick={sellerFilter}
+              >
+                Search Seller
+              </button>
+            </div>
+            <div className='search-input-button'>
+              <input
+                id='product-search'
+                className='text-input-white'
+                type='text'
+                placeholder='Search by product name'
+                input={input}
+                onChange={inputHandler}
+              />
+              <button
+                className='clear-btn-sm product-search-button'
+                onClick={productFilter}
+              >
+                Search Product
+              </button>
+            </div>
+          </div>
+          <button className='clear-btn-green-border post-a-review-button' onClick={postReview}>
+            Post A Review
           </button>
-          <input
-            className='product-filter-input'
-            type='text'
-            placeholder='search by product name'
-            id='product-search'
-            input={input}
-            onChange={inputHandler}></input>
-          <button
-            className='search-filters-product-button'
-            onClick={productFilter}>
-            Search Product
-          </button>
-          <button className='post-review-button-redirect' onClick={postReview}>
-            Post Review
-          </button>
+        </div>
         </div>
       </div>
-      {reviews?.map((review, userReview) => (
-        <div key={userReview}>
-          <h1 className='reviews-header'>
-            Reviewer: {review.reviewerName}, Seller: {review.sellerName},
-            Product: {review.productName}
-          </h1>{" "}
-          <div className='reviews-div'>{review.review}</div> <hr />
-        </div>
-      ))}
-      <Pagination
-        style={{ marginLeft: "650px" }}
-        className='page-pagination'
-        color='primary'
-        variant='outlined'
-        count={20}></Pagination>
+      <div className='reviews-container'>
+        {reviews?.map((review, userReview) => (
+          <div key={userReview} className='reviews-item'>
+            <h1 className='reviews-header'>
+              Reviewer: {review.reviewerName}, Seller: {review.sellerName},
+              Product: {review.productName}
+            </h1>{" "}
+            <div className='reviews-div'>{review.review}</div> <hr />
+          </div>
+        ))}
+      </div>
+      <div className="page-pagination-container">
+        <Pagination
+          className='page-pagination'
+          color='primary'
+          variant='outlined'
+          count={20}>
+        </Pagination>
+      </div>
     </>
   );
 };

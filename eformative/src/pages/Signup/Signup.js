@@ -22,7 +22,7 @@ const Signup = () => {
       })
       .then((res) => {
         res.json({ message: "Sign Up Successful" });
-        alert("thanks for joining us!");
+        alert("Thanks for joining us!");
         navigate(postItemPath);
       })
       .catch((err) => {
@@ -31,37 +31,41 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <h1 className='signup-page-header'>Please Sign Up</h1>
-      <div className='signup-form-container'>
-        <form onSubmit={userPostSignUp} className='signup-form'>
+    <div className="hero-section signup-container">
+      <h1 className="signup-page-header">Please Sign Up</h1>
+      <div className="signup-form-container">
+        <form onSubmit={userPostSignUp} className="signup-form">
           <input
-            className='fullName-input'
-            placeholder='please enter full name'></input>
+            className="fullName-input text-input-white"
+            placeholder="Please enter full name"
+          />
           <br />
           <input
-            className='userName-input'
-            placeholder='please enter a username'
-            id='userName'></input>
+            className="userName-input text-input-white"
+            placeholder="Please enter a username"
+            id="userName"
+          />
           <br />
           <input
-            type='text'
-            className='email-input'
-            placeholder='please enter a email'
-            id='email'></input>
+            type="text"
+            className="email-input text-input-white"
+            placeholder="Please enter an email"
+            id="email"
+          />
           <br />
           <input
-            type='password'
-            className='password-input'
-            placeholder='please enter a password'
-            id='password0'></input>
+            type="password"
+            className="password-input text-input-white"
+            placeholder="Please enter a password"
+            id="password0"
+          />
           <br />
-          <button className='user-signup-button' type='submit'>
+          <button className="clear-btn-green-border user-signup-button" type="submit">
             Sign Up
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
