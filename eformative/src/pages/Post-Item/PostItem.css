@@ -6,13 +6,18 @@
 
 .post-item-form-div {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 80%;
+    text-align: center;
+    padding: 6vw 0 15vw;
 }
 
 .item-name-input, .item-price-input, .seller-name-post-input, .upload-picture-video-input {
     border-radius: 10px;
-    width: 200px;
-    height: 30px;
+    width: 300px;
+    padding: 10px;
     
 }
 
@@ -23,10 +28,10 @@
 
 .add-item-button {
     width: 200px;
-    height: 30px;
-    border-radius: 10px;
+    padding: 10px 20px;
 }
 
 .character-count-post-span {
-    color: rgba(255,0,0, 0.6);
+    color: rgba(255, 0, 0, 0.6);
 }
+
