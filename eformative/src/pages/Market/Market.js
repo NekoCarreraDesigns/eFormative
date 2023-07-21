@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Market.css";
 import {
-  Grid,
   Card,
   CardHeader,
   CardMedia,
@@ -10,7 +9,6 @@ import {
   CardContent,
   CardActions,
   Pagination,
-  TextField,
   IconButton,
   Snackbar,
   CircularProgress,
@@ -27,18 +25,31 @@ const Market = () => {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const res = await axios.get("/market", {
-        params: { search: searchTerm },
-      });
-      setItems(res.data);
-      setDisplayedItems(res.data);
+      setLoading(true);
+      try {
+        const res = await axios.get("/market", {
+          params: { search: searchTerm },
+        });
+        setItems(res.data);
+        setDisplayedItems(res.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+        setErrorMessage("Error fetching items");
+      }
     };
-    fetchItems();
-  }, []);
- 
+
+    // Only fetch items when searchTerm changes (debounced)
+    if (searchTerm) {
+      fetchItems();
+    }
+  }, [searchTerm]);
+
   const handleSave = async (itemId) => {
     setLoading(true);
     <CircularProgress aria-busy='true' />;
@@ -54,61 +65,89 @@ const Market = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    const searchBarInput = document.getElementById("search-bar");
-    const searchTerm = searchBarInput.value.toLowerCase();
-    setDisplayedItems(
-      items.filter((item) => item.product.toLowerCase().includes(searchTerm))
-    );
+    setSearchTerm(event.target.value.toLowerCase());
+  };
+
+  const fetchItemDetails = async (itemId) => {
+    try {
+      const res = await axios.get(`/market/${itemId}`);
+      setSelectedItem(res.data);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("error retrieving item details");
+    }
+  };
+
+  const closeItemDetails = () => {
+    setSelectedItem(null);
   };
 
   return (
     <>
       <div className='hero-section'>
-        <h1 className='market-page-header'>
-          Market
-        </h1>
+        <h1 className='market-page-header'>Market</h1>
         <div className='market-filter-div'>
           <div className='market-filter-input-div'>
             <form onSubmit={handleSearch}>
-              <TextField
+              <input
                 className='market-filter-input'
                 type='text'
                 placeholder='What are you looking for?'
                 id='search-bar'
-                value={searchTerm}></TextField>
+                value={searchTerm}
+                onChange={handleSearch}></input>
               <div className='market-button-container'>
-              <button
-                className='search-button clear-btn-sm'
-                type='submit'
-              >
-                Search
-              </button>
-              <button
-                className='clear-button clear-btn-sm'
-                type='button'
-                onClick={() => setSearchTerm("")}
-              >
-                Clear
-              </button>
+                <button
+                  className='search-button clear-btn-sm'
+                  type='submit'
+                  onClick={() => setSearchTerm("")}>
+                  Search
+                </button>
+                <button className='clear-button clear-btn-sm' type='button'>
+                  Clear
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      {displayedItems.length > 0 ? (
+      {selectedItem ? (
+        <div className='item-details-container'>
+          <Card elevation={6} className='item-card'>
+            <CardHeader
+              title={selectedItem.product}
+              subheader={selectedItem.sellerName}
+            />
+            <CardMedia
+              image='http://placehold.jp/150x150.png'
+              title={selectedItem.product}
+            />
+            <CardContent>
+              <Typography variant='body2' color='textSecondary' component='p'>
+                {selectedItem.description}
+                {selectedItem.price}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <IconButton onClick={closeItemDetails}>Close</IconButton>
+            </CardActions>
+          </Card>
+        </div>
+      ) : displayedItems.length > 0 ? (
         <div className='card-container'>
           {displayedItems.map((item, index) => (
             <Card elevation={6} className='item-card' key={index}>
-              <CardHeader title={item.product} subheader={item.sellerName} />
+              <CardHeader
+                title={item.product}
+                subheader={item.sellerName}
+                onClick={() => fetchItemDetails(item.id)}
+              />
               <CardMedia
                 image='http://placehold.jp/150x150.png'
                 title={item.product}
               />
               <CardContent>
-                <Typography
-                  variant='body2'
-                  color='textSecondary'
-                  component='p'>
+                <Typography variant='body2' color='textSecondary' component='p'>
                   {item.description}
                   {item.price}
                 </Typography>
@@ -144,13 +183,12 @@ const Market = () => {
           message={errorMessage}
         />
       )}
-      <div className="page-pagination-container">
+      <div className='page-pagination-container'>
         <Pagination
           className='page-pagination'
           color='primary'
           variant='outlined'
-          count={20}>
-        </Pagination>
+          count={20}></Pagination>
       </div>
     </>
   );
