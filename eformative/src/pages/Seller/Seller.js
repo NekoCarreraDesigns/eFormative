@@ -7,10 +7,10 @@ const Seller = (props) => {
   const [items, setItems] = useState([]);
   let navigate = useNavigate();
 
-  const SellerWrapper = () => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
-    return <Seller user={user} />;
-  };
+  // const SellerWrapper = () => {
+  //   const user = JSON.parse(sessionStorage.getItem("user"));
+  //   return <Seller user={user} />;
+  // };
 
   function getCookie(name) {
     let value = "; " + document.cookie;
