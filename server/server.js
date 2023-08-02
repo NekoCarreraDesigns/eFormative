@@ -1,6 +1,7 @@
 // dependencies for app
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 const app = express();
 const cors = require("cors");
 // configuration for dotenv
@@ -13,6 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./routes/page"));
+// code for react serverless functioning
+app.use(express.static(path.join(__dirname, "build")));
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 // connection for the db
 const db = require("./db/connection");
 // function to make the server listen
