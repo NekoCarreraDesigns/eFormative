@@ -8,7 +8,6 @@ import {
   Typography,
   CardContent,
   CardActions,
-  Pagination,
   IconButton,
   Snackbar,
   CircularProgress,
@@ -183,13 +182,13 @@ const Market = () => {
           message={errorMessage}
         />
       )}
-      <div className='page-pagination-container'>
+      {/* <div className='page-pagination-container'>
         <Pagination
           className='page-pagination'
           color='primary'
           variant='outlined'
           count={20}></Pagination>
-      </div>
+      </div> */}
     </>
   );
 };
