@@ -3,9 +3,7 @@
   "homepage": "/",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "16.18.0"
-  },
+  
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -34,7 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start":"node server.js && react-scripts-start",
+    "start":"react-scripts start",
     "heroku-postbuild": "cd build && npm install && npm run build"
   },
   "eslintConfig": {
