@@ -7,7 +7,7 @@ const cors = require("cors");
 // configuration for dotenv
 require("dotenv").config({ path: "./config.env" });
 // declaring the port to be used for the server
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 // express middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,5 +30,5 @@ app.listen(port, () => {
       db.setUpSession(app);
     }
   });
-  console.log(`Server is listening on ${port}`);
+  console.log(`Server is listening on ${PORT}}`);
 });
