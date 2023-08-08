@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./routes/page"));
 // code for react serverless functioning
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "client", "build")));
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 // connection for the db
 const db = require("./db/connection");
