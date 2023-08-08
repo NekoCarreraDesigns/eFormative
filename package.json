@@ -29,11 +29,10 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "clean": "npm run clean",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start":"react-scripts start",
-    "heroku-postBuild": "cd build && npm install && npm run build"
+    "heroku-postBuild": "cd client && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": [
