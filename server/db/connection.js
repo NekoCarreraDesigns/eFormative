@@ -4,6 +4,7 @@ const MongoStore = require("connect-mongo");
 const { MongoClient } = require("mongodb");
 // variables
 const Db = process.env.ATLAS_URI;
+const secret = process.env.SECRET;
 
 const client = new MongoClient(Db, {
   useNewUrlParser: true,
@@ -13,22 +14,23 @@ const client = new MongoClient(Db, {
 var _db;
 // exports  for db connection
 module.exports = {
-  connectToServer: function (callback) {
-    client.connect(function (err, db) {
-      if (db) {
-        _db = db.db("ServerlessInstance0");
-        console.log("Successfully connected to mongoDB!");
-      }
-      return callback(err);
-    });
+  connectToServer: async function () {
+    try {
+      await client.connect();
+      _db = client.db("ServerlessInstance0");
+      console.log("Successfully connected to mongoDB!");
+    } catch (error) {
+      console.error("Cannot connect to MongoDB", error);
+    }
   },
   setUpSession: function (app) {
     app.use(
       session({
-        secret: "Wednesday's child is full of woe",
+        secret: secret,
         store: new MongoStore({
           client: client,
-          db: _db,
+          mongoURL: Db,
+          dbName: "serverlessInstance0",
           stringify: false,
         }),
         resave: false,

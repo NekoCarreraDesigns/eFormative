@@ -1,7 +1,7 @@
 // dependencies for app
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("node:path");
+const path = require("path");
 const app = express();
 const cors = require("cors");
 // configuration for dotenv
@@ -22,7 +22,7 @@ app.get("/*", function (req, res) {
 // connection for the db
 const db = require("./db/connection");
 // function to make the server listen
-app.listen(port, () => {
+app.listen(PORT, () => {
   db.connectToServer(function (err, res) {
     if (err) {
       res.status(500).send({ message: "internal server error" });
@@ -30,5 +30,5 @@ app.listen(port, () => {
       db.setUpSession(app);
     }
   });
-  console.log(`Server is listening on ${PORT}}`);
+  console.log(`Server is listening on ${PORT}`);
 });
