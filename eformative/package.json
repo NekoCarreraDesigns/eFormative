@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "react-scripts build",
+    "clean": "npm run clean",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start":"react-scripts start",
