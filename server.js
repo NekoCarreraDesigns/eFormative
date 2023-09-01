@@ -13,14 +13,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(require("./routes/page"));
+app.use(require("./server/routes/page"));
 // code for react serverless functioning
 app.use(express.static(path.join(__dirname, "client/build")));
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 // connection for the db
-const db = require("./db/connection");
+const db = require("./server/db/connection");
 // function to make the server listen
 app.listen(PORT, () => {
   db.connectToServer(function (err, res) {
