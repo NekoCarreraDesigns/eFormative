@@ -9,12 +9,9 @@
   },
   "keywords": [],
   "author": "Nicholas Maas",
-
-  
-  
   "license": "GNU",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.1",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
@@ -31,7 +28,6 @@
     "sanitize-html": "^2.8.1",
     "uninstall": "^0.0.0"
   },
-
   "engines": {
     "node": "18.17.1"
   }
