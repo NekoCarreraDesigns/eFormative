@@ -28,5 +28,6 @@
     "passport-local": "^1.0.0",
     "sanitize-html": "^2.8.1",
     "uninstall": "^0.0.0"
-  }
+  },
+  "proxy": "https://localhost:3001"
 }
