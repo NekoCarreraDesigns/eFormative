@@ -12,6 +12,7 @@ import PostReview from "./pages/Post-Review/PostReview";
 import SellerReviews from "./pages/Seller-Reviews/SellerReviews";
 import ProductReview from "./pages/Product-Reviews/ProductReview";
 import Footer from "./components/Footer/Footer";
+import About from "./pages/About/About";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/post-reviews' element={<PostReview />}></Route>
         <Route path='/seller-reviews' element={<SellerReviews />}></Route>
         <Route path='/product-reviews' element={<ProductReview />}></Route>
+        <Route path='/about' element={<About />}></Route>
       </Routes>
       <Footer />
     </>
