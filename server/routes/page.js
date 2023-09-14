@@ -1,8 +1,11 @@
 // dependencies
 const express = require("express");
+const app = express();
+const cors = require("cors");
 const bcrypt = require("bcrypt");
 const sanitizeHtml = require("sanitize-html");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const { session, passport } = require("../auth");
 // router middleware
 const pageRoutes = express.Router();
@@ -11,6 +14,8 @@ const db = require("../db/connection");
 // convert string to object
 const ObjectId = require("mongodb").ObjectId;
 
+app.use(cors());
+app.use(bodyParser.json());
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller").post(async (req, res) => {
   const { fullName, username, password } = req.body;
@@ -593,6 +598,60 @@ pageRoutes.route("/images").post(function (req, res) {
       res.send({ message: "upload successful" });
     }
   });
+});
+
+// admin routes
+
+pageRoutes.route("/admin/register-pin").post(async function (req, res) {
+  try {
+    const db_connect = db.getDb();
+    const pinsCollection = db_connect.collection("admin");
+    const { pin } = req.body;
+    const pinkSalt = 13;
+    const hashedPin = await bcrypt.hash(pin, pinkSalt);
+    const existingPin = await pinsCollection.findOne({ hashedPin });
+
+    if (existingPin) {
+      res
+        .status(400)
+        .json({ success: false, message: "PIN already registered." });
+    } else {
+      await pinsCollection.insertOne({ pin });
+      res
+        .status(200)
+        .json({ success: true, message: "PIN registered successfully!" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal server error." });
+  }
+});
+
+pageRoutes.route("/admin/check-pin").get(async function (req, res) {
+  try {
+    const db_connect = db.getDb();
+    const { pin } = req.query;
+    const registeredPin = await db_connect.collection("admin").findOne({ pin });
+
+    if (!registeredPin) {
+      res.status(401).json({ message: "Admin PIN not found" });
+      return;
+    }
+
+    const hashedPin = registeredPin.hashedPin;
+    const isMatch = bcrypt.compare(pin, hashedPin);
+
+    if (!isMatch) {
+      res
+        .status(400)
+        .json({ success: false, message: "PIN entered is incorrect" });
+    } else {
+      res.status(200).json({ success: true, message: "PIN was accepted" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 module.exports = pageRoutes;
