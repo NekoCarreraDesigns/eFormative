@@ -8,8 +8,20 @@ const cors = require("cors");
 require("dotenv").config({ path: "./config.env" });
 // declaring the port to be used for the server
 const PORT = process.env.PORT || 3001;
+// cors setup for backend to frontend communication
+const allowedOrigin = ["https://NekoCarreraDesigns.github.io/eformative/"];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigin.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("not allowed by cors"));
+    }
+  },
+};
 // express middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
