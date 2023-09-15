@@ -7,6 +7,8 @@ const Footer = () => {
       <small className='footer-small-print'>&copy; 2023 eformative</small>
       <br />
       <a href='/about'>about us</a>
+      <br />
+      <a href='/admin-registration'>Admin login</a>
     </footer>
   );
 };
