@@ -8,7 +8,7 @@ const Footer = () => {
       <br />
       <a href='/about'>about us</a>
       <br />
-      <a href='/admin-registration'>Admin login</a>
+      <a href='/admin-login'>Admin login</a>
     </footer>
   );
 };
