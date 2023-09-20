@@ -26,6 +26,7 @@ pageRoutes.route("/seller").post(async (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: hash,
+    blocked: false,
   };
   db_connect
     .collection("users")
@@ -651,6 +652,28 @@ pageRoutes.route("/admin/check-pin").get(async function (req, res) {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+pageRoutes.route("admin/block-user").post(async function (req, res) {
+  try {
+    const db_connect = db.getDb();
+    const { username } = req.body;
+    const user = await db_connect.collections("users").findOne(username);
+
+    if (!user) {
+      res.status(404).json({ success: false, message: "user not found" });
+      return;
+    }
+    await db_connect
+      .collection("users")
+      .updateOne({ username }, { $set: { blocked: true } });
+    res
+      .status(200)
+      .json({ success: true, message: `User '${username}' has been blocked` });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 });
 
