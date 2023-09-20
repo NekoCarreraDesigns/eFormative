@@ -14,6 +14,7 @@ import ProductReview from "./pages/Product-Reviews/ProductReview";
 import Footer from "./components/Footer/Footer";
 import About from "./pages/About/About";
 import AdminRegistration from "./pages/Admin/adminRegistration";
+import AdminLogin from "./pages/Admin/adminLogin";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route
           path='/admin-registration'
           element={<AdminRegistration />}></Route>
+        <Route path='/admin-login' element={<AdminLogin />}></Route>
       </Routes>
       <Footer />
     </>
