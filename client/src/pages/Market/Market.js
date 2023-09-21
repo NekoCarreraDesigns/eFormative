@@ -30,7 +30,7 @@ const Market = () => {
     const fetchItems = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("/market", {
+        const res = await axios.get("market/items", {
           params: { search: searchTerm },
         });
         setItems(res.data);
@@ -53,7 +53,7 @@ const Market = () => {
     setLoading(true);
     <CircularProgress aria-busy='true' />;
     try {
-      await axios.post("/items/saved", { itemId: itemId });
+      await axios.post("items/saved", { itemId: itemId });
       setSavedItems([...savedItems, itemId]);
       setSuccessMessage("Item saved successfully");
     } catch (error) {
@@ -69,7 +69,7 @@ const Market = () => {
 
   const fetchItemDetails = async (itemId) => {
     try {
-      const res = await axios.get(`/market/${itemId}`);
+      const res = await axios.get(`market/${itemId}`);
       setSelectedItem(res.data);
     } catch (error) {
       console.log(error);
