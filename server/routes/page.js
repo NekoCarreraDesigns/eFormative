@@ -701,4 +701,31 @@ pageRoutes.route("admin/remove-picture").delete(async function (req, res) {
   }
 });
 
+pageRoutes
+  .route("/admin/search-images-by-username/:username")
+  .get(async function (req, res) {
+    try {
+      const db_connect = db.getDb();
+      const { username } = req.params;
+
+      if (!username) {
+        res
+          .status(404)
+          .json({ success: false, message: "username doesn't exist" });
+      }
+
+      const images = await db_connect
+        .collection("images")
+        .find({ username })
+        .toArray();
+
+      res.status(200).json({ success: true, images });
+    } catch (error) {
+      console.error(error);
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error" });
+    }
+  });
+
 module.exports = pageRoutes;
