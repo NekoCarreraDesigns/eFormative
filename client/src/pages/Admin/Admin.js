@@ -8,6 +8,7 @@ const Admin = () => {
   const [message, setMessage] = useState("");
   const [imageId, setImageId] = useState("");
   const [removeImage, setRemoveImage] = useState(false);
+  const [displayedImage, setDisplayedImage] = useState([]);
 
   const handleUsernameChange = (event) => {
     setUserName(event.target.value);
@@ -55,6 +56,24 @@ const Admin = () => {
       });
   };
 
+  const searchByUsername = (event) => {
+    axios
+      .get(`admin/search-images-by-username/${username}`)
+      .then((response) => {
+        const images = response.data.images;
+        if (images.length > 0) {
+          setDisplayedImage(images);
+          setMessage("Found user with images");
+        } else {
+          setMessage("User has no images");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setMessage("Could not find user");
+      });
+  };
+
   return (
     <>
       <div>
@@ -77,6 +96,17 @@ const Admin = () => {
       </div>
       <div>
         <input
+          className='user-image-search'
+          type='text'
+          value={username}
+          onChange={handleUsernameChange}></input>
+        <button onClick={searchByUsername}></button>
+        {message && (
+          <p className={displayedImage ? "success-message" : "error-message"}>
+            {message}
+          </p>
+        )}
+        <input
           className='user-image-removal'
           type='text'
           value={imageId}
@@ -84,9 +114,11 @@ const Admin = () => {
         <button className='remove-image-button' onClick={handelImageRemoval}>
           Remove Image
         </button>
-        <p className={removeImage ? "success-message" : "error-message"}>
-          {message}
-        </p>
+        {message && (
+          <p className={removeImage ? "success-message" : "error-message"}>
+            {message}
+          </p>
+        )}
       </div>
     </>
   );
