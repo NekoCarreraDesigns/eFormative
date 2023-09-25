@@ -31,13 +31,20 @@ const AdminRegistration = () => {
   };
   return (
     <div>
-      <h2>Admin Registration</h2>
+      <h2 className='admin-header'>Admin Registration</h2>
       <div>
         <label>Enter Admin PIN:</label>
-        <input type='text' value={pin} onChange={handlePinChange} />
+        <input
+          className='admin-registration'
+          type='text'
+          value={pin}
+          onChange={handlePinChange}
+        />
       </div>
       <div>
-        <button onClick={handleRegistration}>Register</button>
+        <button className='admin-button' onClick={handleRegistration}>
+          Register
+        </button>
       </div>
       <div>{message}</div>
     </div>
