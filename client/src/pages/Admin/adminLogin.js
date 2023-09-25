@@ -32,13 +32,20 @@ const AdminLogin = () => {
 
   return (
     <div>
-      <h2>Admin Login</h2>
+      <h2 className='admin-header'>Admin Login</h2>
       <div>
         <label>Enter Admin PIN:</label>
-        <input type='text' value={pin} onChange={handlePinChange} />
+        <input
+          className='admin-login'
+          type='text'
+          value={pin}
+          onChange={handlePinChange}
+        />
       </div>
       <div>
-        <button onClick={handleLogin}>Login</button>
+        <button className='admin-button' onClick={handleLogin}>
+          Login
+        </button>
       </div>
       <div>{message}</div>
     </div>
