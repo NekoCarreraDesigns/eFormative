@@ -77,14 +77,16 @@ const Admin = () => {
   return (
     <>
       <div>
-        <h1 className='admin-panel-header'>Admin Panel</h1>
+        <h2 className='admin-panel-header'>Admin Panel</h2>
         <div className='block-user'>
+          <h3 className='block-header'>Block user</h3>
+          <label>Enter a username to block:</label>
           <input
             className='user-block'
             type='text'
             value={username}
             onChange={handleUsernameChange}></input>
-          <button className='block-button' onClick={handleBlockUser}>
+          <button className='admin-button' onClick={handleBlockUser}>
             Block User
           </button>
         </div>
@@ -95,23 +97,29 @@ const Admin = () => {
         )}
       </div>
       <div>
+        <h3>Remove an Image</h3>
+        <label>Search by username</label>
         <input
           className='user-image-search'
           type='text'
           value={username}
           onChange={handleUsernameChange}></input>
-        <button onClick={searchByUsername}></button>
+        <button className='admin-button' onClick={searchByUsername}>
+          Username Search
+        </button>
         {message && (
           <p className={displayedImage ? "success-message" : "error-message"}>
             {message}
           </p>
         )}
+        <br />
+        <label>Enter image ID to remove</label>
         <input
           className='user-image-removal'
           type='text'
           value={imageId}
           onChange={handleImageChange}></input>
-        <button className='remove-image-button' onClick={handelImageRemoval}>
+        <button className='admin-button' onClick={handelImageRemoval}>
           Remove Image
         </button>
         {message && (
