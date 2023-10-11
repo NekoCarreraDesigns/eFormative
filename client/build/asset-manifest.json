@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/eformative/static/css/main.0a133d79.css",
+    "main.js": "/eformative/static/js/main.7d601fa7.js",
+    "static/media/signup-bg.png": "/eformative/static/media/signup-bg.61f4a14b1ec5f1d4a3cf.png",
+    "static/media/hero-bg.jpg": "/eformative/static/media/hero-bg.118f3e074eb2b94b75f1.jpg",
+    "index.html": "/eformative/index.html",
+    "main.0a133d79.css.map": "/eformative/static/css/main.0a133d79.css.map",
+    "main.7d601fa7.js.map": "/eformative/static/js/main.7d601fa7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a133d79.css",
+    "static/js/main.7d601fa7.js"
+  ]
+}
