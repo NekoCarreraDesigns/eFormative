@@ -28,6 +28,7 @@ app.use(express.json());
 app.use(require("./routes/page"));
 // code for react serverless functioning
 app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "public")));
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
@@ -35,8 +36,9 @@ app.get("/*", function (req, res) {
 const db = require("./db/connection");
 // function to make the server listen
 app.listen(PORT, () => {
-  db.connectToServer(function (err, res) {
+  db.connectToServer(function (err, req, res, next) {
     if (err) {
+      console.error(err);
       res.status(500).send({ message: "internal server error" });
     } else {
       db.setUpSession(app);
