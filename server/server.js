@@ -27,8 +27,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./routes/page"));
 // code for react serverless functioning
-app.use(express.static(path.join(__dirname, "client/build")));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
