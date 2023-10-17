@@ -12,7 +12,7 @@ import {
   Snackbar,
   CircularProgress,
 } from "@mui/material";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
@@ -25,29 +25,40 @@ const Market = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchItems = async () => {
+    const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("market/items", {
-          params: { search: searchTerm },
-        });
-        setItems(res.data);
-        setDisplayedItems(res.data);
+        const response = await axios.get("market/items");
+        setItems(response.data);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        setError("Error fetching items");
         setLoading(false);
-        setErrorMessage("Error fetching items");
       }
     };
 
-    // Only fetch items when searchTerm changes (debounced)
-    if (searchTerm) {
-      fetchItems();
+    fetchData(); // Call the fetch function inside useEffect
+  }, []);
+
+  const fetchItems = async (searchTerm) => {
+    setLoading(true);
+    try {
+      const res = await axios.get("market/items", {
+        params: { search: searchTerm },
+      });
+      setItems(res.data);
+      setDisplayedItems(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      setErrorMessage("Error fetching items");
     }
-  }, [searchTerm]);
+    fetchItems(""); // Pass an empty string to fetch all items
+  };
 
   const handleSave = async (itemId) => {
     setLoading(true);
@@ -60,11 +71,6 @@ const Market = () => {
       console.log(error);
       setErrorMessage("Error saving item");
     }
-  };
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    setSearchTerm(event.target.value.toLowerCase());
   };
 
   const fetchItemDetails = async (itemId) => {
@@ -86,28 +92,7 @@ const Market = () => {
       <div className='hero-section'>
         <h1 className='market-page-header'>Market</h1>
         <div className='market-filter-div'>
-          <div className='market-filter-input-div'>
-            <form onSubmit={handleSearch}>
-              <input
-                className='market-filter-input'
-                type='text'
-                placeholder='What are you looking for?'
-                id='search-bar'
-                value={searchTerm}
-                onChange={handleSearch}></input>
-              <div className='market-button-container'>
-                <button
-                  className='search-button clear-btn-sm'
-                  type='submit'
-                  onClick={() => setSearchTerm("")}>
-                  Search
-                </button>
-                <button className='clear-button clear-btn-sm' type='button'>
-                  Clear
-                </button>
-              </div>
-            </form>
-          </div>
+          <SearchBar onSearch={fetchItems} />
         </div>
       </div>
       {selectedItem ? (
