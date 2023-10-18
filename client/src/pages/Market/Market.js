@@ -17,26 +17,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Market = () => {
-  const [items, setItems] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [displayedItems, setDisplayedItems] = useState([]);
   const [savedItems, setSavedItems] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
       try {
         const response = await axios.get("market/items");
-        setItems(response.data);
-        setLoading(false);
+        setDisplayedItems(response.data);
       } catch (error) {
-        setError("Error fetching items");
-        setLoading(false);
+        console.log(error);
+        setErrorMessage("Error fetching items");
       }
     };
 
@@ -44,24 +38,19 @@ const Market = () => {
   }, []);
 
   const fetchItems = async (searchTerm) => {
-    setLoading(true);
     try {
       const res = await axios.get("market/items", {
         params: { search: searchTerm },
       });
-      setItems(res.data);
       setDisplayedItems(res.data);
-      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
       setErrorMessage("Error fetching items");
     }
     fetchItems(""); // Pass an empty string to fetch all items
   };
 
   const handleSave = async (itemId) => {
-    setLoading(true);
     <CircularProgress aria-busy='true' />;
     try {
       await axios.post("items/saved", { itemId: itemId });
