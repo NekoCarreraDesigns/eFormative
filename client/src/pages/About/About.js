@@ -4,7 +4,7 @@ import "./About.css";
 const About = () => {
   return (
     <>
-      <div>
+      <div className="home-hero">
         <h1 className='about-page-header'>About Us</h1>
         <p className='about-page-paragraph'>
           Eformative site created by Neko Carrera Designs, graphics by Hager
