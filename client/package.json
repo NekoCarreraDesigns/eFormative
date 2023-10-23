@@ -1,6 +1,5 @@
 {
   "name": "eformative",
-  "homepage":"https://NekoCarreraDesigns.github.io/eformative/", 
   "version": "0.1.0",
   "private": true,
   "dependencies": {
