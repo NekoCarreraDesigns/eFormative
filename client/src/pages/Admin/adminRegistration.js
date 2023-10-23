@@ -30,10 +30,10 @@ const AdminRegistration = () => {
       });
   };
   return (
-    <div>
+    <div className='home-hero'>
       <h2 className='admin-header'>Admin Registration</h2>
       <div>
-        <label>Enter Admin PIN:</label>
+        <label className='admin-pin-label'>Enter Admin PIN:</label>
         <input
           className='admin-registration'
           type='text'

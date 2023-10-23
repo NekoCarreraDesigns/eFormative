@@ -10,3 +10,11 @@
     border-style: groove;
     background-color: rgba(255, 12, 12, .456);
 }
+
+.admin-header, .admin-pin-label {
+    color: rgb(233, 255, 233);
+}
+
+.admin-button:hover {
+    background-color:rgba(12, 233, 12, .456);
+}

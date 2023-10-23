@@ -76,11 +76,11 @@ const Admin = () => {
 
   return (
     <>
-      <div>
-        <h2 className='admin-panel-header'>Admin Panel</h2>
+      <div className='home-hero'>
+        <h2 className='admin-header'>Admin Panel</h2>
         <div className='block-user'>
-          <h3 className='block-header'>Block user</h3>
-          <label>Enter a username to block:</label>
+          <h3 className='admin-header'>Block user</h3>
+          <label className='admin-pin-label'>Enter a username to block:</label>
           <input
             className='user-block'
             type='text'
@@ -96,9 +96,9 @@ const Admin = () => {
           </p>
         )}
       </div>
-      <div>
-        <h3>Remove an Image</h3>
-        <label>Search by username</label>
+      <div className='home-hero'>
+        <h3 className='admin-header'>Remove an Image</h3>
+        <label className='admin-pin-label'>Search by username</label>
         <input
           className='user-image-search'
           type='text'
@@ -113,7 +113,7 @@ const Admin = () => {
           </p>
         )}
         <br />
-        <label>Enter image ID to remove</label>
+        <label className='admin-pin-label'>Enter image ID to remove</label>
         <input
           className='user-image-removal'
           type='text'
