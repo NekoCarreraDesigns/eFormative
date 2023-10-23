@@ -1,7 +1,7 @@
 {
   "name": "eformative",
   "version": "1.0.0",
-  "description": "eformative site package dor deployment",
+  "description": "eformative site package for deployment",
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && node server.js",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postBuild": "cd server && npm install && npm start"
   },
-  "keywords": [],
+  "keywords": ["React", "Node", "MongoDB", "Express"],
   "author": "Nicholas Maas",
   "license": "GNU",
   "dependencies": {
