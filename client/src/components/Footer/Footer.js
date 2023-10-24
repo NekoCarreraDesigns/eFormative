@@ -6,9 +6,9 @@ const Footer = () => {
     <footer className='page-footer'>
       <small className='footer-small-print'>&copy; 2023 eformative</small>
       <br />
-      <a href='/about'>about us</a>
+      <a className='footer-link' href='/about'>About Us</a>
       <br />
-      <a href='/admin-login'>Admin login</a>
+      <a className='footer-link' href='/admin-login'>Admin Login</a>
     </footer>
   );
 };

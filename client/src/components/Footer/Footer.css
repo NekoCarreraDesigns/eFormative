@@ -10,17 +10,23 @@
     color: rgba(255, 255, 255, 0.8);
 }
 
-.footer-small-print a,
-.footer-header a,
-.footer-paragraph a {
+.footer-small-print, a
+.footer-header, a
+.footer-paragraph, a {
     color: rgb(242, 242, 109);
     text-decoration: none;
 }
 
-.footer-small-print a:hover,
-.footer-header a:hover,
-.footer-paragraph a:hover {
+.footer-small-print, a:hover,
+.footer-header, a:hover,
+.footer-paragraph, a:hover {
     color: rgb(241, 241, 203);
+}
+
+.footer-link {
+    height: 100px;
+    width: 100px;
+    padding: 10px;
 }
 
 @media screen and (max-width: 768px) {
