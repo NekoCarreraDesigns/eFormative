@@ -55,7 +55,7 @@ const Seller = (props) => {
 
       <div className='items-sold-div'>
         <h1 className='items-sold-header'>Items Sold</h1>
-        <img alt='item' src='http://placehold.jp/150x150.png'></img>
+        <img alt='item' src={setItems}></img>
       </div>
       {items &&
         items.map((item, displayItem) => (
