@@ -7,10 +7,15 @@ const AdminRegistration = () => {
   const navigate = useNavigate();
   const [pin, setPin] = useState("");
   const [message, setMessage] = useState("");
+  const [isPasswordVisible, setPasswordVisibility] = useState(false);
 
   const handlePinChange = (event) => {
     setPin(event.target.value);
   };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisibility(!isPasswordVisible)
+  }
 
   const handleRegistration = () => {
     let path = `/admin-login`;
@@ -36,10 +41,13 @@ const AdminRegistration = () => {
         <label className='admin-pin-label'>Enter Admin PIN:</label>
         <input
           className='admin-registration'
-          type='text'
+          type={isPasswordVisible ? 'text':'password'}
           value={pin}
           onChange={handlePinChange}
         />
+        <button className='toggle-password' onClick={togglePasswordVisibility}>
+          {isPasswordVisible ? 'hide' : 'show'}
+        </button>
       </div>
       <div>
         <button className='admin-button' onClick={handleRegistration}>
