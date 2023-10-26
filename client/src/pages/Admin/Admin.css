@@ -18,3 +18,7 @@
 .admin-button:hover {
     background-color:rgba(12, 233, 12, .456);
 }
+
+.toggle-password {
+    background-color: rgb(11, 44, 155);
+}
