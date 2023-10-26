@@ -9,7 +9,7 @@ require("dotenv").config({ path: "./config.env" });
 // declaring the port to be used for the server
 const PORT = process.env.PORT || 3001;
 // cors setup for backend to frontend communication
-const allowedOrigin = ["https://NekoCarreraDesigns.github.io/eformative/"];
+const allowedOrigin = ["https://eformative.com"];
 
 const corsOptions = {
   origin: function (origin, callback) {
