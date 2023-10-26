@@ -18,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // user sign up that redirects to the seller page
-pageRoutes.route("seller/sign-up").post(async (req, res) => {
+pageRoutes.route("/seller/sign-up").post(async (req, res) => {
   const { fullName, username, password } = req.body;
   const hash = await bcrypt.hash(password, 13);
   let db_connect = db.getDb();
@@ -60,7 +60,7 @@ pageRoutes.use(
   })
 );
 
-pageRoutes.route("user/sign-in").post(
+pageRoutes.route("/user/sign-in").post(
   (req, res, next) => {
     if (!req.body.username || !req.body.password) {
       res.status(400).send({ message: "Username or password is incorrect" });
@@ -95,7 +95,7 @@ pageRoutes.route("user/sign-in").post(
 );
 
 // routes for users with queries to database
-pageRoutes.route("user/find").get(function (req, res) {
+pageRoutes.route("/user/find").get(function (req, res) {
   let db_connect = db.getDb("users");
   const userId = req.user && req.user.id;
   db_connect.collection("users").findOne({ _id: userId }, function (err, user) {
@@ -107,7 +107,7 @@ pageRoutes.route("user/find").get(function (req, res) {
   });
 });
 
-pageRoutes.route("user/:id").get(function (req, res) {
+pageRoutes.route("/user/:id").get(function (req, res) {
   let db_connect = db.getDb();
   let myQuery = { _id: req.params.id };
   db_connect.collection("users").findOne(myQuery, function (err, result) {
@@ -118,7 +118,7 @@ pageRoutes.route("user/:id").get(function (req, res) {
   });
 });
 
-pageRoutes.route("user/add").post(function (req, response) {
+pageRoutes.route("/user/add").post(function (req, response) {
   let db_connect = db.getDb();
   let userObj = {
     name: req.body.name,
@@ -138,7 +138,7 @@ pageRoutes.route("user/add").post(function (req, response) {
   });
 });
 
-pageRoutes.route("user/update/:id").put(function (req, response) {
+pageRoutes.route("/user/update/:id").put(function (req, response) {
   let db_connect = db.getDb();
   let addQuery = { _id: ObjectId(req.params.id) };
   let newValues = {
@@ -159,7 +159,7 @@ pageRoutes.route("user/update/:id").put(function (req, response) {
     });
 });
 
-pageRoutes.route("user/:id").delete((req, response) => {
+pageRoutes.route("/user/:id").delete((req, response) => {
   try {
     let db_connect = db.getDb();
     let deleteQuery = { _id: ObjectId(req.params.id) };
@@ -178,7 +178,7 @@ pageRoutes.route("user/:id").delete((req, response) => {
 });
 
 // routes for reviews of sellers and product
-pageRoutes.route("reviews/items").get(function (req, res) {
+pageRoutes.route("/reviews/items").get(function (req, res) {
   try {
     let db_connect = db.getDb("reviews");
     db_connect
@@ -196,7 +196,7 @@ pageRoutes.route("reviews/items").get(function (req, res) {
   }
 });
 
-pageRoutes.route("seller/reviews/post").post(function (req, res) {
+pageRoutes.route("/seller/reviews/post").post(function (req, res) {
   let db_connect = db.getDb();
   let sellerQuery = {
     reviewerName: req.body.reviewerName,
@@ -214,7 +214,7 @@ pageRoutes.route("seller/reviews/post").post(function (req, res) {
     });
 });
 
-pageRoutes.route("seller/reviews").get(function (req, res) {
+pageRoutes.route("/seller/reviews").get(function (req, res) {
   try {
     let db_connect = db.getDb();
     db_connect
@@ -234,7 +234,7 @@ pageRoutes.route("seller/reviews").get(function (req, res) {
   }
 });
 
-pageRoutes.route("product/reviews/:id").get(function (req, res) {
+pageRoutes.route("/product/reviews/:id").get(function (req, res) {
   let db_connect = db.getDb();
   let productQuery = { product: req.params.id };
   db_connect
@@ -253,7 +253,7 @@ pageRoutes.route("product/reviews/:id").get(function (req, res) {
     });
 });
 
-pageRoutes.route("product/reviews/post").post(function (req, res) {
+pageRoutes.route("/product/reviews/post").post(function (req, res) {
   let db_connect = db.getDb();
   let postObj = {
     reviewerName: req.body.reviewerName,
@@ -279,7 +279,7 @@ pageRoutes.route("product/reviews/post").post(function (req, res) {
   });
 });
 
-pageRoutes.route("reviews/update/:id").put(function (req, res) {
+pageRoutes.route("/reviews/update/:id").put(function (req, res) {
   let db_connect = db.getDb();
   let updatePostQuery = { _id: ObjectId(req.params.id) };
   let newPostValues = {
@@ -288,7 +288,7 @@ pageRoutes.route("reviews/update/:id").put(function (req, res) {
     review: req.body.review,
   };
   db_connect
-    .collection("reviews")
+    .collection("/reviews")
     .updateOne(updatePostQuery, newPostValues, function (err, result) {
       if (err) {
         console.error(err);
@@ -299,7 +299,7 @@ pageRoutes.route("reviews/update/:id").put(function (req, res) {
     });
 });
 
-pageRoutes.route("reviews/:id").delete((req, res) => {
+pageRoutes.route("/reviews/:id").delete((req, res) => {
   try {
     let db_connect = db.getDb();
     let deleteReviewQuery = { _id: ObjectId(req.params.id) };
@@ -324,7 +324,7 @@ pageRoutes.route("reviews/:id").delete((req, res) => {
 
 // routes for selling items on the page and the market
 // also the route to show all the items for sale
-pageRoutes.route("market/items").get(function (req, res) {
+pageRoutes.route("/market/items").get(function (req, res) {
   let db_connect = db.getDb();
   let searchParams = req.query;
   let searchCriteria = {};
@@ -349,7 +349,7 @@ pageRoutes.route("market/items").get(function (req, res) {
     });
 });
 
-pageRoutes.route("market/sellers").get(function (req, res) {
+pageRoutes.route("/market/sellers").get(function (req, res) {
   let db_connect = db.getDb();
   let sellerName = req.query.sellerName;
   // db_connect.collection("items").dropIndex(sellerName);
@@ -369,7 +369,7 @@ pageRoutes.route("market/sellers").get(function (req, res) {
   }
 });
 
-pageRoutes.route("market/products").get(function (req, res) {
+pageRoutes.route("/market/products").get(function (req, res) {
   let db_connect = db.getDb();
   let product = req.query.product;
   db_connect.collection("items").createIndex({ "$**": "text" });
@@ -382,7 +382,7 @@ pageRoutes.route("market/products").get(function (req, res) {
     });
 });
 
-pageRoutes.route("market/price").get(function (req, res) {
+pageRoutes.route("/market/price").get(function (req, res) {
   let db_connect = db.getDb();
   let price = req.query.price;
   db_connect.collection("items").createIndex({ "$**": "text" });
@@ -396,7 +396,7 @@ pageRoutes.route("market/price").get(function (req, res) {
 });
 
 // this is for the seller page, to show items the user has sold
-pageRoutes.route("items/sold/").get(function (req, res) {
+pageRoutes.route("/items/sold/").get(function (req, res) {
   let db_connect = db.getDb();
   let itemQuery = { itemSold: true };
   db_connect.collection("items").find(itemQuery, function (err, result) {
@@ -419,7 +419,7 @@ pageRoutes.route("items/selling/").get(function (req, res) {
   });
 });
 
-pageRoutes.route("items/update/:id").put(function (req, res) {
+pageRoutes.route("/items/update/:id").put(function (req, res) {
   let db_connect = db.getDb();
   let updateItemQuery = { _id: ObjectId(req.params.id) };
   let newItemValues = {
@@ -446,7 +446,7 @@ pageRoutes.route("items/update/:id").put(function (req, res) {
     });
 });
 
-pageRoutes.route("items/add").post(function (req, res) {
+pageRoutes.route("/items/add").post(function (req, res) {
   let db_connect = db.getDb();
   let itemObj = {
     sellerName: req.body.sellerName,
@@ -474,7 +474,7 @@ pageRoutes.route("items/add").post(function (req, res) {
   });
 });
 
-pageRoutes.route("items/:id").delete(function (req, res) {
+pageRoutes.route("/items/:id").delete(function (req, res) {
   try {
     let db_connect = db.getDb();
     let removeItemQuery = { _id: ObjectId(req.params.id) };
@@ -497,7 +497,7 @@ pageRoutes.route("items/:id").delete(function (req, res) {
   }
 });
 
-pageRoutes.route("items/saved/:id").post(function (req, res) {
+pageRoutes.route("/items/saved/:id").post(function (req, res) {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).send({ message: "Invalid item id" });
   }
@@ -522,7 +522,7 @@ pageRoutes.route("items/saved/:id").post(function (req, res) {
   });
 });
 
-pageRoutes.route("items/saved").post(async function (req, res) {
+pageRoutes.route("/items/saved").post(async function (req, res) {
   try {
     let db_connect = db.getDb();
     let itemId = req.body.itemId;
@@ -539,7 +539,7 @@ pageRoutes.route("items/saved").post(async function (req, res) {
   }
 });
 
-pageRoutes.route("items/saved").get(function (req, res) {
+pageRoutes.route("/items/saved").get(function (req, res) {
   let db_connect = db.getDb();
   db_connect
     .collection("savedItems")
@@ -554,7 +554,7 @@ pageRoutes.route("items/saved").get(function (req, res) {
     });
 });
 
-pageRoutes.route("items/saved/:id").get(function (req, res) {
+pageRoutes.route("/items/saved/:id").get(function (req, res) {
   let db_connect = db.getDb();
   let itemId = req.params.id;
   db_connect
@@ -569,7 +569,7 @@ pageRoutes.route("items/saved/:id").get(function (req, res) {
     });
 });
 
-pageRoutes.route("items/saved/user/:userId").get(function (req, res) {
+pageRoutes.route("/items/saved/user/:userId").get(function (req, res) {
   let db_connect = db.getDb();
   let userId = req.params.userId;
   db_connect
@@ -585,7 +585,7 @@ pageRoutes.route("items/saved/user/:userId").get(function (req, res) {
     });
 });
 
-pageRoutes.route("user/images").post(function (req, res) {
+pageRoutes.route("/user/images").post(function (req, res) {
   let db_connect = db.getDb();
   let image = req.body.image;
   db_connect.collection("items").insertOne(image, function (err) {
@@ -604,10 +604,10 @@ pageRoutes.route("user/images").post(function (req, res) {
 
 // admin routes
 
-pageRoutes.route("admin/register-pin").post(async function (req, res) {
+pageRoutes.route("/admin/register-pin").post(async function (req, res) {
   try {
     const db_connect = db.getDb();
-    const pinsCollection = db_connect.collection("admin");
+    const pinsCollection = db_connect.collection("administrator");
     const { pin } = req.body;
     const pinkSalt = 13;
     const hashedPin = await bcrypt.hash(pin, pinkSalt);
@@ -618,7 +618,7 @@ pageRoutes.route("admin/register-pin").post(async function (req, res) {
         .status(400)
         .json({ success: false, message: "PIN already registered." });
     } else {
-      await pinsCollection.insertOne({ pin });
+      await pinsCollection.insertOne({ hashedPin });
       res
         .status(200)
         .json({ success: true, message: "PIN registered successfully!" });
@@ -629,19 +629,21 @@ pageRoutes.route("admin/register-pin").post(async function (req, res) {
   }
 });
 
-pageRoutes.route("admin/check-pin").get(async function (req, res) {
+pageRoutes.route("/admin/login").post(async function (req, res) {
   try {
     const db_connect = db.getDb();
-    const { pin } = req.query;
-    const registeredPin = await db_connect.collection("admin").findOne({ pin });
-
+    const { pin } = req.body;
+    const pinsCollection = db_connect.collection("administrator")
+    const registeredPin = await pinsCollection.findOne({ hashedPin: pin });
+    console.log("existing pin:", registeredPin)
+    
     if (!registeredPin) {
       res.status(401).json({ message: "Admin PIN not found" });
       return;
     }
-
-    const hashedPin = registeredPin.hashedPin;
-    const isMatch = bcrypt.compare(pin, hashedPin);
+    
+    const isMatch = await bcrypt.compare(pin, registeredPin.hashedPin);
+    console.log("isMatch:", isMatch)
 
     if (!isMatch) {
       res
@@ -649,6 +651,7 @@ pageRoutes.route("admin/check-pin").get(async function (req, res) {
         .json({ success: false, message: "PIN entered is incorrect" });
     } else {
       res.status(200).json({ success: true, message: "PIN was accepted" });
+      res.redirect("/admin")
     }
   } catch (error) {
     console.error(error);
@@ -656,7 +659,7 @@ pageRoutes.route("admin/check-pin").get(async function (req, res) {
   }
 });
 
-pageRoutes.route("admin/block-user").post(async function (req, res) {
+pageRoutes.route("/admin/block-user").post(async function (req, res) {
   try {
     const db_connect = db.getDb();
     const { username } = req.body;
@@ -678,7 +681,7 @@ pageRoutes.route("admin/block-user").post(async function (req, res) {
   }
 });
 
-pageRoutes.route("admin/remove-picture").delete(async function (req, res) {
+pageRoutes.route("/admin/remove-picture").delete(async function (req, res) {
   try {
     const db_connect = db.getDb();
     const { id } = req.params;
