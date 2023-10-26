@@ -29,7 +29,7 @@ app.use(require("./routes/page"));
 // code for react serverless functioning
 app.use(express.static(path.join(__dirname, "../client/build")));
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 // connection for the db
 const db = require("./db/connection");
