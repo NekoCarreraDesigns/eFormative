@@ -6,7 +6,7 @@ import IconsSection from "../../components/Icons/Icons";
 const Home = () => {
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
+      console.log("position:", position)
       window.location.replace("/market");
     });
   };
