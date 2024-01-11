@@ -7,7 +7,7 @@ const Home = () => {
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       console.log("position:", position)
-      window.location.replace("/market");
+      window.location.replace("https://eformative.com/market");
     });
   };
 
