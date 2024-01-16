@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Seller.css";
 
-const Seller = (props) => {
+const Seller = () => {
   const [user, setUser] = useState({});
   const [items, setItems] = useState([]);
   let navigate = useNavigate();
@@ -61,7 +61,7 @@ const Seller = (props) => {
         items.map((item, displayItem) => (
           <div key={displayItem} className='items-selling-div'>
             <h1 className='items-selling-header'>Items Selling</h1>
-            <img alt='sale-item' src='http://placehold.jp/150x150.png'>
+            <img alt='sale-item'>
               {item.image}
             </img>
             <h3>{item.product}</h3>
