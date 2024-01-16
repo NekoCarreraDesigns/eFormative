@@ -18,7 +18,7 @@ const AdminRegistration = () => {
   }
 
   const handleRegistration = () => {
-    let path = `/admin-login`;
+    let path = `/pages/admin-login`;
     axios
       .post("/admin/register-pin", { pin })
       .then((res) => {

@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Admin.css";
 
 const AdminLogin = () => {
-  let path = `/admin`;
+  let path = `/pages/admin`;
   let navigate = useNavigate();
   const [pin, setPin] = useState("");
   const [message, setMessage] = useState("");
