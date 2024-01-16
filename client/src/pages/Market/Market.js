@@ -39,7 +39,7 @@ const Market = () => {
 
   const fetchItems = async (searchTerm) => {
     try {
-      const res = await axios.get("market/items", {
+      const res = await axios.get("/market/items", {
         params: { search: searchTerm },
       });
       setDisplayedItems(res.data);
@@ -156,13 +156,6 @@ const Market = () => {
           message={errorMessage}
         />
       )}
-      {/* <div className='page-pagination-container'>
-        <Pagination
-          className='page-pagination'
-          color='primary'
-          variant='outlined'
-          count={20}></Pagination>
-      </div> */}
     </>
   );
 };
