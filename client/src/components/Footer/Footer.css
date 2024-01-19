@@ -10,16 +10,16 @@
     color: rgba(255, 255, 255, 0.8);
 }
 
-.footer-small-print, a
-.footer-header, a
-.footer-paragraph, a {
+.footer-small-print, Link
+.footer-header, Link
+.footer-paragraph, Link {
     color: rgb(242, 242, 109);
     text-decoration: none;
 }
 
-.footer-small-print, a:hover,
-.footer-header, a:hover,
-.footer-paragraph, a:hover {
+.footer-small-print, Link:hover,
+.footer-header, Link:hover,
+.footer-paragraph, Link:hover {
     color: rgb(241, 241, 203);
 }
 
@@ -30,5 +30,17 @@
 }
 
 @media screen and (max-width: 768px) {
+    .footer-link {
+    height: 80px;
+    width: 80px;
+    padding: 5px;
+    }
+
+    .page-footer {
+        height: auto;
+        width: auto;
+        margin: auto;
+        padding: 10px;
+    }
 
 }
