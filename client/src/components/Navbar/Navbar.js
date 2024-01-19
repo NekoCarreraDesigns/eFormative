@@ -66,7 +66,7 @@ const Navbar = () => {
             <img alt="logo" className="navbar-logo" src="/assets/eformative-logo-2.png" />
           </Link>
         </div>
-        <div className="hamburger-menu" onClick={handleMenuClick}>
+        <div className="hamburger-menu" onClick={handleMenuClick} aria-label={isMenuOpen ? "Close menu": "Open menu"}>
           &#9776; {/* Hamburger icon */}
         </div>
       </div>
