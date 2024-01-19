@@ -326,17 +326,7 @@ pageRoutes.route("/reviews/:id").delete((req, res) => {
 // also the route to show all the items for sale
 pageRoutes.route("/market/items").get(function (req, res) {
   let db_connect = db.getDb();
-  let searchParams = req.query;
-  let searchCriteria = {};
-  if (searchParams.sellerName) {
-    searchCriteria.sellerName = searchParams.sellerName;
-  }
-  if (searchParams.product) {
-    searchCriteria.product = searchParams.product;
-  }
-  if (searchParams.price) {
-    searchCriteria.price = searchParams.price;
-  }
+
   db_connect
     .collection("items")
     .find({})
@@ -348,6 +338,32 @@ pageRoutes.route("/market/items").get(function (req, res) {
       res.json(result);
     });
 });
+
+pageRoutes.route("/market/search").get(function(req, res) {
+  let db_connect = db.getDb();
+  let searchParams = req.query;
+  let searchCriteria = {};
+
+  if (searchParams.sellerName) {
+    searchCriteria.sellerName = searchParams.sellerName
+  }
+
+  if (searchParams.product) {
+    searchCriteria.product = searchParams.product
+  }
+
+  if (searchParams.price) {
+    searchCriteria.price = searchParams.price
+  }
+
+  db_connect.collection("items").find(searchCriteria).toArray(function (err, result) {
+    if (err) {
+      console.error(err)
+      res.status(500).send({message: "internal server error"})
+    }
+    res.json(result)
+  })
+})
 
 pageRoutes.route("/market/sellers").get(function (req, res) {
   let db_connect = db.getDb();
