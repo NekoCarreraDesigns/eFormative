@@ -4,8 +4,18 @@ import "./SearchBar.css";
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = () => {
-    onSearch(searchTerm.toLowerCase());
+  const handleSearch = async () => {
+      try {
+        const response = await fetch(`/market/search`)
+        if (response.ok) {
+          const searchResults = await response.json()
+          onSearch(searchResults)
+        } else {
+          console.error("error fetching results", response.status)
+        }
+      } catch (err) {
+        console.error("error during search",)
+      }
   };
 
   const handleClear = () => {
@@ -22,6 +32,7 @@ const SearchBar = ({ onSearch }) => {
         id='search-bar'
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        aria-label="search-input"
       />
       <div className='market-button-container'>
         <button className='search-button clear-btn-sm' onClick={handleSearch}>
