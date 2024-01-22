@@ -4,36 +4,37 @@ import { FormControl, TextareaAutosize, FormHelperText } from "@mui/material";
 import OnImageChange from "../../images/images";
 import "./PostItem.css";
 
-const sellerPostInput = document.getElementById("seller-input");
-const productNamePostInput = document.getElementById("item-input");
-const priceInput = document.getElementById("item-input");
-const productDescriptionArea = document.getElementById("text-area");
-const imageInput = document.getElementById("image-input");
 
-const addItem = (event) => {
-  event.preventDefault();
-  axios
-    .post("/items/add", {
-      sellerName: sellerPostInput.value,
-      product: productNamePostInput.value,
-      price: priceInput.value,
-      image: imageInput.value,
-      description: productDescriptionArea.value,
-    })
-    .then((res) => {
-      res.status(200);
-      alert("Your item has been posted!");
-    })
-    .catch((err) => {
-      console.error(err);
-      return;
-    });
-};
 
 const PostItem = () => {
+  const [sellerName, setSellerName] = useState("");
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
   const [inputArea, setInputArea] = useState("");
+  
   const characterCounter = (event) => {
     setInputArea(event.target.value);
+  };
+
+  const addItem = (event) => {
+    event.preventDefault();
+    axios
+      .post("/items/add", {
+         sellerName,
+        product: productName,
+        price,
+        image: "imageInput.value",
+        description,
+      })
+      .then((res) => {
+        res.status(200);
+        alert("Your item has been posted!");
+      })
+      .catch((err) => {
+        console.error(err);
+        return;
+      });
   };
 
   return (
@@ -49,6 +50,7 @@ const PostItem = () => {
                 variant='outlined'
                 className='seller-name-post-input text-input-white'
                 id='seller-input'
+                onChange={(event) => setSellerName(event.target.value)}
               />
               <br />
               <br />
@@ -59,6 +61,7 @@ const PostItem = () => {
                   variant='outlined'
                   className='item-name-input text-input-white'
                   id='item-input'
+                  onChange={(event) => setProductName(event.target.value)}
                 />
                 <br />
                 <br />
@@ -81,12 +84,15 @@ const PostItem = () => {
                 variant='outlined'
                 className='item-price-input text-input-white'
                 id='price-input'
+                onChange={(event) => setPrice(event.target.value)}
               />
               <br />
               <br />
               <TextareaAutosize
                 className='post-item-textarea'
-                onChange={characterCounter}
+                onChange={(event) => {
+                  characterCounter(event)
+                  setDescription(event.target.value)}}
                 id='text-area'
                 placeholder='Enter item description'
                 maxLength={300}
