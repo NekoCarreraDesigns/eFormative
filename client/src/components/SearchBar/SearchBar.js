@@ -12,7 +12,10 @@ const SearchBar = ({ onSearch }) => {
           console.log(response)
           const searchResults = await response.json()
           onSearch(searchResults)
+        } else if (searchTerm.trim() !== "") {
+          onSearch(searchTerm.toLowerCase())
         } else {
+          alert("please add a value to the search bar")
           console.error("error fetching results", response.status)
         }
       } catch (err) {
