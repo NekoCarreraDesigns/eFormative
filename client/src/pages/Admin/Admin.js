@@ -20,7 +20,7 @@ const Admin = () => {
 
   const handleBlockUser = () => {
     axios
-      .post("admin/block-user", { username })
+      .post("/admin/block-user", { username })
       .then((response) => {
         if (response.data.success) {
           setIsBlocked(true);
@@ -39,7 +39,7 @@ const Admin = () => {
 
   const handelImageRemoval = () => {
     axios
-      .delete(`admin/image-removal/${imageId}`)
+      .delete(`/admin/image-removal/${imageId}`)
       .then((response) => {
         if (response.data.success) {
           setRemoveImage(true);
@@ -58,7 +58,7 @@ const Admin = () => {
 
   const searchByUsername = (event) => {
     axios
-      .get(`admin/search-images-by-username/${username}`)
+      .get(`/admin/search-images-by-username/${username}`)
       .then((response) => {
         const images = response.data.images;
         if (images.length > 0) {
