@@ -6,8 +6,8 @@ const SignupCTASection = () => {
   let navigate = useNavigate();
 
   const signUpRedirect = () => {
-    let path = `/signup`;
-    navigate(path);
+    let signupPath = `/signup`;
+    navigate(signupPath);
   };
 
   return (
@@ -27,7 +27,7 @@ const SignupCTASection = () => {
               Contribute to a sustainable future by buying and selling electric
               products with ease.
             </p>
-            <button className='signup-cta-button' onClick={signUpRedirect}>
+            <button className='signup-cta-button' onClick={signUpRedirect} aria-label="button to join the marketplace">
               Sign Up Now
             </button>
           </div>
