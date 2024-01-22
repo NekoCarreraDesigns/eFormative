@@ -18,13 +18,13 @@ const AdminRegistration = () => {
   }
 
   const handleRegistration = () => {
-    let path = `/pages/admin-login`;
+    let registrationPath = `/pages/admin-login`;
     axios
       .post("/admin/register-pin", { pin })
       .then((res) => {
         if (res.data.success) {
           setMessage("PIN registered successfully");
-          navigate(path);
+          navigate(registrationPath);
         } else {
           setMessage("PIN was not registered");
         }
