@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Admin.css";
 
 const AdminLogin = () => {
-  let path = `/pages/admin`;
+  let adminPath = `/pages/admin`;
   let navigate = useNavigate();
   const [pin, setPin] = useState("");
   const [message, setMessage] = useState("");
@@ -24,7 +24,7 @@ const AdminLogin = () => {
       .then((response) => {
         if (response.data.success) {
           setMessage("login successful");
-          navigate(path);
+          navigate(adminPath);
         } else {
           setMessage("PIN is incorrect");
         }
