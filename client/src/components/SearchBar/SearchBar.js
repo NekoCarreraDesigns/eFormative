@@ -8,6 +8,8 @@ const SearchBar = ({ onSearch }) => {
       try {
         const response = await fetch(`/market/search`)
         if (response.ok) {
+          console.log("clicked")
+          console.log(response)
           const searchResults = await response.json()
           onSearch(searchResults)
         } else {
