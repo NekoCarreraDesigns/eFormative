@@ -30,7 +30,7 @@ const AdminRegistration = () => {
         }
       })
       .catch((error) => {
-        setMessage("An error occurred while trying yo register PIN");
+        setMessage("An error occurred while trying to register PIN");
         console.log(error);
       });
   };
