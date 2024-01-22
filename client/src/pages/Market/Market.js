@@ -34,12 +34,12 @@ const Market = () => {
       }
     };
 
-    fetchData(); // Call the fetch function inside useEffect
+    fetchData()
   }, []);
 
   const fetchItems = async (searchTerm) => {
     try {
-      const res = await axios.get("/market/items", {
+      const res = await axios.get("/market/search", {
         params: { search: searchTerm },
       });
       setDisplayedItems(res.data);
@@ -47,7 +47,6 @@ const Market = () => {
       console.log(error);
       setErrorMessage("Error fetching items");
     }
-    fetchItems(""); // Pass an empty string to fetch all items
   };
 
   const handleSave = async (itemId) => {
