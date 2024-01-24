@@ -21,7 +21,7 @@ const Reviews = () => {
 
   return (
     <>
-      <div className='hero-section'>
+      <div className='hero-section reviews-container'>
         <h1 className='reviews-page-header'>Reviews</h1>
        <SearchBar/>
             <button
@@ -29,8 +29,6 @@ const Reviews = () => {
               onClick={postReview}>
               Post A Review
             </button>
-      </div>
-      <div className='reviews-container'>
         {reviews?.map((review, userReview) => (
           <div key={userReview} className='reviews-item'>
             <h1 className='reviews-header'>
