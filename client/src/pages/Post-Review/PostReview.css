@@ -1,10 +1,10 @@
 .post-review-header {
     color: rgb(255, 255, 255);
-    margin-top: 40px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
   
 .review-container {
-    background-color: rgb(0, 100, 15);
     padding: 4vw 0 10vw;
     text-align: center;
     width: 100%;
@@ -33,13 +33,13 @@
     border-radius: 5px;
 }
   
-.post-review-button {
-    background-color: rgb(71, 137, 8);
+.clear-btn-green-border {
+    border-color: rgb(100, 200, 50);
     margin: auto;
 }
 
-.post-review-button:hover {
-    background-color: rgb(12,13, 200);
+.clear-btn-green-border:hover {
+    background-color: rgb(100, 200, 50);
 }
   
 .upload-button {
