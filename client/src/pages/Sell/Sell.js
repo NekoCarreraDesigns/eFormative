@@ -5,6 +5,7 @@ import "./Sell.css";
 
 const Sell = () => {
   const [username, setUsername] = useState("");
+  const [userPassword, setUserPassword] = useState("")
   let navigate = useNavigate();
 
   const signUpRedirect = () => {
@@ -16,20 +17,21 @@ const Sell = () => {
     setUsername(event.target.value);
   };
 
+  const handlePasswordChange = (event) => {
+    setUserPassword(event.target.value)
+  }
+
   const userSignIn = async (event) => {
-    let sellerPath = `/seller`;
-    const usernameInput = document.getElementById("username");
-    const userPasswordInput = document.getElementById("user-password");
     event.preventDefault();
     try {
       const { data } = await axios.post("/sign-in", {
-        username: usernameInput.value,
-        password: userPasswordInput.value,
+        username,
+        password: userPassword,
       });
 
       if (data.message === "Successful Login!") {
-        sessionStorage.setItem("user", JSON.stringify(usernameInput.value));
-        navigate(sellerPath);
+        sessionStorage.setItem("user", JSON.stringify(username));
+        navigate("/seller");
       }
     } catch (err) {
       if (err.response && err.response.status === 400) {
@@ -54,6 +56,7 @@ const Sell = () => {
                 type='text'
                 placeholder='please type username '
                 id='username'
+                aria-label="username input for login"
                 value={username}
                 onChange={handleUsernameChange}></input>
               <br />
@@ -61,15 +64,18 @@ const Sell = () => {
                 className='user-password-input text-input-white'
                 placeholder='please enter password'
                 id='user-password'
-                type='password'></input>
+                type='password'
+                aria-label="input for user password"
+                value={userPassword}
+                onChange={handlePasswordChange}></input>
               <br />
-              <button className='clear-btn-green-border user-login-submit-button' type='submit'>
+              <button className='clear-btn-green-border user-login-submit-button' type='submit' aria-label="click button to login">
                 Login
               </button>
             </form>
           </div>
           <p className='new-seller-paragraph'>New sellers please sign up here.</p>
-          <button className='clear-btn-sm user-signup-redirect' onClick={signUpRedirect}>
+          <button className='clear-btn-sm clear-btn-green-border user-signup-redirect' onClick={signUpRedirect}>
             signup
           </button>
       </div>
