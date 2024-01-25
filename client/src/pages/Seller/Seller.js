@@ -30,13 +30,12 @@ const Seller = () => {
   useEffect(() => {
     const userCookie = getCookie("user");
     if (userCookie) {
-      const userFromCookie = JSON.parse(userCookie);
-      setUser(userFromCookie);
+      setUser(JSON.parse(userCookie));
 
       // Fetch items that the user is selling
       const fetchSellingItems = async () => {
         try {
-          const response = await axios.get(`/api/items/selling?userId=${userFromCookie.userId}`);
+          const response = await axios.get(`/market/items/selling`);
           setSellingItems(response.data);
         } catch (error) {
           console.error("Error fetching selling items data", error);
@@ -46,7 +45,7 @@ const Seller = () => {
       // Fetch items that the user has sold
       const fetchSoldItems = async () => {
         try {
-          const response = await axios.get(`/api/items/sold?userId=${userFromCookie.userId}`);
+          const response = await axios.get(`/market/items/sold`);
           setSoldItems(response.data);
         } catch (error) {
           console.error("Error fetching sold items data", error);
@@ -69,34 +68,36 @@ const Seller = () => {
       <button className='clear-btn-green-border post-item-button' onClick={postItemRedirect} aria-label="button to sell items">
         Post an item to sell
       </button>
+      <br/>
       <button className='logout-button clear-btn-green-border' aria-label="button to logout of site" onClick={handleLogout}>
         Logout
       </button>
 
-      <div className='items-sold-div'>
-          <h1 className='items-sold-header'>Items Sold</h1>
-          {soldItems.map((item, index) => (
-            <div key={index} className='items-selling-div'>
-
-              <img alt='sale-item' src={item.image}></img>
-              <h3>{item.product}</h3>
-              <h3>{item.price}</h3>
-            </div>
-          ))}
-        </div>
-
-      {sellingItems &&
-        sellingItems.map((item, index) => (
-          <div key={index} className='items-selling-div'>
-            <h1 className='items-selling-header'>Items Selling</h1>
-            <img alt='sale-item'>
-              {item.image}
-            </img>
-            <h3>{item.product}</h3>
-            <h3>{item.price}</h3>
+      {sellingItems.length > 0 && (
+          <div className='items-selling-div'>
+            <h1 className='items-selling-header'>Items For Sale</h1>
+            {sellingItems.map((item) => (
+              <div key={item.id}>
+                <img alt='sale-item' src={item.image} />
+                <h3>{item.product}</h3>
+                <h3>{item.price}</h3>
+              </div>
+            ))}
           </div>
-        ))}
-        </div>
+        )}
+      {soldItems.length > 0 && (
+          <div className='items-sold-div'>
+            <h1 className='items-sold-header'>Items Sold</h1>
+            {soldItems.map((item) => (
+              <div key={item.id}>
+                <img alt='sale-item' src={item.image} />
+                <h3>{item.product}</h3>
+                <h3>{item.price}</h3>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 };
