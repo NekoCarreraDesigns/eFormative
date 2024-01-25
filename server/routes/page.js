@@ -339,6 +339,7 @@ pageRoutes.route("/market/items").get(function (req, res) {
     });
 });
 
+// this is the route for the search function
 pageRoutes.route("/market/search").get(function(req, res) {
   let db_connect = db.getDb();
   let searchParams = req.query;
@@ -365,54 +366,8 @@ pageRoutes.route("/market/search").get(function(req, res) {
   })
 })
 
-pageRoutes.route("/market/sellers").get(function (req, res) {
-  let db_connect = db.getDb();
-  let sellerName = req.query.sellerName;
-  // db_connect.collection("items").dropIndex(sellerName);
-  // db_connect.collection("items").createIndex({ "$**": "text" });
-  if (typeof sellerName === "string" && sellerName.trim().length > 0) {
-    db_connect
-      .collection("items")
-      .find({ $text: { $search: sellerName } })
-      .toArray(function (err, sellers) {
-        if (err) {
-          console.error(err);
-          res.status(400).send({ message: "Item is not found" });
-        }
-        console.log(sellers);
-        res.json(sellers);
-      });
-  }
-});
-
-pageRoutes.route("/market/products").get(function (req, res) {
-  let db_connect = db.getDb();
-  let product = req.query.product;
-  db_connect.collection("items").createIndex({ "$**": "text" });
-  db_connect
-    .collection("items")
-    .find({ $text: { $search: product } })
-    .toArray(function (err, products) {
-      if (err) res.send("Error");
-      console.log(products);
-    });
-});
-
-pageRoutes.route("/market/price").get(function (req, res) {
-  let db_connect = db.getDb();
-  let price = req.query.price;
-  db_connect.collection("items").createIndex({ "$**": "text" });
-  db_connect
-    .collection("items")
-    .find({ $text: { $search: price } })
-    .toArray(function (err, prices) {
-      if (err) res.send("error");
-      console.log(prices);
-    });
-});
-
 // this is for the seller page, to show items the user has sold
-pageRoutes.route("/items/sold/").get(function (req, res) {
+pageRoutes.route("/market/items/sold/").get(function (req, res) {
   let db_connect = db.getDb();
   let itemQuery = { itemSold: true };
   db_connect.collection("items").find(itemQuery, function (err, result) {
@@ -424,7 +379,8 @@ pageRoutes.route("/items/sold/").get(function (req, res) {
   });
 });
 
-pageRoutes.route("items/selling/").get(function (req, res) {
+// this is the route to show the items the user is selling
+pageRoutes.route("/market/items/selling").get(function (req, res) {
   let db_connect = db.getDb();
   let itemQuery = { itemSold: false };
   db_connect.collection("items").find(itemQuery, function (err, result) {
@@ -435,7 +391,8 @@ pageRoutes.route("items/selling/").get(function (req, res) {
   });
 });
 
-pageRoutes.route("/items/update/:id").put(function (req, res) {
+// this is the route for when a user needs to edit some information
+pageRoutes.route("market/items/update/:id").put(function (req, res) {
   let db_connect = db.getDb();
   let updateItemQuery = { _id: ObjectId(req.params.id) };
   let newItemValues = {
@@ -462,7 +419,8 @@ pageRoutes.route("/items/update/:id").put(function (req, res) {
     });
 });
 
-pageRoutes.route("/items/add").post(function (req, res) {
+// this is the route for adding an item to the market place
+pageRoutes.route("/market/items/add").post(function (req, res) {
   let db_connect = db.getDb();
   let itemObj = {
     sellerName: req.body.sellerName,
@@ -490,7 +448,8 @@ pageRoutes.route("/items/add").post(function (req, res) {
   });
 });
 
-pageRoutes.route("/items/:id").delete(function (req, res) {
+// this is the the route for the user to edit information about an item
+pageRoutes.route("/market/items/:id").delete(function (req, res) {
   try {
     let db_connect = db.getDb();
     let removeItemQuery = { _id: ObjectId(req.params.id) };
@@ -513,7 +472,8 @@ pageRoutes.route("/items/:id").delete(function (req, res) {
   }
 });
 
-pageRoutes.route("/items/saved/:id").post(function (req, res) {
+// this is the route to show a specific item the user saved
+pageRoutes.route("/market/items/saved/:id").post(function (req, res) {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).send({ message: "Invalid item id" });
   }
@@ -538,7 +498,8 @@ pageRoutes.route("/items/saved/:id").post(function (req, res) {
   });
 });
 
-pageRoutes.route("/items/saved").post(async function (req, res) {
+// this is a route to save an item from the marketplace
+pageRoutes.route("/market/items/save").post(async function (req, res) {
   try {
     let db_connect = db.getDb();
     let itemId = req.body.itemId;
@@ -555,7 +516,8 @@ pageRoutes.route("/items/saved").post(async function (req, res) {
   }
 });
 
-pageRoutes.route("/items/saved").get(function (req, res) {
+// this is a route to show on the user page what items they have saved
+pageRoutes.route("/market/items/saved").get(function (req, res) {
   let db_connect = db.getDb();
   db_connect
     .collection("savedItems")
@@ -570,7 +532,8 @@ pageRoutes.route("/items/saved").get(function (req, res) {
     });
 });
 
-pageRoutes.route("/items/saved/:id").get(function (req, res) {
+// this is a route to help the user find a specific saved item
+pageRoutes.route("/market/items/saved/:id").get(function (req, res) {
   let db_connect = db.getDb();
   let itemId = req.params.id;
   db_connect
@@ -585,7 +548,8 @@ pageRoutes.route("/items/saved/:id").get(function (req, res) {
     });
 });
 
-pageRoutes.route("/items/saved/user/:userId").get(function (req, res) {
+// This is a route to display the for the current logged in user
+pageRoutes.route("/market/items/saved/user/:userId").get(function (req, res) {
   let db_connect = db.getDb();
   let userId = req.params.userId;
   db_connect
@@ -601,6 +565,7 @@ pageRoutes.route("/items/saved/user/:userId").get(function (req, res) {
     });
 });
 
+// Route to store the user input images
 pageRoutes.route("/user/images").post(function (req, res) {
   let db_connect = db.getDb();
   let image = req.body.image;
