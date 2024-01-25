@@ -1,24 +1,25 @@
-import React from "react";
+import {React, useState} from "react";
 import axios from "axios";
 import "./Signup.css";
+
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
   let navigate = useNavigate();
   let postItemPath = `/post-item`;
 
-  const userPostSignUp = () => {
-    const fullNameInput = document.querySelector("input");
-    const usernameInput = document.getElementById("userName");
-    const userEmailInput = document.getElementById("email");
-    const passwordInput0 = document.getElementById("password0");
-
+  const userPostSignUp = (event) => {
+    event.preventDefault()
     axios
       .post("/seller", {
-        fullName: fullNameInput.value,
-        username: usernameInput.value,
-        email: userEmailInput.value,
-        password: passwordInput0.value,
+        fullName: fullName,
+        username: username,
+        email: email,
+        password: password,
       })
       .then((res) => {
         res.json({ message: "Sign Up Successful" });
@@ -38,26 +39,27 @@ const Signup = () => {
           <input
             className="fullName-input text-input-white"
             placeholder="Please enter full name"
+            onChange={(event) => setFullName(event.target.value)}
           />
           <br />
           <input
             className="userName-input text-input-white"
             placeholder="Please enter a username"
-            id="userName"
+            onChange={(event) => setUsername(event.target.value)}
           />
           <br />
           <input
             type="text"
             className="email-input text-input-white"
             placeholder="Please enter an email"
-            id="email"
+            onChange={(event) => setEmail(event.target.value)}
           />
           <br />
           <input
             type="password"
             className="password-input text-input-white"
             placeholder="Please enter a password"
-            id="password0"
+            onChange={(event) => setPassword(event.target.value)}
           />
           <br />
           <button className="clear-btn-green-border user-signup-button" type="submit">
