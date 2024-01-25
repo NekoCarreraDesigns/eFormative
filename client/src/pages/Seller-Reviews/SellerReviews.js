@@ -14,8 +14,7 @@ const SellerReviews = () => {
     <>
       <div className='hero-section'>
         <h1 className='seller-reviews-header'>Seller Reviews</h1>
-
-        <div className='reviews-container'>
+          <div className='reviews-container'>
           {sellers?.map((sellers, reviewDisplay) => (
             <div key={reviewDisplay} className='reviews-item'>
               <h1 className='reviews-header'>
