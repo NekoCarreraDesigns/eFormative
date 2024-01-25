@@ -20,7 +20,7 @@ const PostItem = () => {
   const addItem = (event) => {
     event.preventDefault();
     axios
-      .post("/items/add", {
+      .post("/market/items/add", {
          sellerName,
         product: productName,
         price,
