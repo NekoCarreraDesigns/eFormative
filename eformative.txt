@@ -1,0 +1,15 @@
+eformative website
+
+The website is a fullstack site that uses the MERN stack. The database is a MongoDB serverless instance, the connect.txt file will go into an 
+explanation of the database requirements for the site. The site utilizes the express api framework for the node.js backend that makes the site
+CRUD capable. The frontend uses React framework, this site was created using CRA, so the production site is set up accordingly so, this is to 
+avoid problems during production. Unfortunately CRA is no longer being maintained by Facebook and thus is on its way out. 
+Whoever takes this site on will have to deal with certain problems that may arise from this. A conversion to a different potential framework
+would be something to consider. The React developers say to convert to Next.Js which is very similar to React, both use state management 
+and controlled components. Something else that needs to be addressed is the npm dependencies that the project uses, whoever takes on this codebase
+will need to update these packages, there is the potential to have these updates create breaking changes in the site, so plan and test accordingly.
+
+The site has a separate server directory that controls the backend of the app, as well as the backend dependencies that will also need updating, 
+like the frontend there is potential to cause breaking changes. The Client directory will need updating as well. The site has styled components
+with certain global styles applied to the page, the images have been compressed to take up less space. the site is hosted on GitHub Pages and
+Heroku for the backend.  
