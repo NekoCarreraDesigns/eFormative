@@ -55,7 +55,7 @@ const Sell = () => {
                 className='username-input text-input-white'
                 type='text'
                 placeholder='please type username '
-                id='username'
+                name="username"
                 aria-label="username input for login"
                 value={username}
                 onChange={handleUsernameChange}></input>
@@ -64,6 +64,7 @@ const Sell = () => {
                 className='user-password-input text-input-white'
                 placeholder='please enter password'
                 id='user-password'
+                name="user-password"
                 type='password'
                 aria-label="input for user password"
                 value={userPassword}
