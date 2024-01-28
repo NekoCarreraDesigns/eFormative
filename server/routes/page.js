@@ -7,6 +7,7 @@ const sanitizeHtml = require("sanitize-html");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { session, passport } = require("../auth");
+require("dotenv").config({ path: "./config.env" });
 // router middleware
 const pageRoutes = express.Router();
 // database connection
@@ -31,14 +32,14 @@ pageRoutes.route("/seller/sign-up").post(async (req, res) => {
   };
   db_connect
     .collection("users")
-    .insertOne(newUserObj, async function (err, mongoRes) {
+    .insertOne(newUserObj, async function (err, res) {
       if (err) {
         console.error(err);
         res.status(500).send({ error: "internal server error" });
       } else {
         db_connect
           .collection("users")
-          .findOne({ username: req.body.username }, function (err, result) {
+          .findOne({ username: req.body.username }, function (err, res) {
             if (err) {
               console.error(err);
               res.status(500).send({ error: "internal server error" });
@@ -54,7 +55,7 @@ pageRoutes.route("/seller/sign-up").post(async (req, res) => {
 
 pageRoutes.use(
   session({
-    secret: "Wednesday's child is full of woe",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
   })
