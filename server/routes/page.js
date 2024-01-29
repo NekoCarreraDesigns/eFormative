@@ -32,20 +32,23 @@ pageRoutes.route("/seller/sign-up").post(async (req, res) => {
   };
   console.log("received sign up request", req.body)
   try {
-    const result = await db_connect.collection("users").insertOne(newUserObj);
-
-    console.log("Insert result:", result);
-
-    if (result.insertedCount > 0) {
-      res.json({ message: "Sign Up Successful" });
-    } else {
-      res.status(500).json({ error: "Failed to insert user" });
-    }
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal server error" });
+    db_connect.collection("users").insertOne(newUserObj, async function (err, result) {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ error: "Internal server error" });
+      } else {
+        if (result.insertedCount > 0) {
+          res.json({ message: "Sign Up Successful" });
+        } else {
+          console.error("Failed to insert user. No documents inserted.");
+          res.status(500).json({ error: "Failed to insert user" });
+        }
+      }
+    });
+  } catch(err) {
+      console.error("Failed to insert user:", err);
+      res.status(500).json({ error: "Internal server error" });
   }
-  
 });
 
 pageRoutes.use(
