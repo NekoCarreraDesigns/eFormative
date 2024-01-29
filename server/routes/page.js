@@ -20,37 +20,32 @@ app.use(bodyParser.json());
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller/sign-up").post(async (req, res) => {
-  const { fullName, username, password } = req.body;
+  const { fullName, username, email, password } = req.body;
   const hash = await bcrypt.hash(password, 13);
   let db_connect = db.getDb();
   let newUserObj = {
-    fullName: req.body.fullName,
-    username: req.body.username,
-    email: req.body.email,
+    fullName: fullName,
+    username: username,
+    email: email,
     password: hash,
     blocked: false,
   };
-  db_connect
-    .collection("users")
-    .insertOne(newUserObj, async function (err, res) {
-      if (err) {
-        console.error(err);
-        res.status(500).send({ error: "internal server error" });
-      } else {
-        db_connect
-          .collection("users")
-          .findOne({ username: req.body.username }, function (err, res) {
-            if (err) {
-              console.error(err);
-              res.status(500).send({ error: "internal server error" });
-            } else if (res !== null) {
-              res.status(400).send({ message: "username already exists" });
-            } else {
-              res.json({ message: "hello new user!" });
-            }
-          });
-      }
-    });
+  console.log("received sign up request", req.body)
+  try {
+    const result = await db_connect.collection("users").insertOne(newUserObj);
+
+    console.log("Insert result:", result);
+
+    if (result.insertedCount > 0) {
+      res.json({ message: "Sign Up Successful" });
+    } else {
+      res.status(500).json({ error: "Failed to insert user" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+  
 });
 
 pageRoutes.use(
