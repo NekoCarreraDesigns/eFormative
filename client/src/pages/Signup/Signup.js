@@ -15,7 +15,7 @@ const Signup = () => {
   const userPostSignUp = (event) => {
     event.preventDefault()
     axios
-      .post("/seller", {
+      .post("/seller/sign-up", {
         fullName: fullName,
         username: username,
         email: email,
@@ -27,7 +27,8 @@ const Signup = () => {
         navigate(postItemPath);
       })
       .catch((err) => {
-        if (err) throw err;
+        console.error(err)
+        alert("Failed to signup, please try again later")
       });
   };
 
@@ -39,12 +40,16 @@ const Signup = () => {
           <input
             className="fullName-input text-input-white"
             placeholder="Please enter full name"
+            name="full name"
+            aria-label="full name input for seller signup"
             onChange={(event) => setFullName(event.target.value)}
           />
           <br />
           <input
             className="userName-input text-input-white"
             placeholder="Please enter a username"
+            name="user name"
+            aria-label="username input for seller signup"
             onChange={(event) => setUsername(event.target.value)}
           />
           <br />
@@ -52,6 +57,8 @@ const Signup = () => {
             type="text"
             className="email-input text-input-white"
             placeholder="Please enter an email"
+            name="user email"
+            aria-label="email input for seller signup"
             onChange={(event) => setEmail(event.target.value)}
           />
           <br />
@@ -59,6 +66,8 @@ const Signup = () => {
             type="password"
             className="password-input text-input-white"
             placeholder="Please enter a password"
+            name="password"
+            aria-label= "user password input for seller signup"
             onChange={(event) => setPassword(event.target.value)}
           />
           <br />
