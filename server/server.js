@@ -9,19 +9,20 @@ require("dotenv").config({ path: "./config.env" });
 // declaring the port to be used for the server
 const PORT = process.env.PORT || 3001;
 // cors setup for backend to frontend communication
-const allowedOrigin = ["https://eformative.com"];
+// const allowedOrigin = ["https://eformative.com"];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigin.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("not allowed by cors"));
-    }
-  },
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (allowedOrigin.includes(origin) || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("not allowed by cors"));
+//     }
+//   },
+// };
 // express middleware
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
