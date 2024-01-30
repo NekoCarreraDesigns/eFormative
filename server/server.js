@@ -39,7 +39,7 @@ app.listen(PORT, () => {
   db.connectToServer(function (err, req, res, next) {
     if (err) {
       console.error(err);
-      res.status(500).send({ message: "internal server error" });
+      process.exit(1);
     } else {
       db.setUpSession(app);
     }
