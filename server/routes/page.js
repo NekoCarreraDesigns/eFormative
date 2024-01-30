@@ -20,34 +20,36 @@ app.use(bodyParser.json());
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller/sign-up").post(async (req, res) => {
+  try {
+  let db_connect = db.getDb();
   const { fullName, username, email, password } = req.body;
   const hash = await bcrypt.hash(password, 13);
-  let db_connect = db.getDb();
-  let newUserObj = {
-    fullName: fullName,
-    username: username,
-    email: email,
-    password: hash,
-    blocked: false,
-  };
-  console.log("received sign up request", req.body)
-  try {
-    db_connect.collection("users").insertOne(newUserObj, async function (err, result) {
-      if (err) {
-        console.error(err);
-        res.status(500).send({ error: "Internal server error" });
-      } else {
-        if (result.insertedCount > 0) {
-          res.json({ message: "Sign Up Successful" });
-        } else {
-          console.error("Failed to insert user. No documents inserted.");
-          res.status(500).json({ error: "Failed to insert user" });
-        }
-      }
+    
+    const existingUser = await db_connect.collection("users").findOne({
+      $or: [{ username: username }, { email: email }],
     });
-  } catch(err) {
-      console.error("Failed to insert user:", err);
-      res.status(500).json({ error: "Internal server error" });
+
+    if (existingUser) {
+      console.error("Username or email already exists.");
+      return res.status(400).json({ error: "Username or email already exists" });
+    }
+
+    const result = await db_connect.collection("users").insertOne({
+      fullName: fullName,
+      username: username,
+      email: email,
+      password: hash,
+      blocked: false,
+    });
+    if (result.acknowledged && result.insertedId) {
+      res.status(200).json({ message: "Sign Up Successful" });
+    } else {
+      console.error("Failed to insert user. No documents inserted.");
+      res.status(500).json({ error: "Failed to insert user" });
+    }
+  } catch (err) {
+    console.error("Failed to insert user:", err);
+    res.status(500).json({ error: `Failed to insert user: Error: ${err.message}` });
   }
 });
 
