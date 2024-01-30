@@ -14,22 +14,20 @@ const Signup = () => {
 
   const userPostSignUp = (event) => {
     event.preventDefault()
-    axios
-      .post("/seller/sign-up", {
+    try {
+      const response = axios.post("/seller/sign-up", {
         fullName: fullName,
         username: username,
         email: email,
         password: password,
-      })
-      .then((res) => {
-        res.json({ message: "Sign Up Successful" });
-        alert("Thanks for joining us!");
-        navigate(postItemPath);
-      })
-      .catch((err) => {
-        console.error(err)
-        alert("Failed to signup, please try again later")
+        blocked: false,
       });
+      console.log("Signup successful:", response);
+      navigate(postItemPath);
+    } catch (error) {
+      console.log("Signup failed:", error.response);
+      alert("Signup failed. Please check the console for details.");
+    }
   };
 
   return (
