@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie"
@@ -30,6 +30,12 @@ const Seller = () => {
   };
 
   useEffect(() => {
+    Cookies.set("testCookie", "Hello, world!");
+    const testCookie = Cookies.get("testCookie");
+    console.log("Test Cookie:", testCookie);
+
+
+
     console.log("All Cookies", document.cookie);
     const userCookie = getCookie("users");
     console.log("userCookie:", userCookie);
