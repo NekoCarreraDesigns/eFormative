@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "universal-cookie"
 import "./Seller.css";
 
 const Seller = () => {
-  const [user, setUser] = useState({});
+  const [users, setUser] = useState({});
   const [sellingItems, setSellingItems] = useState([]);
   const [soldItems, setSoldItems] = useState([])
   let navigate = useNavigate();
-
-  function getCookie(name) {
-    let value = "; " + document.cookie;
-    let parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  }
+  
+  function getCookie() {
+    const cookies = new Cookies()
+    const userCookie = cookies.get("users");
+    console.log("retrieved cookie", userCookie)
+    return userCookie ? userCookie : null;
+}
 
   const postItemRedirect = () => {
     let postItemPath = `/post-item`;
@@ -22,17 +24,21 @@ const Seller = () => {
 
   const handleLogout = (event) => {
     event.preventDefault();
-    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("users");
     navigate("/sell");
     console.log("logged out");
   };
 
   useEffect(() => {
-    const userCookie = getCookie("user");
+    console.log("All Cookies", document.cookie);
+    const userCookie = getCookie("users");
+    console.log("userCookie:", userCookie);
     if (userCookie) {
-      setUser(JSON.parse(userCookie));
+      const users = JSON.parse(decodeURIComponent(userCookie));
+      console.log("users", users);
+      setUser(users);
 
-      // Fetch items that the user is selling
+    // Fetch items that the user is selling
       const fetchSellingItems = async () => {
         try {
           const response = await axios.get(`/market/items/selling`);
@@ -61,8 +67,8 @@ const Seller = () => {
     <>
       <div className='hero-section'>
         <div>
-          {user && (
-            <h1 className='seller-page-header'>Welcome {user.firstName}!</h1>
+          {users && (
+            <h1 className='seller-page-header'>Welcome {users.fullName}!</h1>
           )}
         </div>
       <button className='clear-btn-green-border post-item-button' onClick={postItemRedirect} aria-label="button to sell items">
