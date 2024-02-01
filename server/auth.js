@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const app = express();
 const db = require("./db/connection");
 const flash = require("connect-flash");
+require("dotenv").config({ path: "./config.env" });
 
 passport.use(
   "local",
@@ -53,7 +54,7 @@ passport.deserializeUser((id, done) => {
 
 app.use(
   session({
-    secret: "Wednesday's child is full of woe",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
