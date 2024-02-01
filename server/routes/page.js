@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const sanitizeHtml = require("sanitize-html");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const { session, passport } = require("../auth");
+const { passport } = require("../auth");
 require("dotenv").config({ path: "./config.env" });
 // router middleware
 const pageRoutes = express.Router();
@@ -53,47 +53,61 @@ pageRoutes.route("/seller/sign-up").post(async (req, res) => {
   }
 });
 
-pageRoutes.use(
-  session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-
 pageRoutes.route("/user/sign-in").post(
   (req, res, next) => {
     if (!req.body.username || !req.body.password) {
       res.status(400).send({ message: "Username or password is incorrect" });
+    } else {
+      next();
     }
-    next();
   },
   (req, res, next) => {
     req.body.username = sanitizeHtml(req.body.username);
     req.body.password = sanitizeHtml(req.body.password);
     next();
   },
-  passport.authenticate("local", {
-    failureRedirect: "/sign-in",
-    successRedirect: "/seller",
-    failureFlash: true,
-  }),
-  (req, res) => {
-    req.session.username = req.user;
-    try {
-      res.cookie("user", JSON.stringify(req.session.username), {
-        httpOnly: true,
-        maxAge: "1h",
-      });
-      res.status(200).send({ message: "Successful login!" });
-    } catch (err) {
+  (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
       if (err) {
         console.error(err);
-        res.status(500).send({ message: "internal server error" });
+        return res.status(500).send({ message: "Internal server error" });
       }
-    }
+
+      if (!user) {
+        return res.status(401).send({ message: "Authentication failed" });
+      }
+      // Manually log in the user
+      req.logIn(user, (loginErr) => {
+        if (loginErr) {
+          console.error(loginErr);
+          return res.status(500).send({ message: "Internal server error" });
+        }
+        const sessionData = {
+          username: user.username,
+          fullName: user.fullName,
+        }
+        
+        req.session.username = sessionData;
+        res.cookie("users", req.session.username, {
+          httpOnly: true,
+          maxAge: 3600000,
+          path: "/",
+          sameSite: "None",
+          secure: true,
+        });
+        res.status(200).send({
+          message: "Successful login!",
+          users: {
+            username: req.user.username,
+            fullName: req.user.fullName,
+          }
+        });
+        
+      });
+    })(req, res, next); 
   }
 );
+
 
 // routes for users with queries to database
 pageRoutes.route("/user/find").get(function (req, res) {
