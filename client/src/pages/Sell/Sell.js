@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "universal-cookie"
 import "./Sell.css";
 
 const Sell = () => {
@@ -9,8 +10,8 @@ const Sell = () => {
   let navigate = useNavigate();
 
   const signUpRedirect = () => {
-    let path = `/signup`;
-    navigate(path);
+    let signupRedirectPath = `/signup`;
+    navigate(signupRedirectPath);
   };
 
   const handleUsernameChange = (event) => {
@@ -20,24 +21,25 @@ const Sell = () => {
   const handlePasswordChange = (event) => {
     setUserPassword(event.target.value)
   }
-
+  const cookies = new Cookies();
   const userSignIn = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post("/sign-in", {
+      const { data } = await axios.post("/user/sign-in", {
         username,
         password: userPassword,
       });
 
-      if (data.message === "Successful Login!") {
-        sessionStorage.setItem("user", JSON.stringify(username));
+      if (data.message === "Successful login!") {
+        cookies.set("users", data.users, {path:"/"});
+        console.log(data)
         navigate("/seller");
       }
     } catch (err) {
       if (err.response && err.response.status === 400) {
-        console.error("Invalid username or password");
+        console.error("Invalid username or password", err);
       } else {
-        console.error(err);
+        console.error("You must enter a username and password into each field",err);
       }
     }
   };
