@@ -1,16 +1,14 @@
-import {React, useEffect, useState, useMemo } from "react";
+import {React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from "universal-cookie"
 import "./Seller.css";
+
 
 const Seller = () => {
   const [users, setUser] = useState({});
   const [sellingItems, setSellingItems] = useState([]);
   const [soldItems, setSoldItems] = useState([])
   let navigate = useNavigate();
-  const cookies = useMemo(() => new Cookies(), []);
-  
   
   const postItemRedirect = () => {
     let postItemPath = `/post-item`;
@@ -23,27 +21,33 @@ const Seller = () => {
     navigate("/sell");
     console.log("logged out");
   };
-  
+
+
   useEffect(() => {
     function getCookie(name) {
-      const userCookie = cookies.get(name);
-      console.log("retrieved cookie", name,  userCookie)
-      return userCookie ? userCookie : null;
-  }
-    cookies.set("testCookie", "Hello, world!");
-    const testCookie = cookies.get("testCookie");
-    console.log("Test Cookie:", testCookie);
-
-
-
-    console.log("All Cookies", document.cookie);
+      const cookieName = name + "=";
+      const cookieArray = document.cookie.split(';');
+      for (let i = 0; i < cookieArray.length; i++) {
+        let cookie = cookieArray[i].trim();
+        if (cookie.indexOf(cookieName) === 0) {
+          return cookie.substring(cookieName.length, cookie.length);
+        }
+      }
+      return null; // Cookie not found
+    }
+  
+    // Log all available cookies
+    console.log("All Cookies:", document.cookie);
+  
+    // Retrieve the "users" cookie
     const userCookie = getCookie("users");
-    console.log("userCookie:", userCookie);
+    console.log("Retrieved 'users' cookie:", userCookie);
+  
     if (userCookie) {
       const users = JSON.parse(decodeURIComponent(userCookie));
-      console.log("users", users);
+      console.log("Parsed 'users' cookie:", users);
       setUser(users);
-
+    }
     // Fetch items that the user is selling
       const fetchSellingItems = async () => {
         try {
@@ -66,8 +70,7 @@ const Seller = () => {
 
       fetchSellingItems();
       fetchSoldItems();
-    }
-  },[cookies]);
+  },[]);
 
   return (
     <>
@@ -89,7 +92,7 @@ const Seller = () => {
           <div className='items-selling-div'>
             <h1 className='items-selling-header'>Items For Sale</h1>
             {sellingItems.map((item) => (
-              <div key={item.id}>
+              <div key={item.selling}>
                 <img alt='sale-item' src={item.image} />
                 <h3>{item.product}</h3>
                 <h3>{item.price}</h3>
