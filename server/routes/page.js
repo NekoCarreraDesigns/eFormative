@@ -91,7 +91,7 @@ pageRoutes.route("/user/sign-in").post(
         res.cookie("users", req.session.username, {
           httpOnly: true,
           maxAge: 3600000,
-          path: "/",
+          path: "/seller",
           sameSite: "None",
           secure: true,
         });
@@ -385,10 +385,11 @@ pageRoutes.route("/market/search").get(function(req, res) {
 pageRoutes.route("/market/items/sold/").get(function (req, res) {
   let db_connect = db.getDb();
   let itemQuery = { itemSold: true };
-  db_connect.collection("items").find(itemQuery, function (err, result) {
+  db_connect.collection("items").find(itemQuery).toArray(function (err, result) {
     if (err) {
       console.error(err);
-      res.status(404).send({ message: "not found" });
+      res.status(500).send({ message: "Internal server error" });
+      return;
     }
     res.json(result);
   });
@@ -398,12 +399,24 @@ pageRoutes.route("/market/items/sold/").get(function (req, res) {
 pageRoutes.route("/market/items/selling").get(function (req, res) {
   let db_connect = db.getDb();
   let itemQuery = { itemSold: false };
-  db_connect.collection("items").find(itemQuery, function (err, result) {
-    if (err) {
-      res.status(500).send({ message: "internal server error" });
-    }
-    res.json(result);
-  });
+
+  // Use try-catch block to handle potential errors
+  try {
+    // Use toArray() to convert cursor to array of documents
+    db_connect.collection("items").find(itemQuery).toArray((err, result) => {
+      if (err) {
+        // Handle error by sending appropriate response
+        console.error("Error fetching selling items:", err);
+        return res.status(500).json({ message: "Internal server error" });
+      }
+      // Send the result as JSON response
+      res.json(result);
+    });
+  } catch (error) {
+    // Catch any synchronous errors
+    console.error("Error in fetching selling items:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 // this is the route for when a user needs to edit some information
