@@ -28,7 +28,6 @@ const PostItem = () => {
         description,
       })
       .then((res) => {
-        res.status(200);
         alert("Your item has been posted!");
       })
       .catch((err) => {
