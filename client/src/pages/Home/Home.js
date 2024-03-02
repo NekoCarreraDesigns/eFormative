@@ -22,7 +22,7 @@ const Home = () => {
           alt='eformative-logo'
           src='/assets/eformative-logo-white.png'
         />
-        <h2 className='home-page-header'>Have Fun, and help the planet!</h2>
+        <h2 className='home-page-header'>Have fun and help the planet!</h2>
         <div className='button-container'>
           <button className='clear-btn-green-border' onClick={getLocation}>
             Find Your Market
