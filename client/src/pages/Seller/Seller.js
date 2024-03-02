@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from "react";
+import {React, useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie"
@@ -9,29 +9,29 @@ const Seller = () => {
   const [sellingItems, setSellingItems] = useState([]);
   const [soldItems, setSoldItems] = useState([])
   let navigate = useNavigate();
+  const cookies = useMemo(() => new Cookies(), []);
   
-  function getCookie() {
-    const cookies = new Cookies()
-    const userCookie = cookies.get("users");
-    console.log("retrieved cookie", userCookie)
-    return userCookie ? userCookie : null;
-}
-
+  
   const postItemRedirect = () => {
     let postItemPath = `/post-item`;
     navigate(postItemPath);
   };
-
+  
   const handleLogout = (event) => {
     event.preventDefault();
     sessionStorage.removeItem("users");
     navigate("/sell");
     console.log("logged out");
   };
-
+  
   useEffect(() => {
-    Cookies.set("testCookie", "Hello, world!");
-    const testCookie = Cookies.get("testCookie");
+    function getCookie(name) {
+      const userCookie = cookies.get(name);
+      console.log("retrieved cookie", name,  userCookie)
+      return userCookie ? userCookie : null;
+  }
+    cookies.set("testCookie", "Hello, world!");
+    const testCookie = cookies.get("testCookie");
     console.log("Test Cookie:", testCookie);
 
 
@@ -67,7 +67,7 @@ const Seller = () => {
       fetchSellingItems();
       fetchSoldItems();
     }
-  }, []);
+  },[cookies]);
 
   return (
     <>
