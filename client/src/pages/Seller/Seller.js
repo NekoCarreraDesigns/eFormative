@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Seller.css";
 
-
 const Seller = () => {
   const [users, setUser] = useState({});
   const [sellingItems, setSellingItems] = useState([]);
@@ -92,7 +91,7 @@ const Seller = () => {
           <div className='items-selling-div'>
             <h1 className='items-selling-header'>Items For Sale</h1>
             {sellingItems.map((item) => (
-              <div key={item.selling}>
+              <div key={item}>
                 <img alt='sale-item' src={item.image} />
                 <h3>{item.product}</h3>
                 <h3>{item.price}</h3>
