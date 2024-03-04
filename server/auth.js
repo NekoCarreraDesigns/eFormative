@@ -1,6 +1,5 @@
 const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
-const session = require("express-session");
 const express = require("express");
 const bcrypt = require("bcrypt");
 const app = express();
@@ -52,21 +51,11 @@ passport.deserializeUser((id, done) => {
     });
 });
 
-app.use(
-  session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true },
-  })
-);
-
 app.use(flash());
 
 app.use(passport.session());
 app.use(passport.initialize());
 
 module.exports = {
-  passport,
-  session,
+  passport
 };

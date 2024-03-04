@@ -3,10 +3,12 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser")
 const sanitizeHtml = require("sanitize-html");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { passport } = require("../auth");
+const session = require("express-session");
 require("dotenv").config({ path: "./config.env" });
 // router middleware
 const pageRoutes = express.Router();
@@ -17,6 +19,30 @@ const ObjectId = require("mongodb").ObjectId;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+
+pageRoutes.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  })
+);
+
+pageRoutes.use(passport.initialize());
+pageRoutes.use(passport.session());
+
+const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    console.log("user authenticated")
+    return next();
+  } else {
+    console.log("authentication failed")
+  }
+  res.status(401).json({ message: "Unauthorized" });
+};
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller/sign-up").post(async (req, res) => {
@@ -33,8 +59,11 @@ pageRoutes.route("/seller/sign-up").post(async (req, res) => {
       console.error("Username or email already exists.");
       return res.status(400).json({ error: "Username or email already exists" });
     }
+    
+    const userId = new ObjectId();
 
     const result = await db_connect.collection("users").insertOne({
+      _id: userId,
       fullName: fullName,
       username: username,
       email: email,
@@ -77,12 +106,13 @@ pageRoutes.route("/user/sign-in").post(
         return res.status(401).send({ message: "Authentication failed" });
       }
       // Manually log in the user
-      req.logIn(user, (loginErr) => {
+      req.logIn(user, async (loginErr) => {
         if (loginErr) {
           console.error(loginErr);
           return res.status(500).send({ message: "Internal server error" });
         }
         const sessionData = {
+          _id: user._id,
           username: user.username,
           fullName: user.fullName,
         }
@@ -98,10 +128,12 @@ pageRoutes.route("/user/sign-in").post(
         res.status(200).send({
           message: "Successful login!",
           users: {
+            _id: req.user._id,
             username: req.user.username,
             fullName: req.user.fullName,
           }
         });
+        req.session.userId = user._id
         
       });
     })(req, res, next); 
@@ -396,24 +428,28 @@ pageRoutes.route("/market/items/sold/").get(function (req, res) {
 });
 
 // this is the route to show the items the user is selling
-pageRoutes.route("/market/items/selling").get(function (req, res) {
+pageRoutes.route("/market/items/selling").get(async (req, res) => {
   let db_connect = db.getDb();
-  let itemQuery = { itemSold: false };
-
-  // Use try-catch block to handle potential errors
+  console.log("Session contents", req.session)
+  let userId = req.session.userId
+  console.log("user in session", userId)
+  let itemQuery = { 
+    itemSold: false,
+    sellerId: userId
+  };
+  
+  console.log("item query", itemQuery)
+  
   try {
-    // Use toArray() to convert cursor to array of documents
     db_connect.collection("items").find(itemQuery).toArray((err, result) => {
       if (err) {
-        // Handle error by sending appropriate response
         console.error("Error fetching selling items:", err);
-        return res.status(500).json({ message: "Internal server error" });
+        return res.status(500).json({ message: "Internal server error, route has nothing in it or user is not valid" });
       }
-      // Send the result as JSON response
+      // console.log(result)
       res.json(result);
     });
   } catch (error) {
-    // Catch any synchronous errors
     console.error("Error in fetching selling items:", error);
     res.status(500).json({ message: "Internal server error" });
   }
@@ -450,7 +486,9 @@ pageRoutes.route("market/items/update/:id").put(function (req, res) {
 // this is the route for adding an item to the market place
 pageRoutes.route("/market/items/add").post(function (req, res) {
   let db_connect = db.getDb();
+  let userId = new ObjectId()
   let itemObj = {
+    sellerId: userId,
     sellerName: req.body.sellerName,
     product: req.body.product,
     price: req.body.price,
