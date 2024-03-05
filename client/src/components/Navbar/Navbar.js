@@ -60,6 +60,13 @@ const Navbar = () => {
           >
             Sell
           </Link>
+          <Link
+            className={`navbar-link ${location.pathname === "/seller" ? "active" : ""}`}
+            to="/seller"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Profile
+          </Link>
         </div>
         <div className="navbar-logo-container">
           <Link to="/">
