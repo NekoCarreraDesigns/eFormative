@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
 import { FormControl, TextareaAutosize, FormHelperText } from "@mui/material";
 import OnImageChange from "../../images/images";
 import "./PostItem.css";
@@ -12,7 +13,8 @@ const PostItem = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [inputArea, setInputArea] = useState("");
-  
+  const navigate = useNavigate()
+  const marketPath = `/market`
   const characterCounter = (event) => {
     setInputArea(event.target.value);
   };
@@ -29,6 +31,7 @@ const PostItem = () => {
       })
       .then((res) => {
         alert("Your item has been posted!");
+        navigate(marketPath)
       })
       .catch((err) => {
         console.error(err);
