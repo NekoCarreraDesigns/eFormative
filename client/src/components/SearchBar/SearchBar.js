@@ -1,31 +1,43 @@
 import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  Typography,
+  CardContent,
+  CardActions,
+  IconButton,
+} from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./SearchBar.css";
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = async () => {
-      try {
-        const response = await fetch(`/market/search`)
+    try {
+      if (searchTerm.trim() !== "") {
+        const response = await fetch(`/market/search?term=${encodeURIComponent(searchTerm)}`);
         if (response.ok) {
-          console.log("clicked")
-          console.log(response)
-          const searchResults = await response.json()
-          onSearch(searchResults)
-        } else if (searchTerm.trim() !== "") {
-          onSearch(searchTerm.toLowerCase())
+          const items = await response.json();
+          setSearchResults(items);
         } else {
-          alert("please add a value to the search bar")
-          console.error("error fetching results", response.status)
+          alert("Failed to fetch search results");
+          console.error("Error fetching results", response.status);
         }
-      } catch (err) {
-        console.error("error during search",)
+      } else {
+        setSearchResults([]);
       }
+    } catch (err) {
+      console.error("Error during search", err);
+    }
   };
-
+  
   const handleClear = () => {
     setSearchTerm("");
-    onSearch("");
+    setSearchResults([]);
   };
 
   return (
@@ -46,6 +58,32 @@ const SearchBar = ({ onSearch }) => {
         <button className='clear-button clear-btn-sm' onClick={handleClear}>
           Clear
         </button>
+      </div>
+      {/* Display search results */}
+      <div className="card-container">
+        {searchResults.map((item, index) => (
+          <Card elevation={6} className='item-card' key={index}>
+          <CardHeader
+            title={item.product}
+            subheader={item.sellerName}
+          />
+          <CardMedia
+            image='http://placehold.jp/150x150.png'
+            title={item.product}
+          />
+          <CardContent>
+            <Typography variant='body2' color='textSecondary' component='p'>
+              {item.description}
+              {item.price}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <IconButton>
+              <FontAwesomeIcon icon={faStar} size='1x' color='gold' />
+            </IconButton>
+          </CardActions>
+        </Card>
+        ))}
       </div>
     </div>
   );

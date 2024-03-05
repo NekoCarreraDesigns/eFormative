@@ -87,3 +87,10 @@
     justify-content: center;
     margin-bottom: 60px;
 }
+
+.item-card {
+    display: flex;
+    flex-direction: column;
+    grid-row: span 1;
+    transition: transform 0.5s ease-in-out;
+}
