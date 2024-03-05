@@ -10,42 +10,43 @@ import {
 import OnImageChange from "../../images/images";
 import "./PostReview.css";
 
-const addReview = () => {
-  const reviewerNameInput = document.getElementById("seller-name");
-  const productInput = document.getElementById("product-name");
-  const sellerReviewInput = document.getElementById("seller-review");
-  const area = document.querySelector("textarea");
 
-  axios
-    .all([
-      axios.post("/seller/reviews/post", {
-        reviewerName: reviewerNameInput.value,
-        sellerName: sellerReviewInput.value,
-        review: area.value,
-      }),
-      axios.post("/product/reviews/post", {
-        reviewerName: reviewerNameInput.value,
-        sellerName: sellerReviewInput.value,
-        productName: productInput.value,
-        review: area.value,
-      }),
-    ])
-    .then(
-      axios.spread((res) => {
-        console.log(res);
-        alert("Review has been added");
-      })
-    )
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-const PostReview = () => {
-  const [input, setInput] = useState(" ");
+  
+  const PostReview = () => {
+  const [formData, setFormData] = useState({
+    reviewerName: "",
+    product: "",
+    sellerName: "",
+    review: "",
+  });
+  
   const inputHandler = (event) => {
-    setInput(event.target.value);
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
+
+
+  const addReview = (event) => {
+    event.preventDefault();
+    axios
+      .all([
+        axios.post("/seller/reviews/post", formData),
+        axios.post("/product/reviews/post", formData),
+      ])
+      .then(
+        axios.spread((res1, res2) => {
+          console.log(res1, res2);
+          alert("Review has been added");
+        })
+      )
+      .catch((err) => {
+        console.log(err);
+        alert("Failed to add review");
+      });
+    };
 
   return (
     <>
@@ -63,6 +64,9 @@ const PostReview = () => {
                 type='text'
                 aria-label="Name input for the reviewer"
                 placeholder='Please enter your name'
+                name="reviewerName"
+                value={formData.reviewerName}
+                onChange={inputHandler}
               />
               <br />
               <br />
@@ -73,6 +77,9 @@ const PostReview = () => {
                 type='text'
                 placeholder='Product being reviewed'
                 aria-label="name of the product being reviewed input"
+                name="product"
+                value={formData.product}
+                onChange={inputHandler}
               />
               <br />
               <br />
@@ -83,6 +90,9 @@ const PostReview = () => {
                 placeholder='Seller being reviewed'
                 id='seller-review'
                 aria-label=" name of seller being reviewed"
+                name="sellerName"
+                value={formData.sellerName}
+                onChange={inputHandler}
               />
               <br />
               <br />
@@ -105,11 +115,13 @@ const PostReview = () => {
                 className='user-post-review-textarea text-input-dark'
                 id='review-text-area'
                 aria-label="user textarea to write reviews about sellers or products"
+                name="review"
+                value={formData.review}
                 onChange={inputHandler}
               />
               <br />
               <span className='character-count-span'>
-                <strong>{300 - input.length} characters left</strong>
+                <strong>{300 - formData.review.length} characters left</strong>
               </span>
               <br />
               <button className='clear-btn-green-border clear-btn-sm' type='submit' aria-label="click button to submit your review">

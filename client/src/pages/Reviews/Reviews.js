@@ -14,7 +14,7 @@ const Reviews = () => {
   };
 
   useEffect(() => {
-    fetch("/reviews")
+    fetch("/reviews/items")
       .then((res) => res.json())
       .then((reviews) => setReview(reviews));
   });
@@ -33,7 +33,7 @@ const Reviews = () => {
           <div key={userReview} className='reviews-item'>
             <h1 className='reviews-header'>
               Reviewer: {review.reviewerName}, Seller: {review.sellerName},
-              Product: {review.productName}
+              Product: {review.product}
             </h1>{" "}
             <div className='reviews-div'>{review.review}</div> <hr />
           </div>
