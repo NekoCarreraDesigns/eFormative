@@ -90,8 +90,8 @@ const Seller = () => {
       {sellingItems.length > 0 && (
           <div className='items-selling-div'>
             <h1 className='items-selling-header'>Items For Sale</h1>
-            {sellingItems.map((item) => (
-              <div key={item}>
+            {sellingItems.map((item, selling) => (
+              <div key={selling}>
                 <img alt='sale-item' src={item.image} />
                 <h3>{item.product}</h3>
                 <h3>{item.price}</h3>
@@ -102,8 +102,8 @@ const Seller = () => {
       {soldItems.length > 0 && (
           <div className='items-sold-div'>
             <h1 className='items-sold-header'>Items Sold</h1>
-            {soldItems.map((item) => (
-              <div key={item.id}>
+            {soldItems.map((item, sold) => (
+              <div key={sold}>
                 <img alt='sale-item' src={item.image} />
                 <h3>{item.product}</h3>
                 <h3>{item.price}</h3>
