@@ -9,7 +9,6 @@ const Footer = () => {
       <br/>
       <Link className='footer-link' to='/about'>About Us</Link>
       <br />
-      <Link className='footer-link' to='/admin-login'>Admin Login</Link>
     </footer>
   );
 };
