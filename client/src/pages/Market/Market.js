@@ -26,7 +26,7 @@ const Market = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("market/items");
+        const response = await axios.get("/market/items");
         setDisplayedItems(response.data);
       } catch (error) {
         console.log(error);
