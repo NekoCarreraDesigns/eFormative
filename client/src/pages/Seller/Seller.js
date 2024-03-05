@@ -1,5 +1,12 @@
 import {React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  Typography,
+  CardContent
+} from "@mui/material";
 import axios from "axios";
 import "./Seller.css";
 
@@ -91,11 +98,22 @@ const Seller = () => {
           <div className='items-selling-div'>
             <h1 className='items-selling-header'>Items For Sale</h1>
             {sellingItems.map((item, selling) => (
-              <div key={selling}>
-                <img alt='sale-item' src={item.image} />
-                <h3>{item.product}</h3>
-                <h3>{item.price}</h3>
-              </div>
+               <Card elevation={6} className='item-card' key={selling}>
+               <CardHeader
+                 title={item.product}
+                 subheader={item.sellerName}
+               />
+               <CardMedia
+                 image='http://placehold.jp/150x150.png'
+                 title={item.product}
+               />
+               <CardContent>
+                 <Typography variant='body2' color='textSecondary' component='p'>
+                   {item.description}
+                   {item.price}
+                 </Typography>
+               </CardContent>
+             </Card>
             ))}
           </div>
         )}
