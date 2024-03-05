@@ -392,16 +392,12 @@ pageRoutes.route("/market/search").get(function(req, res) {
   let searchParams = req.query;
   let searchCriteria = {};
 
-  if (searchParams.sellerName) {
-    searchCriteria.sellerName = searchParams.sellerName
-  }
-
-  if (searchParams.product) {
-    searchCriteria.product = searchParams.product
-  }
-
-  if (searchParams.price) {
-    searchCriteria.price = searchParams.price
+ if (searchParams.term) {
+    // Assuming you want to search for the term in sellerName and product fields
+    searchCriteria.$or = [
+      { sellerName: { $regex: searchParams.term, $options: "i" } }, // Case-insensitive search
+      { product: { $regex: searchParams.term, $options: "i" } } // Case-insensitive search
+    ];
   }
 
   db_connect.collection("items").find(searchCriteria).toArray(function (err, result) {
@@ -435,7 +431,6 @@ pageRoutes.route("/market/items/selling").get(async (req, res) => {
   console.log("user in session", userId)
   let itemQuery = { 
     itemSold: false,
-    sellerId: userId
   };
   
   console.log("item query", itemQuery)
