@@ -9,7 +9,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { passport } = require("../auth");
 const session = require("express-session");
-const multer = require("multer")
 require("dotenv").config({ path: "./config.env" });
 // router middleware
 const pageRoutes = express.Router();
@@ -35,16 +34,15 @@ pageRoutes.use(
 pageRoutes.use(passport.initialize());
 pageRoutes.use(passport.session());
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads"); 
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname); 
-  },
-});
-
-const upload = multer({ storage: storage });
+const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    console.log("user authenticated")
+    return next();
+  } else {
+    console.log("authentication failed")
+  }
+  res.status(401).json({ message: "Unauthorized" });
+};
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller/sign-up").post(async (req, res) => {
@@ -394,14 +392,12 @@ pageRoutes.route("/market/search").get(function(req, res) {
   let searchParams = req.query;
   let searchCriteria = {};
 
- if (searchParams.term) {
-    // Assuming you want to search for the term in sellerName and product fields
+  if (searchParams.term) {
     searchCriteria.$or = [
-      { sellerName: { $regex: searchParams.term, $options: "i" } }, // Case-insensitive search
-      { product: { $regex: searchParams.term, $options: "i" } } // Case-insensitive search
+      { sellerName: { $regex: searchParams.term, $options: "i" } }, 
+      { product: { $regex: searchParams.term, $options: "i" } } 
     ];
   }
-
   db_connect.collection("items").find(searchCriteria).toArray(function (err, result) {
     if (err) {
       console.error(err)
@@ -481,19 +477,14 @@ pageRoutes.route("market/items/update/:id").put(function (req, res) {
 });
 
 // this is the route for adding an item to the market place
-pageRoutes.route("/market/items/add").post(upload.array("images", 1), function (req, res) {
+pageRoutes.route("/market/items/add").post(function (req, res) {
   let db_connect = db.getDb();
   let userId = new ObjectId();
-  
-  
-  let images = req.files.map((file) => file.filename);
-
   let itemObj = {
     sellerId: userId,
     sellerName: req.body.sellerName,
     product: req.body.product,
     price: req.body.price,
-    images: images, 
     description: req.body.description,
     itemSold: false,
   };
@@ -504,18 +495,19 @@ pageRoutes.route("/market/items/add").post(upload.array("images", 1), function (
     !req.body.price ||
     !req.body.description
   ) {
-    return res.status(400).send({ message: "all fields are required!" });
+    return res.status(400).send({ message: "All fields are required!" });
   }
 
   db_connect.collection("items").insertOne(itemObj, function (err, result) {
     if (err) {
       console.error(err);
-      return res.status(500).send({ message: "internal server error" });
+      return res.status(500).send({ message: "Internal server error" });
     }
     console.log("Item added!");
-    return res.json(result);
+    res.json(result);
   });
 });
+
 
 // this is the the route for the user to edit information about an item
 pageRoutes.route("/market/items/:id").delete(function (req, res) {
@@ -541,115 +533,6 @@ pageRoutes.route("/market/items/:id").delete(function (req, res) {
   }
 });
 
-// this is the route to show a specific item the user saved
-pageRoutes.route("/market/items/saved/:id").post(function (req, res) {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    return res.status(400).send({ message: "Invalid item id" });
-  }
-  let db_connect = db.getDb();
-  let savedItem = { _id: new mongoose.Types.ObjectId(req.params.id) };
-  db_connect.collection("items").findOne(savedItem, function (err, item) {
-    if (err) {
-      console.error(err);
-      res.status(500).send({ message: "internal server error" });
-    } else {
-      db_connect
-        .collection("savedItems")
-        .insertOne({ _id: item.id }, function (err, result) {
-          if (err) {
-            console.error(err);
-            res.status(500).send({ message: "internal server error" });
-          } else {
-            res.json(item);
-          }
-        });
-    }
-  });
-});
 
-// this is a route to save an item from the marketplace
-pageRoutes.route("/market/items/save").post(async function (req, res) {
-  try {
-    let db_connect = db.getDb();
-    let itemId = req.body.itemId;
-    let savedItem = { _id: ObjectId(itemId) };
-    let item = await db_connect.collection("items").findOne(savedItem);
-    if (!item) {
-      return res.status(404).send({ message: "item not found" });
-    }
-    await db_connect.collection("savedItems").insertOne(item);
-    res.json({ message: "item saved" });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({ message: "internal server error" });
-  }
-});
-
-// this is a route to show on the user page what items they have saved
-pageRoutes.route("/market/items/saved").get(function (req, res) {
-  let db_connect = db.getDb();
-  db_connect
-    .collection("savedItems")
-    .find({})
-    .toArray(function (err, savedItems) {
-      if (err) {
-        console.error(err);
-        res.status(500).send(err);
-      } else {
-        res.json(savedItems);
-      }
-    });
-});
-
-// this is a route to help the user find a specific saved item
-pageRoutes.route("/market/items/saved/:id").get(function (req, res) {
-  let db_connect = db.getDb();
-  let itemId = req.params.id;
-  db_connect
-    .collection("savedItems")
-    .findOne({ _id: ObjectId(itemId) }, function (err, item) {
-      if (err) {
-        console.error(err);
-        res.status(500).send(err);
-      } else {
-        res.json(item);
-      }
-    });
-});
-
-// This is a route to display the for the current logged in user
-pageRoutes.route("/market/items/saved/user/:userId").get(function (req, res) {
-  let db_connect = db.getDb();
-  let userId = req.params.userId;
-  db_connect
-    .collection("savedItems")
-    .find({ userId: userId })
-    .toArray(function (err, savedItems) {
-      if (err) {
-        console.error(err);
-        res.status(500).send(err);
-      } else {
-        res.json(savedItems);
-      }
-    });
-});
-
-// Route to store the user input images
-pageRoutes.route("/user/images").post(function (req, res) {
-  let db_connect = db.getDb();
-  let image = req.body.image;
-  db_connect.collection("items").insertOne(image, function (err) {
-    if (err) {
-      console.error(err);
-      res
-        .status(500)
-        .send({ error: "internal server error, process cannot be executed" });
-    } else if (!req.body.image) {
-      res.status(400).send({ message: "must have image to upload" });
-    } else {
-      res.send({ message: "upload successful" });
-    }
-  });
-});
 
 module.exports = pageRoutes;
