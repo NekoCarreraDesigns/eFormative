@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 
-const OnImageChange = (event) => {
-  const [images, setImages] = useState([]);
-  const [imageURL, setImageURL] = useState([]);
+const OnImageChange = ({ files }) => {
+  const [imageURLs, setImageURLs] = useState([]);
 
   useEffect(() => {
-    if (images.length < 1) return;
-    const newImageURL = [];
-    images.forEach((image) => newImageURL.push(URL.createObjectURL(image)));
-    setImageURL(newImageURL);
-  }, [images]);
-  setImages([...event.target.files]);
+    const newImageURLs = [];
+    files.forEach((file) => {
+      const imageURL = URL.createObjectURL(file);
+      newImageURLs.push(imageURL);
+    });
+    setImageURLs(newImageURLs);
+
+    return () => {
+      newImageURLs.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [files]);
+
   return (
     <>
-      {imageURL.map((images, displayImage) => (
-        <img alt='user-selected' key={displayImage} src={images.image}></img>
+      {imageURLs.map((imageURL, index) => (
+        <img key={index} src={imageURL} alt={`${index}`} />
       ))}
     </>
   );
