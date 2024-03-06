@@ -9,16 +9,14 @@ import {
   CardContent,
   CardActions,
   IconButton,
-  Snackbar,
-  CircularProgress,
+  Snackbar
 } from "@mui/material";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+
+
 
 const Market = () => {
   const [displayedItems, setDisplayedItems] = useState([]);
-  const [savedItems, setSavedItems] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
@@ -46,18 +44,6 @@ const Market = () => {
     } catch (error) {
       console.log(error);
       setErrorMessage("Error fetching items");
-    }
-  };
-
-  const handleSave = async (itemId) => {
-    <CircularProgress aria-busy='true' />;
-    try {
-      await axios.post("items/saved", { itemId: itemId });
-      setSavedItems([...savedItems, itemId]);
-      setSuccessMessage("Item saved successfully");
-    } catch (error) {
-      console.log(error);
-      setErrorMessage("Error saving item");
     }
   };
 
@@ -124,11 +110,6 @@ const Market = () => {
                   {item.price}
                 </Typography>
               </CardContent>
-              <CardActions>
-                <IconButton onClick={() => handleSave(item.id)}>
-                  <FontAwesomeIcon icon={faStar} size='1x' color='gold' />
-                </IconButton>
-              </CardActions>
             </Card>
           ))}
         </div>
