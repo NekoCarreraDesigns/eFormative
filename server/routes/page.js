@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { passport } = require("../auth");
 const session = require("express-session");
+const multer = require("multer")
 require("dotenv").config({ path: "./config.env" });
 // router middleware
 const pageRoutes = express.Router();
@@ -34,15 +35,16 @@ pageRoutes.use(
 pageRoutes.use(passport.initialize());
 pageRoutes.use(passport.session());
 
-const isAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    console.log("user authenticated")
-    return next();
-  } else {
-    console.log("authentication failed")
-  }
-  res.status(401).json({ message: "Unauthorized" });
-};
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads"); 
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname); 
+  },
+});
+
+const upload = multer({ storage: storage });
 
 // user sign up that redirects to the seller page
 pageRoutes.route("/seller/sign-up").post(async (req, res) => {
@@ -479,33 +481,39 @@ pageRoutes.route("market/items/update/:id").put(function (req, res) {
 });
 
 // this is the route for adding an item to the market place
-pageRoutes.route("/market/items/add").post(function (req, res) {
+pageRoutes.route("/market/items/add").post(upload.array("images", 1), function (req, res) {
   let db_connect = db.getDb();
-  let userId = new ObjectId()
+  let userId = new ObjectId();
+  
+  
+  let images = req.files.map((file) => file.filename);
+
   let itemObj = {
     sellerId: userId,
     sellerName: req.body.sellerName,
     product: req.body.product,
     price: req.body.price,
-    image: req.body.image,
+    images: images, 
     description: req.body.description,
     itemSold: false,
   };
+
   if (
     !req.body.sellerName ||
     !req.body.product ||
     !req.body.price ||
     !req.body.description
   ) {
-    res.status(400).send({ message: "all fields are required!" });
+    return res.status(400).send({ message: "all fields are required!" });
   }
+
   db_connect.collection("items").insertOne(itemObj, function (err, result) {
     if (err) {
       console.error(err);
-      res.status(500).send({ message: "internal server error" });
+      return res.status(500).send({ message: "internal server error" });
     }
     console.log("Item added!");
-    res.json(result);
+    return res.json(result);
   });
 });
 
@@ -643,134 +651,5 @@ pageRoutes.route("/user/images").post(function (req, res) {
     }
   });
 });
-
-// admin routes
-
-pageRoutes.route("/admin/register-pin").post(async function (req, res) {
-  try {
-    const db_connect = db.getDb();
-    const pinsCollection = db_connect.collection("administrator");
-    const { pin } = req.body;
-    const pinkSalt = 13;
-    const hashedPin = await bcrypt.hash(pin, pinkSalt);
-    const existingPin = await pinsCollection.findOne({ hashedPin });
-
-    if (existingPin) {
-      res
-        .status(400)
-        .json({ success: false, message: "PIN already registered." });
-    } else {
-      await pinsCollection.insertOne({ hashedPin });
-      res
-        .status(200)
-        .json({ success: true, message: "PIN registered successfully!" });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Internal server error." });
-  }
-});
-
-pageRoutes.route("/admin/login").post(async function (req, res) {
-  try {
-    const db_connect = db.getDb();
-    const { pin } = req.body;
-    const pinsCollection = db_connect.collection("administrator")
-    const registeredPin = await pinsCollection.findOne({ hashedPin: pin });
-    console.log("existing pin:", registeredPin)
-    
-    if (!registeredPin) {
-      res.status(401).json({ message: "Admin PIN not found" });
-      return;
-    }
-    
-    const isMatch = await bcrypt.compare(pin, registeredPin.hashedPin);
-    console.log("isMatch:", isMatch)
-
-    if (!isMatch) {
-      res
-        .status(400)
-        .json({ success: false, message: "PIN entered is incorrect" });
-    } else {
-      res.status(200).json({ success: true, message: "PIN was accepted" });
-      res.redirect("/admin")
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-
-pageRoutes.route("/admin/block-user").post(async function (req, res) {
-  try {
-    const db_connect = db.getDb();
-    const { username } = req.body;
-    const user = await db_connect.collections("users").findOne(username);
-
-    if (!user) {
-      res.status(404).json({ success: false, message: "user not found" });
-      return;
-    }
-    await db_connect
-      .collection("users")
-      .updateOne({ username }, { $set: { blocked: true } });
-    res
-      .status(200)
-      .json({ success: true, message: `User '${username}' has been blocked` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Internal server error" });
-  }
-});
-
-pageRoutes.route("/admin/remove-picture").delete(async function (req, res) {
-  try {
-    const db_connect = db.getDb();
-    const { id } = req.params;
-    const removePicture = await db_connect
-      .collection("images")
-      .findOne({ _id: id });
-
-    if (!removePicture) {
-      res.status(404).json({ success: false, message: "Image not found" });
-    } else {
-      res.status(200).json({ success: true, message: "image found" });
-    }
-
-    await db_connect.collection("images").deleteOne({ _id: id });
-    res
-      .status(200)
-      .json({ success: true, message: "Image removed successfully" });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Internal server error" });
-  }
-});
-
-pageRoutes
-  .route("/admin/search-images-by-username/:username")
-  .get(async function (req, res) {
-    try {
-      const db_connect = db.getDb();
-      const { username } = req.params;
-
-      if (!username) {
-        res
-          .status(404)
-          .json({ success: false, message: "username doesn't exist" });
-      }
-
-      const images = await db_connect
-        .collection("images")
-        .find({ username })
-        .toArray();
-
-      res.status(200).json({ success: true, images });
-    } catch (error) {
-      console.error(error);
-      res
-        .status(500)
-        .json({ success: false, message: "Internal server error" });
-    }
-  });
 
 module.exports = pageRoutes;
