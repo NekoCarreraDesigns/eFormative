@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "NekoCarreraDesigns/eformative",
+  "pipelineDirectory": "eformative",
+  "workspaceDirectory": "eformative\\eformative",
+  "repositories": {
+    "NekoCarreraDesigns/eformative": {
+      "repositoryPath": "eformative\\eformative",
+      "lastRunOn": "03/07/2024 19:58:58 -07:00"
+    }
+  },
+  "lastRunOn": "03/07/2024 19:58:58 -07:00"
+}
