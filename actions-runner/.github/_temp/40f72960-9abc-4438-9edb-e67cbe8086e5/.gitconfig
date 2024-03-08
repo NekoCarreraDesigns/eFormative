@@ -1,0 +1,14 @@
+[user]
+	name = NekoCarreraDesigns
+	email = denvermaas@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	editor = \"C:\\Users\\denve\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+[credential "https://git.heroku.com"]
+	provider = generic
+[safe]
+	directory = C:\\Users\\denve\\Desktop\\eformative\\actions-runner\\.github\\eformative\\eformative
