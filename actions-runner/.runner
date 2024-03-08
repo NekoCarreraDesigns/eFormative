@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 22,
+  "agentName": "eformative runner",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/",
+  "gitHubUrl": "https://github.com/NekoCarreraDesigns/eformative",
+  "workFolder": ".github"
+}
