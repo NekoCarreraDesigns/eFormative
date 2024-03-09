@@ -163,3 +163,105 @@
 [2024-03-08 03:06:57Z INFO MessageListener] Received job status event. JobState: Online
 [2024-03-08 03:06:57Z WARN GitHubActionsService] GET request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/messages?sessionId=b31ac663-aad5-43f6-b4cf-8e5e85795d83&lastMessageId=1&status=Busy&runnerVersion=2.314.1&os=Windows&architecture=X64&disableUpdate=false has been cancelled.
 [2024-03-08 03:06:57Z INFO MessageListener] Get messages has been cancelled using local token source. Continue to get messages with new status.
+[2024-03-08 03:14:48Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-08 03:14:48Z INFO MessageListener] Message '2' received from session 'b31ac663-aad5-43f6-b4cf-8e5e85795d83'.
+[2024-03-08 03:14:48Z INFO Runner] Received job message of length 24652 from service, with hash '186dfcfbfc8bc1b62138eb68a9358feddd83ffb709a9bd2e59084805b53b2df4'
+[2024-03-08 03:14:48Z INFO JobDispatcher] Job request 52 for plan 975716a5-1716-4b9d-ab15-72e68c3ee943 job ca395085-040a-526b-2ce8-bdc85f692774 received.
+[2024-03-08 03:14:48Z INFO JobDispatcher] Pull OrchestrationId 975716a5-1716-4b9d-ab15-72e68c3ee943.build.__default from JWT claims
+[2024-03-08 03:14:48Z INFO MessageListener] Received job status event. JobState: Busy
+[2024-03-08 03:14:48Z INFO MessageListener] _getMessagesTokenSource is already disposed.
+[2024-03-08 03:14:48Z INFO JobDispatcher] Job request ca395085-040a-526b-2ce8-bdc85f692774 processed succeed.
+[2024-03-08 03:14:48Z INFO Terminal] WRITE LINE: 2024-03-08 03:14:48Z: Running job: build
+[2024-03-08 03:14:48Z INFO JobDispatcher] Start renew job request 52 for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-08 03:14:48Z INFO JobDispatcher] Successfully renew job request 52, job is valid till 3/8/2024 3:24:48 AM
+[2024-03-08 03:14:48Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\denve\Desktop\eformative\actions-runner\bin\Runner.Worker.exe'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   Arguments: 'spawnclient 1272 1524'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'True'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper]   High priority process: 'True'
+[2024-03-08 03:14:48Z INFO ProcessInvokerWrapper] Process started with process id 13868, waiting for process exit.
+[2024-03-08 03:14:48Z INFO JobDispatcher] Send job request message to worker for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-08 03:14:48Z INFO ProcessChannel] Sending message of length 24652, with hash '186dfcfbfc8bc1b62138eb68a9358feddd83ffb709a9bd2e59084805b53b2df4'
+[2024-03-08 03:14:49Z INFO JobNotification] Entering JobStarted Notification
+[2024-03-08 03:14:49Z INFO JobNotification] Entering StartMonitor
+[2024-03-08 03:15:48Z INFO JobDispatcher] Successfully renew job request 52, job is valid till 3/8/2024 3:25:48 AM
+[2024-03-08 03:16:42Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-08 03:16:42Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-08 03:16:42Z INFO ProcessInvokerWrapper] Finished process 13868 with exit code 102, and elapsed time 00:01:53.6562178.
+[2024-03-08 03:16:42Z INFO JobDispatcher] Worker finished for job ca395085-040a-526b-2ce8-bdc85f692774. Code: 102
+[2024-03-08 03:16:42Z INFO JobDispatcher] finish job request for job ca395085-040a-526b-2ce8-bdc85f692774 with result: Failed
+[2024-03-08 03:16:42Z INFO Terminal] WRITE LINE: 2024-03-08 03:16:42Z: Job build completed with result: Failed
+[2024-03-08 03:16:42Z INFO JobDispatcher] Stop renew job request for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-08 03:16:42Z INFO JobDispatcher] job renew has been cancelled, stop renew job request 52.
+[2024-03-08 03:16:42Z INFO JobNotification] Entering JobCompleted Notification
+[2024-03-08 03:16:42Z INFO JobNotification] Entering EndMonitor
+[2024-03-08 03:16:42Z INFO MessageListener] Received job status event. JobState: Online
+[2024-03-08 03:16:42Z WARN GitHubActionsService] GET request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/messages?sessionId=b31ac663-aad5-43f6-b4cf-8e5e85795d83&lastMessageId=2&status=Busy&runnerVersion=2.314.1&os=Windows&architecture=X64&disableUpdate=false has been cancelled.
+[2024-03-08 03:16:42Z INFO MessageListener] Get messages has been cancelled using local token source. Continue to get messages with new status.
+[2024-03-08 03:19:52Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-08 03:19:52Z INFO MessageListener] Message '3' received from session 'b31ac663-aad5-43f6-b4cf-8e5e85795d83'.
+[2024-03-08 03:19:52Z INFO Runner] Received job message of length 25326 from service, with hash '9c15e7f8d7a2533cf11a219608279a5f79c5e756b0f5ef17d94de8c3148a24fa'
+[2024-03-08 03:19:52Z INFO JobDispatcher] Job request 53 for plan 7cbf422c-7ab5-4fa0-b8e7-467c7c2f67ad job ca395085-040a-526b-2ce8-bdc85f692774 received.
+[2024-03-08 03:19:52Z INFO JobDispatcher] Pull OrchestrationId 7cbf422c-7ab5-4fa0-b8e7-467c7c2f67ad.build.__default from JWT claims
+[2024-03-08 03:19:52Z INFO MessageListener] Received job status event. JobState: Busy
+[2024-03-08 03:19:52Z INFO MessageListener] _getMessagesTokenSource is already disposed.
+[2024-03-08 03:19:52Z INFO JobDispatcher] Job request ca395085-040a-526b-2ce8-bdc85f692774 processed succeed.
+[2024-03-08 03:19:52Z INFO Terminal] WRITE LINE: 2024-03-08 03:19:52Z: Running job: build
+[2024-03-08 03:19:53Z INFO JobDispatcher] Start renew job request 53 for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-08 03:19:53Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:29:53 AM
+[2024-03-08 03:19:53Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\denve\Desktop\eformative\actions-runner\bin\Runner.Worker.exe'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   Arguments: 'spawnclient 1592 1956'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'True'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper]   High priority process: 'True'
+[2024-03-08 03:19:53Z INFO ProcessInvokerWrapper] Process started with process id 14448, waiting for process exit.
+[2024-03-08 03:19:53Z INFO JobDispatcher] Send job request message to worker for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-08 03:19:53Z INFO ProcessChannel] Sending message of length 25326, with hash '9c15e7f8d7a2533cf11a219608279a5f79c5e756b0f5ef17d94de8c3148a24fa'
+[2024-03-08 03:19:57Z INFO JobNotification] Entering JobStarted Notification
+[2024-03-08 03:19:57Z INFO JobNotification] Entering StartMonitor
+[2024-03-08 03:20:54Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:30:53 AM
+[2024-03-08 03:21:54Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:31:53 AM
+[2024-03-08 03:22:54Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:32:53 AM
+[2024-03-08 03:23:54Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:33:53 AM
+[2024-03-08 03:24:54Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:34:54 AM
+[2024-03-08 03:25:55Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:35:54 AM
+[2024-03-08 03:26:55Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:36:55 AM
+[2024-03-08 03:27:55Z INFO JobDispatcher] Successfully renew job request 53, job is valid till 3/8/2024 3:37:55 AM
+[2024-03-08 03:28:31Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-08 03:28:31Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-08 03:28:31Z INFO ProcessInvokerWrapper] Finished process 14448 with exit code 102, and elapsed time 00:08:37.6142433.
+[2024-03-08 03:28:31Z INFO JobDispatcher] Worker finished for job ca395085-040a-526b-2ce8-bdc85f692774. Code: 102
+[2024-03-08 03:28:31Z INFO JobDispatcher] finish job request for job ca395085-040a-526b-2ce8-bdc85f692774 with result: Failed
+[2024-03-08 03:28:31Z INFO Terminal] WRITE LINE: 2024-03-08 03:28:31Z: Job build completed with result: Failed
+[2024-03-08 03:28:31Z INFO JobDispatcher] Stop renew job request for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-08 03:28:31Z INFO JobDispatcher] job renew has been cancelled, stop renew job request 53.
+[2024-03-08 03:28:31Z INFO JobNotification] Entering JobCompleted Notification
+[2024-03-08 03:28:31Z INFO JobNotification] Entering EndMonitor
+[2024-03-08 03:28:31Z INFO MessageListener] Received job status event. JobState: Online
+[2024-03-08 03:28:31Z WARN GitHubActionsService] GET request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/messages?sessionId=b31ac663-aad5-43f6-b4cf-8e5e85795d83&lastMessageId=3&status=Busy&runnerVersion=2.314.1&os=Windows&architecture=X64&disableUpdate=false has been cancelled.
+[2024-03-08 03:28:31Z INFO MessageListener] Get messages has been cancelled using local token source. Continue to get messages with new status.
+[2024-03-08 03:29:51Z INFO Terminal] WRITE LINE: Exiting...
+[2024-03-08 03:29:51Z INFO ConfigurationStore] IsServiceConfigured()
+[2024-03-08 03:29:51Z INFO ConfigurationStore] IsServiceConfigured: False
+[2024-03-08 03:29:51Z INFO HostContext] Runner will be shutdown for UserCancelled
+[2024-03-08 03:29:51Z WARN GitHubActionsService] GET request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/messages?sessionId=b31ac663-aad5-43f6-b4cf-8e5e85795d83&lastMessageId=3&status=Online&runnerVersion=2.314.1&os=Windows&architecture=X64&disableUpdate=false has been cancelled.
+[2024-03-08 03:29:51Z INFO MessageListener] Get next message has been cancelled.
+[2024-03-08 03:29:51Z INFO JobDispatcher] Shutting down JobDispatcher. Make sure all WorkerDispatcher has finished.
+[2024-03-08 03:29:51Z INFO JobDispatcher] Ensure WorkerDispatcher for job ca395085-040a-526b-2ce8-bdc85f692774 run to finish, cancel any running job.
+[2024-03-08 03:29:51Z INFO JobDispatcher] Job request ca395085-040a-526b-2ce8-bdc85f692774 processed succeed.
+[2024-03-08 03:29:51Z INFO Runner] Deleting Runner Session...
+[2024-03-08 03:29:51Z INFO Listener] Runner execution been cancelled.

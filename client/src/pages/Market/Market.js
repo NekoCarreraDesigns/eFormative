@@ -116,7 +116,7 @@ const Market = () => {
       ) : (
         <div className='alert-div'>
           <Typography variant='body1' className='alert-paragraph'>
-            No results found! Could be a misspelling or you're a dumbass!
+            No results found! Could be a misspelling or its just not here!
           </Typography>
         </div>
       )}
