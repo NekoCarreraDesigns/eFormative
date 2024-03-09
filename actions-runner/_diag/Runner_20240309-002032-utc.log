@@ -1,0 +1,168 @@
+[2024-03-09 00:20:32Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2024-03-09 00:20:32Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:32Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:32Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials'
+[2024-03-09 00:20:34Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:34Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:34Z INFO HostContext] Well known config file 'Runner': 'C:\Users\denve\Desktop\eformative\actions-runner\.runner'
+[2024-03-09 00:20:35Z INFO Listener] Runner is built for Windows (X64) - win-x64.
+[2024-03-09 00:20:35Z INFO Listener] RuntimeInformation: Microsoft Windows 10.0.19045.
+[2024-03-09 00:20:35Z INFO Listener] Version: 2.314.1
+[2024-03-09 00:20:35Z INFO Listener] Commit: 976290d966e6cc3e748a49bf8fdbe139ff764201
+[2024-03-09 00:20:35Z INFO Listener] Culture: en-US
+[2024-03-09 00:20:35Z INFO Listener] UI Culture: en-US
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:35Z INFO Listener] Validating directory permissions for: 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:35Z INFO CommandLineParser] Parse
+[2024-03-09 00:20:35Z INFO CommandLineParser] Parsing 1 args
+[2024-03-09 00:20:35Z INFO CommandLineParser] parsing argument
+[2024-03-09 00:20:35Z INFO CommandLineParser] HasArgs: False
+[2024-03-09 00:20:35Z INFO CommandLineParser] Adding Command: run
+[2024-03-09 00:20:35Z INFO Listener] Arguments parsed
+[2024-03-09 00:20:35Z INFO Runner] ExecuteCommand
+[2024-03-09 00:20:35Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\denve\Desktop\eformative\actions-runner\bin\Runner.Listener.dll
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:35Z INFO ConfigurationStore] binPath: C:\Users\denve\Desktop\eformative\actions-runner\bin
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:35Z INFO ConfigurationStore] RootFolder: C:\Users\denve\Desktop\eformative\actions-runner
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:35Z INFO HostContext] Well known config file 'Runner': 'C:\Users\denve\Desktop\eformative\actions-runner\.runner'
+[2024-03-09 00:20:35Z INFO ConfigurationStore] ConfigFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.runner
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:35Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials'
+[2024-03-09 00:20:35Z INFO ConfigurationStore] CredFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.credentials
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:35Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials_migrated'
+[2024-03-09 00:20:35Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.credentials_migrated
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:35Z INFO HostContext] Well known config file 'Service': 'C:\Users\denve\Desktop\eformative\actions-runner\.service'
+[2024-03-09 00:20:35Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.service
+[2024-03-09 00:20:35Z INFO CommandSettings] Flag 'help': 'False'
+[2024-03-09 00:20:35Z INFO CommandSettings] Flag 'version': 'False'
+[2024-03-09 00:20:35Z INFO CommandSettings] Flag 'commit': 'False'
+[2024-03-09 00:20:35Z INFO CommandSettings] Flag 'check': 'False'
+[2024-03-09 00:20:35Z INFO CommandSettings] Command 'configure': 'False'
+[2024-03-09 00:20:35Z INFO CommandSettings] Command 'remove': 'False'
+[2024-03-09 00:20:35Z INFO CommandSettings] Command 'warmup': 'False'
+[2024-03-09 00:20:35Z INFO ConfigurationManager] LoadSettings
+[2024-03-09 00:20:35Z INFO ConfigurationStore] IsConfigured()
+[2024-03-09 00:20:35Z INFO ConfigurationStore] IsConfigured: True
+[2024-03-09 00:20:35Z INFO ConfigurationManager] Is configured: True
+[2024-03-09 00:20:35Z INFO ConfigurationStore] Read setting file: 324 chars
+[2024-03-09 00:20:35Z INFO ConfigurationManager] Settings Loaded
+[2024-03-09 00:20:35Z INFO ConfigurationStore] IsServiceConfigured()
+[2024-03-09 00:20:35Z INFO ConfigurationStore] IsServiceConfigured: False
+[2024-03-09 00:20:35Z INFO CommandSettings] Command 'run': 'True'
+[2024-03-09 00:20:35Z INFO ConfigurationStore] IsConfigured()
+[2024-03-09 00:20:35Z INFO ConfigurationStore] IsConfigured: True
+[2024-03-09 00:20:35Z INFO ConfigurationManager] Is configured: True
+[2024-03-09 00:20:35Z INFO Runner] Could not parse the argument value '' for StartupType. Defaulting to Manual
+[2024-03-09 00:20:35Z INFO Runner] Set runner startup type - Manual
+[2024-03-09 00:20:35Z INFO CommandSettings] Flag 'once': 'False'
+[2024-03-09 00:20:35Z INFO CommandSettings] Flag 'once': 'False'
+[2024-03-09 00:20:35Z INFO Runner] RunAsync
+[2024-03-09 00:20:35Z INFO ConfigurationManager] LoadSettings
+[2024-03-09 00:20:35Z INFO ConfigurationStore] IsConfigured()
+[2024-03-09 00:20:35Z INFO ConfigurationStore] IsConfigured: True
+[2024-03-09 00:20:35Z INFO ConfigurationManager] Is configured: True
+[2024-03-09 00:20:35Z INFO ConfigurationManager] Settings Loaded
+[2024-03-09 00:20:35Z INFO MessageListener] {
+  "AgentId": 22,
+  "AgentName": "eformative runner",
+  "PoolId": 1,
+  "PoolName": "Default",
+  "ServerUrl": "https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/",
+  "GitHubUrl": "https://github.com/NekoCarreraDesigns/eformative",
+  "WorkFolder": ".github"
+}
+[2024-03-09 00:20:35Z INFO MessageListener] Loading Credentials
+[2024-03-09 00:20:35Z INFO ConfigurationStore] HasCredentials()
+[2024-03-09 00:20:35Z INFO ConfigurationStore] stored True
+[2024-03-09 00:20:35Z INFO CredentialManager] GetCredentialProvider
+[2024-03-09 00:20:35Z INFO CredentialManager] Creating type OAuth
+[2024-03-09 00:20:35Z INFO CredentialManager] Creating credential type: OAuth
+[2024-03-09 00:20:36Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:20:36Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:20:36Z INFO HostContext] Well known config file 'RSACredentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams'
+[2024-03-09 00:20:36Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 00:20:36Z INFO MessageListener] Attempt to create session.
+[2024-03-09 00:20:36Z INFO MessageListener] Connecting to the Runner Server...
+[2024-03-09 00:20:36Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 00:20:36Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2024-03-09 00:20:36Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 00:20:36Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 00:20:36Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2024-03-09 00:20:37Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 00:20:37Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 00:20:37Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2024-03-09 00:20:37Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 00:20:38Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 00:20:38Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 00:20:38Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 00:20:38Z INFO MessageListener] VssConnection created
+[2024-03-09 00:20:38Z INFO Terminal] WRITE LINE: 
+[2024-03-09 00:20:38Z INFO Terminal] WRITE LINE: 
+[2024-03-09 00:20:38Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 00:20:38Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 00:20:39Z INFO GitHubActionsService] AAD Correlation ID for this token request: Unknown
+[2024-03-09 00:20:39Z INFO MessageListener] Session created.
+[2024-03-09 00:20:39Z INFO Terminal] WRITE LINE: Current runner version: '2.314.1'
+[2024-03-09 00:20:39Z INFO Terminal] WRITE LINE: 2024-03-09 00:20:39Z: Listening for Jobs
+[2024-03-09 00:20:39Z INFO JobDispatcher] Set runner/worker IPC timeout to 30 seconds.
+[2024-03-09 00:27:53Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 00:27:53Z INFO MessageListener] Message '4' received from session 'b4527e64-05e1-4eb5-b8ec-99271654f234'.
+[2024-03-09 00:27:53Z INFO Runner] Received job message of length 24637 from service, with hash '77636b39442c0c046c00b51fa3f6daeeadc8e5405852f49ffe458ca2ac9dc722'
+[2024-03-09 00:27:54Z INFO JobDispatcher] Job request 55 for plan da3b7306-4418-4b98-9333-cb29a5c3df55 job ca395085-040a-526b-2ce8-bdc85f692774 received.
+[2024-03-09 00:27:54Z INFO JobDispatcher] Pull OrchestrationId da3b7306-4418-4b98-9333-cb29a5c3df55.build.__default from JWT claims
+[2024-03-09 00:27:54Z INFO MessageListener] Received job status event. JobState: Busy
+[2024-03-09 00:27:54Z INFO MessageListener] _getMessagesTokenSource is already disposed.
+[2024-03-09 00:27:54Z INFO Terminal] WRITE LINE: 2024-03-09 00:27:54Z: Running job: build
+[2024-03-09 00:27:54Z INFO JobDispatcher] Start renew job request 55 for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-09 00:27:54Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:37:54 AM
+[2024-03-09 00:27:55Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\denve\Desktop\eformative\actions-runner\bin\Runner.Worker.exe'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   Arguments: 'spawnclient 1360 1384'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'True'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper]   High priority process: 'True'
+[2024-03-09 00:27:55Z INFO ProcessInvokerWrapper] Process started with process id 14924, waiting for process exit.
+[2024-03-09 00:27:55Z INFO JobDispatcher] Send job request message to worker for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-09 00:27:55Z INFO ProcessChannel] Sending message of length 24637, with hash '77636b39442c0c046c00b51fa3f6daeeadc8e5405852f49ffe458ca2ac9dc722'
+[2024-03-09 00:27:58Z INFO JobNotification] Entering JobStarted Notification
+[2024-03-09 00:27:58Z INFO JobNotification] Entering StartMonitor
+[2024-03-09 00:28:58Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:38:57 AM
+[2024-03-09 00:29:58Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:39:57 AM
+[2024-03-09 00:30:58Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:40:57 AM
+[2024-03-09 00:31:58Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:41:57 AM
+[2024-03-09 00:32:58Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:42:57 AM
+[2024-03-09 00:33:58Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:43:58 AM
+[2024-03-09 00:34:58Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:44:58 AM
+[2024-03-09 00:35:59Z INFO JobDispatcher] Successfully renew job request 55, job is valid till 3/9/2024 12:45:58 AM
+[2024-03-09 00:36:07Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:36:07Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:36:07Z INFO ProcessInvokerWrapper] Finished process 14924 with exit code 102, and elapsed time 00:08:12.0727777.
+[2024-03-09 00:36:07Z INFO JobDispatcher] Worker finished for job ca395085-040a-526b-2ce8-bdc85f692774. Code: 102
+[2024-03-09 00:36:07Z INFO JobDispatcher] finish job request for job ca395085-040a-526b-2ce8-bdc85f692774 with result: Failed
+[2024-03-09 00:36:07Z INFO Terminal] WRITE LINE: 2024-03-09 00:36:07Z: Job build completed with result: Failed
+[2024-03-09 00:36:07Z INFO JobDispatcher] Stop renew job request for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-09 00:36:07Z INFO JobDispatcher] job renew has been cancelled, stop renew job request 55.
+[2024-03-09 00:36:07Z INFO JobNotification] Entering JobCompleted Notification
+[2024-03-09 00:36:07Z INFO JobNotification] Entering EndMonitor
+[2024-03-09 00:36:07Z INFO MessageListener] Received job status event. JobState: Online
+[2024-03-09 00:36:07Z WARN GitHubActionsService] GET request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/messages?sessionId=b4527e64-05e1-4eb5-b8ec-99271654f234&lastMessageId=4&status=Busy&runnerVersion=2.314.1&os=Windows&architecture=X64&disableUpdate=false has been cancelled.
+[2024-03-09 00:36:07Z INFO MessageListener] Get messages has been cancelled using local token source. Continue to get messages with new status.
+[2024-03-09 00:58:40Z INFO MessageListener] No message retrieved from session 'b4527e64-05e1-4eb5-b8ec-99271654f234' within last 30 minutes.
+[2024-03-09 01:16:13Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 01:16:13Z INFO GitHubActionsService] AAD Correlation ID for this token request: Unknown

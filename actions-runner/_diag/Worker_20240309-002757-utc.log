@@ -1,0 +1,4145 @@
+[2024-03-09 00:27:58Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2024-03-09 00:27:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:27:58Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials'
+[2024-03-09 00:27:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:27:58Z INFO HostContext] Well known config file 'Runner': 'C:\Users\denve\Desktop\eformative\actions-runner\.runner'
+[2024-03-09 00:27:58Z INFO Worker] Version: 2.314.1
+[2024-03-09 00:27:58Z INFO Worker] Commit: 976290d966e6cc3e748a49bf8fdbe139ff764201
+[2024-03-09 00:27:58Z INFO Worker] Culture: en-US
+[2024-03-09 00:27:58Z INFO Worker] UI Culture: en-US
+[2024-03-09 00:27:58Z INFO Worker] Waiting to receive the job message from the channel.
+[2024-03-09 00:27:58Z INFO ProcessChannel] Receiving message of length 24637, with hash '77636b39442c0c046c00b51fa3f6daeeadc8e5405852f49ffe458ca2ac9dc722'
+[2024-03-09 00:27:58Z INFO Worker] Message received.
+[2024-03-09 00:27:59Z INFO Worker] Job message:
+ {
+  "fileTable": [
+    ".github/workflows/ci.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/checkout",
+        "ref": "v4",
+        "repositoryType": "GitHub",
+        "path": ""
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 13,
+        "col": 13,
+        "lit": "Checkout code"
+      },
+      "contextName": "__actions_checkout",
+      "condition": "success()",
+      "id": "a60052d4-79a0-5821-3eeb-84adb9872c5b",
+      "name": "__actions_checkout"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/setup-node",
+        "ref": "v4",
+        "repositoryType": "GitHub",
+        "path": ""
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 16,
+        "col": 13,
+        "lit": "Set up Node.js"
+      },
+      "contextName": "__actions_setup-node",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 19,
+        "col": 9,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 19,
+              "col": 9,
+              "lit": "node-version"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 19,
+              "col": 23,
+              "lit": "18.18.2"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "50900611-96b2-5a08-ce5b-9701f7d7c3da",
+      "name": "__actions_setup-node"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 21,
+        "col": 13,
+        "lit": "Install dependencies"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 22,
+              "col": 12,
+              "lit": "npm install"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "dd23db01-cff6-57a4-373a-5c8097a97333",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 24,
+        "col": 13,
+        "lit": "Run tests"
+      },
+      "contextName": "__run_2",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 25,
+              "col": 12,
+              "lit": "npm test"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "87b991c0-db8a-593e-4233-d8a37f15e4c9",
+      "name": "__run_2"
+    }
+  ],
+  "variables": {
+    "system.isScheduled": {
+      "value": "False"
+    },
+    "system.servertype": {
+      "value": "Hosted"
+    },
+    "system.culture": {
+      "value": ""
+    },
+    "system.pipelineStartTime": {
+      "value": "2024-03-09 00:27:51+00:00"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "system.teamProjectId": {
+      "value": "00000000-0000-0000-0000-000000000000"
+    },
+    "build.buildId": {
+      "value": "23"
+    },
+    "build.containerId": {
+      "value": "10664701"
+    },
+    "system.workflowFilePath": {
+      "value": ".github/workflows/ci.yml"
+    },
+    "system.phaseDisplayName": {
+      "value": "build"
+    },
+    "system.phaseId": {
+      "value": "6884a131-87da-5381-61f3-d7acc3b91d76"
+    },
+    "system.phaseName": {
+      "value": "build"
+    },
+    "system.phaseAttempt": {
+      "value": "1"
+    },
+    "system.jobIdentifier": {
+      "value": "build.__default"
+    },
+    "system.jobAttempt": {
+      "value": "1"
+    },
+    "System.JobPositionInPhase": {
+      "value": "1"
+    },
+    "System.TotalJobsInPhase": {
+      "value": "1"
+    },
+    "system.github.job": {
+      "value": "build"
+    },
+    "system.jobDisplayName": {
+      "value": "build"
+    },
+    "system.jobId": {
+      "value": "ca395085-040a-526b-2ce8-bdc85f692774"
+    },
+    "system.jobName": {
+      "value": "__default"
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Actions\":\"write\",\"Checks\":\"write\",\"Contents\":\"write\",\"Deployments\":\"write\",\"Discussions\":\"write\",\"Issues\":\"write\",\"Metadata\":\"read\",\"Packages\":\"write\",\"Pages\":\"write\",\"PullRequests\":\"write\",\"RepositoryProjects\":\"write\",\"SecurityEvents\":\"write\",\"Statuses\":\"write\"}"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "True"
+    },
+    "system.orchestrationId": {
+      "value": "da3b7306-4418-4b98-9333-cb29a5c3df55.build.__default"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "PipelineAgentJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "Actions",
+    "version": 39,
+    "planId": "da3b7306-4418-4b98-9333-cb29a5c3df55",
+    "planGroup": "Actions:00000000-0000-0000-0000-000000000000:1",
+    "artifactUri": "vstfs:///Build/Build/23",
+    "artifactLocation": null,
+    "definition": {
+      "_links": {},
+      "id": 3,
+      "name": "eformative"
+    },
+    "owner": {
+      "_links": {},
+      "id": 3,
+      "name": "NekoCarreraDesigns"
+    }
+  },
+  "timeline": {
+    "id": "da3b7306-4418-4b98-9333-cb29a5c3df55",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "ca395085-040a-526b-2ce8-bdc85f692774",
+  "jobDisplayName": "build",
+  "jobName": "__default",
+  "requestId": 55,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "d682d6f9-d3a0-45ba-9cd8-a7c33ea1532d",
+          "ServerName": "ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ",
+          "CacheServerUrl": "https://acghubeus2.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/",
+          "FeedStreamUrl": "https://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "ConnectivityChecks": "[\"https://acghubeus0.actions.githubusercontent.com/_apis/health\",\"https://results-receiver.actions.githubusercontent.com/health\",\"https://actions-results-receiver-production.githubapp.com/health\",\"https://pipelinesghubeus10.actions.githubusercontent.com/_apis/health\"]"
+        },
+        "name": "SystemVssConnection",
+        "url": "https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": ***
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "689b435a6c9efbba89f265348d6ea3eff28bbac2"
+        },
+        {
+          "k": "repository",
+          "v": "NekoCarreraDesigns/eformative"
+        },
+        {
+          "k": "repository_owner",
+          "v": "NekoCarreraDesigns"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "58312431"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/NekoCarreraDesigns/eformative.git"
+        },
+        {
+          "k": "run_id",
+          "v": "8210679080"
+        },
+        {
+          "k": "run_number",
+          "v": "5"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "repo-self-hosted-runners-disabled",
+          "v": false
+        },
+        {
+          "k": "enterprise-managed-business-id",
+          "v": ""
+        },
+        {
+          "k": "repository_id",
+          "v": "545151310"
+        },
+        {
+          "k": "actor_id",
+          "v": "58312431"
+        },
+        {
+          "k": "actor",
+          "v": "NekoCarreraDesigns"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "NekoCarreraDesigns"
+        },
+        {
+          "k": "workflow",
+          "v": "CI/CD"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "689b435a6c9efbba89f265348d6ea3eff28bbac2"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "c7e2fecdec387eb5f0838b431f2159f08b6dc983"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "denvermaas@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "NekoCarreraDesigns"
+                              },
+                              {
+                                "k": "username",
+                                "v": "NekoCarreraDesigns"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "denvermaas@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "NekoCarreraDesigns"
+                              },
+                              {
+                                "k": "username",
+                                "v": "NekoCarreraDesigns"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "689b435a6c9efbba89f265348d6ea3eff28bbac2"
+                        },
+                        {
+                          "k": "message",
+                          "v": "runner test"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2024-03-08T17:27:34-07:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "fde8137add69f759c7271ba5f9aea7cd5da9f6d1"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/NekoCarreraDesigns/eformative/commit/689b435a6c9efbba89f265348d6ea3eff28bbac2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/NekoCarreraDesigns/eformative/compare/c7e2fecdec38...689b435a6c9e"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "denvermaas@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "NekoCarreraDesigns"
+                          },
+                          {
+                            "k": "username",
+                            "v": "NekoCarreraDesigns"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "denvermaas@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "NekoCarreraDesigns"
+                          },
+                          {
+                            "k": "username",
+                            "v": "NekoCarreraDesigns"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "689b435a6c9efbba89f265348d6ea3eff28bbac2"
+                    },
+                    {
+                      "k": "message",
+                      "v": "runner test"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2024-03-08T17:27:34-07:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "fde8137add69f759c7271ba5f9aea7cd5da9f6d1"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/NekoCarreraDesigns/eformative/commit/689b435a6c9efbba89f265348d6ea3eff28bbac2"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "denvernick@hotmail.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "NekoCarreraDesigns"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/NekoCarreraDesigns/eformative.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1664833741.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": "eForamative website. A website for alternative transportation needs "
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "NekoCarreraDesigns/eformative"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/NekoCarreraDesigns/eformative.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": true
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": ""
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/NekoCarreraDesigns/eformative"
+                    },
+                    {
+                      "k": "id",
+                      "v": 545151310.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "JavaScript"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "key",
+                            "v": "gpl-3.0"
+                          },
+                          {
+                            "k": "name",
+                            "v": "GNU General Public License v3.0"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "MDc6TGljZW5zZTk="
+                          },
+                          {
+                            "k": "spdx_id",
+                            "v": "GPL-3.0"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/licenses/gpl-3.0"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "eformative"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOIH5ZTg"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/58312431?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "denvernick@hotmail.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/NekoCarreraDesigns"
+                          },
+                          {
+                            "k": "id",
+                            "v": 58312431.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "NekoCarreraDesigns"
+                          },
+                          {
+                            "k": "name",
+                            "v": "NekoCarreraDesigns"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "MDQ6VXNlcjU4MzEyNDMx"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/NekoCarreraDesigns"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1709944067.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 244804.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:NekoCarreraDesigns/eformative.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/NekoCarreraDesigns/eformative"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/NekoCarreraDesigns/eformative/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2022-12-30T19:59:21Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/NekoCarreraDesigns/eformative"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/58312431?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/NekoCarreraDesigns"
+                    },
+                    {
+                      "k": "id",
+                      "v": 58312431.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "NekoCarreraDesigns"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "MDQ6VXNlcjU4MzEyNDMx"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/NekoCarreraDesigns"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "workflow_ref",
+          "v": "NekoCarreraDesigns/eformative/.github/workflows/ci.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "689b435a6c9efbba89f265348d6ea3eff28bbac2"
+        }
+      ]
+    },
+    "run-feature-flags": {
+      "t": 2,
+      "d": [
+        {
+          "k": "actions_stream_logs_via_results_service",
+          "v": true
+        },
+        {
+          "k": "actions_use_results_service",
+          "v": true
+        }
+      ]
+    },
+    "partialrerun": false,
+    "needs": {
+      "t": 2
+    },
+    "vars": null,
+    "inputs": {
+      "t": 2
+    },
+    "matrix": null,
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "EndpointsOverride": null
+  }
+}
+[2024-03-09 00:27:59Z INFO JobRunner] Job ID ca395085-040a-526b-2ce8-bdc85f692774
+[2024-03-09 00:27:59Z INFO JobRunner] Creating job server with URL: https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/
+[2024-03-09 00:27:59Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\denve\Desktop\eformative\actions-runner\bin\Runner.Worker.dll
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:59Z INFO ConfigurationStore] binPath: C:\Users\denve\Desktop\eformative\actions-runner\bin
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:27:59Z INFO ConfigurationStore] RootFolder: C:\Users\denve\Desktop\eformative\actions-runner
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:27:59Z INFO HostContext] Well known config file 'Runner': 'C:\Users\denve\Desktop\eformative\actions-runner\.runner'
+[2024-03-09 00:27:59Z INFO ConfigurationStore] ConfigFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.runner
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:27:59Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials'
+[2024-03-09 00:27:59Z INFO ConfigurationStore] CredFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.credentials
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:27:59Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials_migrated'
+[2024-03-09 00:27:59Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.credentials_migrated
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:27:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:27:59Z INFO HostContext] Well known config file 'Service': 'C:\Users\denve\Desktop\eformative\actions-runner\.service'
+[2024-03-09 00:27:59Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.service
+[2024-03-09 00:27:59Z INFO ConfigurationStore] Read setting file: 324 chars
+[2024-03-09 00:27:59Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 00:27:59Z INFO Worker] Listening for cancel message from the channel.
+[2024-03-09 00:27:59Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2024-03-09 00:28:00Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 00:28:00Z INFO JobServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2024-03-09 00:28:00Z INFO JobServer] Attempting to start websocket client with delay 00:00:00.
+[2024-03-09 00:28:00Z INFO JobServerQueue] Initializing results client
+[2024-03-09 00:28:00Z INFO JobServerQueue] Start process web console line queue.
+[2024-03-09 00:28:00Z INFO JobServerQueue] Start process file upload queue.
+[2024-03-09 00:28:00Z INFO JobServerQueue] Start results file upload queue.
+[2024-03-09 00:28:00Z INFO JobServerQueue] Starting results-based upload queue...
+[2024-03-09 00:28:00Z INFO JobServerQueue] Start process timeline update queue.
+[2024-03-09 00:28:00Z INFO ExecutionContext] Initialize GitHub context
+[2024-03-09 00:28:00Z INFO ExecutionContext] Initialize Env context
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:00Z INFO JobRunner] Starting the job execution context.
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:00Z INFO JobRunner] Validating directory permissions for: 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Tools': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_tool'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:00Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:28:01Z INFO JobRunner] Getting job extension.
+[2024-03-09 00:28:01Z INFO JobRunner] Initialize job. Getting all job steps.
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known config file 'SetupInfo': 'C:\Users\denve\Desktop\eformative\actions-runner\.setup_info'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:01Z INFO PipelineDirectoryManager] Loading tracking config if exists: C:\Users\denve\Desktop\eformative\actions-runner\.github\_PipelineMapping\NekoCarreraDesigns/eformative\PipelineFolder.json
+[2024-03-09 00:28:01Z INFO PipelineDirectoryManager] Updating job run properties.
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:01Z INFO JobServer] Successfully started websocket client.
+[2024-03-09 00:28:01Z INFO JobExtension] Downloading actions
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:01Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record '88780a81-7616-4bdc-9a8a-b7cd83257e33', success rate: 1/1.
+[2024-03-09 00:28:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record '88780a81-7616-4bdc-9a8a-b7cd83257e33', success rate: 1/1.
+[2024-03-09 00:28:02Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2024-03-09 00:28:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record '88780a81-7616-4bdc-9a8a-b7cd83257e33', success rate: 1/1.
+[2024-03-09 00:28:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:02Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:02Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:02Z INFO ActionManager] Save archive 'https://api.github.com/repos/actions/checkout/zipball/b4ffde65f46336ab88eb53be808477a3936bae11' into C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\_temp_bd16d83e-fd5f-4afa-8c87-707c637186be\614608a6-d770-49c8-968f-86b2bc816831.zip.
+[2024-03-09 00:28:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '88780a81-7616-4bdc-9a8a-b7cd83257e33', success rate: 1/1.
+[2024-03-09 00:28:06Z INFO ActionManager] Request URL: https://api.github.com/repos/actions/checkout/zipball/b4ffde65f46336ab88eb53be808477a3936bae11 X-GitHub-Request-Id: F9E8:20F1:207DF:3CF10:65EBAD14 Http Status: OK
+[2024-03-09 00:28:10Z INFO ActionManager] Finished getting action repository.
+[2024-03-09 00:28:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:11Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:11Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:11Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:11Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:11Z INFO ActionManager] Save archive 'https://api.github.com/repos/actions/setup-node/zipball/60edb5dd545a775178f52524783378180af0d1f8' into C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\_temp_2001615a-f208-4e86-8fc6-a62fbcaf530e\698efd3f-9b29-432f-b8ce-42ee019848ec.zip.
+[2024-03-09 00:28:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record '88780a81-7616-4bdc-9a8a-b7cd83257e33', success rate: 1/1.
+[2024-03-09 00:28:16Z INFO ActionManager] Request URL: https://api.github.com/repos/actions/setup-node/zipball/60edb5dd545a775178f52524783378180af0d1f8 X-GitHub-Request-Id: F9ED:3A4C:7A7BD:CAC7F:65EBAD1C Http Status: OK
+[2024-03-09 00:28:27Z INFO ActionManager] Finished getting action repository.
+[2024-03-09 00:28:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:28Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:28Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2024-03-09 00:28:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:28Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:30Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 66,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 72,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 75,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 78,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 81,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 90,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 91,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 93,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2024-03-09 00:28:30Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:30Z INFO ActionManager] Load action that reference repository from 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\actions\checkout\v4'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:30Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 66,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 72,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 75,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 78,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 81,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 90,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 91,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 93,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2024-03-09 00:28:30Z INFO ActionManager] Action pre node.js file: N/A.
+[2024-03-09 00:28:30Z INFO ActionManager] Action node.js file: dist/index.js.
+[2024-03-09 00:28:30Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:30Z INFO ActionManifestManager] Ignore action property author.
+[2024-03-09 00:28:30Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Node.js environment",
+  "description": "Setup a Node.js environment by adding problem matchers and optionally downloading and adding it to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 5,
+          "col": 3,
+          "lit": "always-auth"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 7,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "node-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "node-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 12,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 16,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 3,
+          "lit": "registry-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 19,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 23,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 24,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2024-03-09 00:28:30Z INFO ActionManager] Action node.js file: dist/setup/index.js, no more preparation.
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:30Z INFO ActionManager] Load action that reference repository from 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\actions\setup-node\v4'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:30Z INFO ActionManifestManager] Ignore action property author.
+[2024-03-09 00:28:30Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Node.js environment",
+  "description": "Setup a Node.js environment by adding problem matchers and optionally downloading and adding it to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 5,
+          "col": 3,
+          "lit": "always-auth"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 7,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "node-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "node-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 12,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 16,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 3,
+          "lit": "registry-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 19,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 23,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 24,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2024-03-09 00:28:30Z INFO ActionManager] Action pre node.js file: N/A.
+[2024-03-09 00:28:30Z INFO ActionManager] Action node.js file: dist/setup/index.js.
+[2024-03-09 00:28:30Z INFO ActionManager] Action post node.js file: dist/cache-save/index.js.
+[2024-03-09 00:28:30Z INFO JobExtension] Adding .
+[2024-03-09 00:28:30Z INFO JobExtension] Adding .
+[2024-03-09 00:28:30Z INFO JobExtension] Adding .
+[2024-03-09 00:28:30Z INFO JobExtension] Adding .
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '88780a81-7616-4bdc-9a8a-b7cd83257e33', success rate: 1/1.
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:30Z INFO JobExtension] Total accessible running process: 190.
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:30Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:30Z INFO JobExtension] Start checking server connectivity.
+[2024-03-09 00:28:30Z INFO JobExtension] Check server connectivity for https://acghubeus0.actions.githubusercontent.com/_apis/health.
+[2024-03-09 00:28:30Z INFO JobExtension] Check server connectivity for https://results-receiver.actions.githubusercontent.com/health.
+[2024-03-09 00:28:30Z INFO JobExtension] Check server connectivity for https://actions-results-receiver-production.githubapp.com/health.
+[2024-03-09 00:28:30Z INFO JobExtension] Check server connectivity for https://pipelinesghubeus10.actions.githubusercontent.com/_apis/health.
+[2024-03-09 00:28:31Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "88780a81-7616-4bdc-9a8a-b7cd83257e33",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 30,
+  "startTime": "2024-03-09T00:28:01.075983Z",
+  "finishTime": "2024-03-09T00:28:31.0109953Z"
+}.
+[2024-03-09 00:28:31Z INFO JobRunner] Total job steps: 4.
+[2024-03-09 00:28:31Z INFO JobRunner] Run all job steps.
+[2024-03-09 00:28:31Z INFO StepsRunner] Processing step: DisplayName='Checkout code'
+[2024-03-09 00:28:31Z INFO StepsRunner] Evaluating: success()
+[2024-03-09 00:28:31Z INFO StepsRunner] Result: true
+[2024-03-09 00:28:31Z INFO StepsRunner] Starting the step.
+[2024-03-09 00:28:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:31Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:31Z INFO StepsRunner] Which: 'chcp'
+[2024-03-09 00:28:31Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:28:31Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2024-03-09 00:28:32Z INFO JobServerQueue] Got a step log file to send to results service.
+[2024-03-09 00:28:32Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\denve\Desktop\eformative\actions-runner\_diag\blocks\da3b7306-4418-4b98-9333-cb29a5c3df55_88780a81-7616-4bdc-9a8a-b7cd83257e33.1
+[2024-03-09 00:28:32Z INFO ProcessInvokerWrapper] Process started with process id 6408, waiting for process exit.
+[2024-03-09 00:28:32Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper] Finished process 6408 with exit code 0, and elapsed time 00:00:03.3842264.
+[2024-03-09 00:28:35Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:35Z INFO ActionManager] Load action that reference repository from 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\actions\checkout\v4'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 66,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 72,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 75,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 78,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 81,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 90,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 91,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 93,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2024-03-09 00:28:35Z INFO ActionManager] Action pre node.js file: N/A.
+[2024-03-09 00:28:35Z INFO ActionManager] Action node.js file: dist/index.js.
+[2024-03-09 00:28:35Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2024-03-09 00:28:35Z INFO ExecutionContext] Reserve record order 6 to 10 for post job actions.
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:28:35Z INFO ExecutionContext] Write event payload to C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\_github_workflow\event.json
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:28:35Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "NekoCarreraDesigns/eformative"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 50,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 55,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 60,
+  "col": 14,
+  "lit": ""
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 65,
+  "col": 14,
+  "lit": ""
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 72,
+  "col": 14,
+  "lit": "1"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 75,
+  "col": 14,
+  "lit": "false"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 78,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 81,
+  "col": 14,
+  "lit": "false"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 90,
+  "col": 14,
+  "lit": "false"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 93,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:28:35Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2024-03-09 00:28:35Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command set-env
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command set-output
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command save-state
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command add-path
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command warning
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command error
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command notice
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command debug
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command group
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2024-03-09 00:28:35Z INFO ActionCommandManager] Register action command extension for command echo
+[2024-03-09 00:28:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:35Z INFO HostContext] Well known directory 'Externals': 'C:\Users\denve\Desktop\eformative\actions-runner\externals'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\denve\Desktop\eformative\actions-runner\externals\node20\bin\node.exe'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   Arguments: '"C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\actions\checkout\v4\dist/index.js"'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\.github\eformative\eformative'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:28:35Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2024-03-09 00:28:36Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2024-03-09 00:28:36Z INFO ProcessInvokerWrapper] Process started with process id 9032, waiting for process exit.
+[2024-03-09 00:28:44Z INFO AddMaskCommandExtension] Add new secret mask with length of 76
+[2024-03-09 00:28:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:28:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:28:48Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:48Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:48Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:28:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:28:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:28:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:28:58Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:28:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:28:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:29:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:29:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:29:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:29:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:29:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:29:06Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:29:08Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:29:08Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:29:08Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:29:18Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:29:18Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:29:18Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:29:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:29:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:29:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:29:38Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:29:38Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:29:38Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:29:42Z INFO JobServerQueue] Stop aggressive process web console line queue.
+[2024-03-09 00:29:48Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:29:48Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:29:48Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:29:58Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:30:08Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:30:08Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:30:08Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:30:18Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:30:18Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:30:18Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:30:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:30:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:30:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:30:38Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:30:38Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:30:38Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:30:48Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:30:48Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:30:48Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:30:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:30:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:30:58Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:31:08Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:31:08Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:31:08Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:31:18Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:31:18Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:31:18Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:31:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:31:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:31:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:31:38Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:31:38Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:31:38Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:31:48Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:31:48Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:31:48Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:31:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:31:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:31:58Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:32:09Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:32:09Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:32:09Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:32:19Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:32:19Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:32:19Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:32:29Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:32:29Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:32:29Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:32:39Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:32:39Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:32:39Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:32:49Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:32:49Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:32:49Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:32:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:32:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:32:59Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:33:09Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:33:09Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:33:09Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:33:19Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:33:19Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:33:19Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:33:29Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:33:29Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:33:29Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:33:39Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:33:39Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:33:39Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:33:49Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:33:49Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:33:49Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:33:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:33:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:33:59Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:34:09Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:34:09Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:34:09Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:34:19Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:34:19Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:34:19Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:34:21Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:22Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:29Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:34:29Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:34:29Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:34:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:39Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:34:39Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:34:39Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:34:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:49Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:34:49Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:34:49Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:34:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:51Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:34:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:34:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:34:59Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:34:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:06Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:06Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:07Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:07Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:08Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:09Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:09Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:09Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:09Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:09Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:12Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:13Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:13Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:15Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:16Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:17Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:17Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:18Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:18Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:19Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:19Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:19Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:23Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:29Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:29Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:29Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a60052d4-79a0-5821-3eeb-84adb9872c5b', success rate: 1/1.
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] Finished process 9032 with exit code 0, and elapsed time 00:06:55.6511591.
+[2024-03-09 00:35:31Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\_runner_file_commands\step_summary_60a60860-dd38-487f-ba34-e663c2895c22) is empty; skipping attachment upload
+[2024-03-09 00:35:31Z INFO StepsRunner] Step result: 
+[2024-03-09 00:35:31Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "a60052d4-79a0-5821-3eeb-84adb9872c5b",
+  "stepContextName": "__actions_checkout",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [
+    "no submodule mapping found in .gitmodules for path 'actions-runner/.github/eformative/eformative'",
+    "Unable to clean or reset the repository. The repository will be recreated instead."
+  ],
+  "executionTimeInSeconds": 421,
+  "startTime": "2024-03-09T00:28:31.3391159Z",
+  "finishTime": "2024-03-09T00:35:31.5123618Z"
+}.
+[2024-03-09 00:35:31Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2024-03-09 00:35:31Z INFO StepsRunner] Current state: job state = ''
+[2024-03-09 00:35:31Z INFO StepsRunner] Processing step: DisplayName='Set up Node.js'
+[2024-03-09 00:35:31Z INFO StepsRunner] Evaluating: success()
+[2024-03-09 00:35:31Z INFO StepsRunner] Result: true
+[2024-03-09 00:35:31Z INFO StepsRunner] Starting the step.
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:31Z INFO StepsRunner] Which: 'chcp'
+[2024-03-09 00:35:31Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] Process started with process id 13184, waiting for process exit.
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] Finished process 13184 with exit code 0, and elapsed time 00:00:00.0371503.
+[2024-03-09 00:35:31Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:35:31Z INFO ActionManager] Load action that reference repository from 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\actions\setup-node\v4'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Ignore action property author.
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Node.js environment",
+  "description": "Setup a Node.js environment by adding problem matchers and optionally downloading and adding it to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 5,
+          "col": 3,
+          "lit": "always-auth"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 7,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "node-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "node-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 12,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 16,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 3,
+          "lit": "registry-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 19,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 23,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 24,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2024-03-09 00:35:31Z INFO ActionManager] Action pre node.js file: N/A.
+[2024-03-09 00:35:31Z INFO ActionManager] Action node.js file: dist/setup/index.js.
+[2024-03-09 00:35:31Z INFO ActionManager] Action post node.js file: dist/cache-save/index.js.
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:35:31Z INFO ExecutionContext] Write event payload to C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\_github_workflow\event.json
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:35:31Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'always-auth': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 7,
+  "col": 14,
+  "lit": "false"
+}
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'node-version-file': default value evaluate result: ""
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'architecture': default value evaluate result: ""
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'check-latest': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 16,
+  "col": 14,
+  "lit": "false"
+}
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'registry-url': default value evaluate result: ""
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'scope': default value evaluate result: ""
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 23,
+  "col": 14,
+  "lit": "***"
+}
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'cache': default value evaluate result: ""
+[2024-03-09 00:35:31Z INFO ActionManifestManager] Input 'cache-dependency-path': default value evaluate result: ""
+[2024-03-09 00:35:31Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command set-env
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command set-output
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command save-state
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command add-path
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command warning
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command error
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command notice
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command debug
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command group
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2024-03-09 00:35:31Z INFO ActionCommandManager] Register action command extension for command echo
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:31Z INFO HostContext] Well known directory 'Externals': 'C:\Users\denve\Desktop\eformative\actions-runner\externals'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\denve\Desktop\eformative\actions-runner\externals\node20\bin\node.exe'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Arguments: '"C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\actions\setup-node\v4\dist/setup/index.js"'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\.github\eformative\eformative'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2024-03-09 00:35:31Z INFO ProcessInvokerWrapper] Process started with process id 11428, waiting for process exit.
+[2024-03-09 00:35:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record '50900611-96b2-5a08-ce5b-9701f7d7c3da', success rate: 1/1.
+[2024-03-09 00:35:32Z INFO JobServerQueue] Got a step log file to send to results service.
+[2024-03-09 00:35:32Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\denve\Desktop\eformative\actions-runner\_diag\blocks\da3b7306-4418-4b98-9333-cb29a5c3df55_a60052d4-79a0-5821-3eeb-84adb9872c5b.1
+[2024-03-09 00:35:32Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2024-03-09 00:35:33Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2024-03-09 00:35:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record '50900611-96b2-5a08-ce5b-9701f7d7c3da', success rate: 1/1.
+[2024-03-09 00:35:39Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:39Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:39Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:49Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:49Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:49Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] Finished process 11428 with exit code 0, and elapsed time 00:00:21.7589665.
+[2024-03-09 00:35:53Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\_runner_file_commands\step_summary_6fcacb44-7452-46c0-a071-6e3dc297bd3d) is empty; skipping attachment upload
+[2024-03-09 00:35:53Z INFO StepsRunner] Step result: 
+[2024-03-09 00:35:53Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/setup-node",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "50900611-96b2-5a08-ce5b-9701f7d7c3da",
+  "stepContextName": "__actions_setup-node",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 22,
+  "startTime": "2024-03-09T00:35:31.5190081Z",
+  "finishTime": "2024-03-09T00:35:53.3773669Z"
+}.
+[2024-03-09 00:35:53Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2024-03-09 00:35:53Z INFO StepsRunner] Current state: job state = ''
+[2024-03-09 00:35:53Z INFO StepsRunner] Processing step: DisplayName='Install dependencies'
+[2024-03-09 00:35:53Z INFO StepsRunner] Evaluating: success()
+[2024-03-09 00:35:53Z INFO StepsRunner] Result: true
+[2024-03-09 00:35:53Z INFO StepsRunner] Starting the step.
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:53Z INFO StepsRunner] Which: 'chcp'
+[2024-03-09 00:35:53Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] Process started with process id 13144, waiting for process exit.
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] Finished process 13144 with exit code 0, and elapsed time 00:00:00.0269836.
+[2024-03-09 00:35:53Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:35:53Z INFO ExecutionContext] Write event payload to C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\_github_workflow\event.json
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:35:53Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2024-03-09 00:35:53Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command set-env
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command set-output
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command save-state
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command add-path
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command warning
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command error
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command notice
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command debug
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command group
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2024-03-09 00:35:53Z INFO ActionCommandManager] Register action command extension for command echo
+[2024-03-09 00:35:53Z INFO ScriptHandler] Which2: 'pwsh'
+[2024-03-09 00:35:53Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2024-03-09 00:35:53Z INFO ScriptHandler] Defaulting to powershell
+[2024-03-09 00:35:53Z INFO ScriptHandler] Which2: 'powershell'
+[2024-03-09 00:35:53Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:53Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:35:53Z INFO ScriptHandler] Which2: 'pwsh'
+[2024-03-09 00:35:53Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2024-03-09 00:35:53Z INFO ScriptHandler] Defaulting to powershell
+[2024-03-09 00:35:53Z INFO ScriptHandler] Which2: 'powershell'
+[2024-03-09 00:35:53Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\6bb2535a-794c-4ae9-a78a-ce8eecd8a8cd.ps1'"'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\.github\eformative\eformative'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2024-03-09 00:35:53Z INFO ProcessInvokerWrapper] Process started with process id 2264, waiting for process exit.
+[2024-03-09 00:35:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record '50900611-96b2-5a08-ce5b-9701f7d7c3da', success rate: 1/1.
+[2024-03-09 00:35:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'dd23db01-cff6-57a4-373a-5c8097a97333', success rate: 1/1.
+[2024-03-09 00:35:53Z INFO JobServerQueue] Got a step log file to send to results service.
+[2024-03-09 00:35:53Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\denve\Desktop\eformative\actions-runner\_diag\blocks\da3b7306-4418-4b98-9333-cb29a5c3df55_50900611-96b2-5a08-ce5b-9701f7d7c3da.1
+[2024-03-09 00:35:54Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2024-03-09 00:35:54Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] Finished process 2264 with exit code 1, and elapsed time 00:00:03.5573408.
+[2024-03-09 00:35:57Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\_runner_file_commands\step_summary_a2ee47e0-a601-42f0-91cf-40dcc6f91be8) is empty; skipping attachment upload
+[2024-03-09 00:35:57Z INFO StepsRunner] Step result: Failed
+[2024-03-09 00:35:57Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "dd23db01-cff6-57a4-373a-5c8097a97333",
+  "stepContextName": "__run",
+  "result": "failed",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 4,
+  "startTime": "2024-03-09T00:35:53.383909Z",
+  "finishTime": "2024-03-09T00:35:57.1297592Z"
+}.
+[2024-03-09 00:35:57Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2024-03-09 00:35:57Z INFO StepsRunner] Current state: job state = 'Failed'
+[2024-03-09 00:35:57Z INFO StepsRunner] Processing step: DisplayName='Run tests'
+[2024-03-09 00:35:57Z INFO StepsRunner] Evaluating: success()
+[2024-03-09 00:35:57Z INFO StepsRunner] Result: false
+[2024-03-09 00:35:57Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2024-03-09 00:35:57Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2024-03-09 00:35:57Z INFO StepsRunner] Current state: job state = 'Failed'
+[2024-03-09 00:35:57Z INFO StepsRunner] Processing step: DisplayName='Post Set up Node.js'
+[2024-03-09 00:35:57Z INFO StepsRunner] Evaluating: success()
+[2024-03-09 00:35:57Z INFO StepsRunner] Result: false
+[2024-03-09 00:35:57Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2024-03-09 00:35:57Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2024-03-09 00:35:57Z INFO StepsRunner] Current state: job state = 'Failed'
+[2024-03-09 00:35:57Z INFO StepsRunner] Processing step: DisplayName='Post Checkout code'
+[2024-03-09 00:35:57Z INFO StepsRunner] Evaluating: always()
+[2024-03-09 00:35:57Z INFO StepsRunner] Result: true
+[2024-03-09 00:35:57Z INFO StepsRunner] Starting the step.
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:57Z INFO StepsRunner] Which: 'chcp'
+[2024-03-09 00:35:57Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] Process started with process id 11104, waiting for process exit.
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] Finished process 11104 with exit code 0, and elapsed time 00:00:00.0320002.
+[2024-03-09 00:35:57Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:35:57Z INFO ActionManager] Load action that reference repository from 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\actions\checkout\v4'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Actions': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions'
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 66,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 72,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 75,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 78,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 81,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 90,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 91,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 93,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2024-03-09 00:35:57Z INFO ActionManager] Action pre node.js file: N/A.
+[2024-03-09 00:35:57Z INFO ActionManager] Action node.js file: dist/index.js.
+[2024-03-09 00:35:57Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:35:57Z INFO ExecutionContext] Write event payload to C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\_github_workflow\event.json
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Temp': 'C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp'
+[2024-03-09 00:35:57Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "NekoCarreraDesigns/eformative"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 50,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 55,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 60,
+  "col": 14,
+  "lit": ""
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 65,
+  "col": 14,
+  "lit": ""
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 72,
+  "col": 14,
+  "lit": "1"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 75,
+  "col": 14,
+  "lit": "false"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 78,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 81,
+  "col": 14,
+  "lit": "false"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 90,
+  "col": 14,
+  "lit": "false"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 93,
+  "col": 14,
+  "lit": "true"
+}
+[2024-03-09 00:35:57Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2024-03-09 00:35:57Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command set-env
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command set-output
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command save-state
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command add-path
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command warning
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command error
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command notice
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command debug
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command group
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2024-03-09 00:35:57Z INFO ActionCommandManager] Register action command extension for command echo
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:57Z INFO HostContext] Well known directory 'Externals': 'C:\Users\denve\Desktop\eformative\actions-runner\externals'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\denve\Desktop\eformative\actions-runner\externals\node20\bin\node.exe'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Arguments: '"C:\Users\denve\Desktop\eformative\actions-runner\.github\_actions\actions\checkout\v4\dist/index.js"'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\.github\eformative\eformative'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2024-03-09 00:35:57Z INFO ProcessInvokerWrapper] Process started with process id 10872, waiting for process exit.
+[2024-03-09 00:35:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'dd23db01-cff6-57a4-373a-5c8097a97333', success rate: 1/1.
+[2024-03-09 00:35:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0086247d-e3af-4c40-a90f-19eba5d60628', success rate: 1/1.
+[2024-03-09 00:35:57Z INFO JobServerQueue] Got a step log file to send to results service.
+[2024-03-09 00:35:57Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\denve\Desktop\eformative\actions-runner\_diag\blocks\da3b7306-4418-4b98-9333-cb29a5c3df55_dd23db01-cff6-57a4-373a-5c8097a97333.1
+[2024-03-09 00:35:59Z INFO AddMaskCommandExtension] Add new secret mask with length of 32
+[2024-03-09 00:35:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0086247d-e3af-4c40-a90f-19eba5d60628', success rate: 1/1.
+[2024-03-09 00:35:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0086247d-e3af-4c40-a90f-19eba5d60628', success rate: 1/1.
+[2024-03-09 00:35:59Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:35:59Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:35:59Z INFO HostContext] Well known directory 'Work': 'C:\Users\denve\Desktop\eformative\actions-runner\.github'
+[2024-03-09 00:36:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:36:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 00:36:03Z INFO ProcessInvokerWrapper] Finished process 10872 with exit code 0, and elapsed time 00:00:06.2734414.
+[2024-03-09 00:36:03Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp\_runner_file_commands\step_summary_90fbaaf8-da03-4312-92fc-bd85ce447502) is empty; skipping attachment upload
+[2024-03-09 00:36:03Z INFO StepsRunner] Step result: 
+[2024-03-09 00:36:03Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Post",
+  "stepId": "0086247d-e3af-4c40-a90f-19eba5d60628",
+  "result": "succeeded",
+  "errorMessages": [
+    "The process 'C:\\Program Files\\Git\\cmd\\git.exe' failed with exit code 128"
+  ],
+  "executionTimeInSeconds": 7,
+  "startTime": "2024-03-09T00:35:57.1391445Z",
+  "finishTime": "2024-03-09T00:36:03.5039512Z"
+}.
+[2024-03-09 00:36:03Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2024-03-09 00:36:03Z INFO StepsRunner] Current state: job state = 'Failed'
+[2024-03-09 00:36:03Z INFO JobRunner] Finalize job.
+[2024-03-09 00:36:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:36:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:36:03Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:36:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:36:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:36:03Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:36:03Z INFO JobExtension] Initialize Env context
+[2024-03-09 00:36:03Z INFO JobExtension] Initialize steps context
+[2024-03-09 00:36:03Z INFO JobExtension] Total accessible running process: 181.
+[2024-03-09 00:36:03Z INFO JobExtension] Inspecting process environment variables. PID: 1696 (chrome)
+[2024-03-09 00:36:03Z WARN JobExtension] Ignore exception during read process environment variables: Cannot process request because the process (1696) has exited.
+[2024-03-09 00:36:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0086247d-e3af-4c40-a90f-19eba5d60628', success rate: 1/1.
+[2024-03-09 00:36:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5ec383c5-2326-4483-bb16-901aab019230', success rate: 1/1.
+[2024-03-09 00:36:03Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2024-03-09 00:36:03Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2024-03-09 00:36:04Z INFO JobExtension] Inspecting process environment variables. PID: 2228 (dllhost)
+[2024-03-09 00:36:04Z WARN JobExtension] Ignore exception during read process environment variables: Cannot process request because the process (2228) has exited.
+[2024-03-09 00:36:04Z INFO JobExtension] Inspecting process environment variables. PID: 13584 (chrome)
+[2024-03-09 00:36:04Z INFO JobExtension] Wait for all connectivity checks to finish.
+[2024-03-09 00:36:04Z INFO JobExtension] Connectivity check result: https://acghubeus0.actions.githubusercontent.com/_apis/health: OK
+[2024-03-09 00:36:04Z INFO JobExtension] Connectivity check result: https://results-receiver.actions.githubusercontent.com/health: OK
+[2024-03-09 00:36:04Z INFO JobExtension] Connectivity check result: https://actions-results-receiver-production.githubapp.com/health: OK
+[2024-03-09 00:36:04Z INFO JobExtension] Connectivity check result: https://pipelinesghubeus10.actions.githubusercontent.com/_apis/health: OK
+[2024-03-09 00:36:04Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "5ec383c5-2326-4483-bb16-901aab019230",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2024-03-09T00:36:03.5868831Z",
+  "finishTime": "2024-03-09T00:36:04.7446769Z"
+}.
+[2024-03-09 00:36:04Z INFO JobRunner] Job result after all job steps finish: Failed
+[2024-03-09 00:36:04Z INFO JobRunner] Completing the job execution context.
+[2024-03-09 00:36:04Z INFO JobRunner] Shutting down the job server queue.
+[2024-03-09 00:36:04Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2024-03-09 00:36:05Z INFO JobServerQueue] All queue process task stopped.
+[2024-03-09 00:36:05Z INFO JobServerQueue] Web console line queue drained.
+[2024-03-09 00:36:05Z INFO JobServerQueue] Uploading 3 files in one shot.
+[2024-03-09 00:36:05Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2024-03-09 00:36:05Z INFO JobServerQueue] File upload queue drained.
+[2024-03-09 00:36:05Z INFO JobServerQueue] Starting results-based upload queue...
+[2024-03-09 00:36:05Z INFO JobServerQueue] Uploading 3 file(s) in one shot through results service.
+[2024-03-09 00:36:05Z INFO JobServerQueue] Got a step log file to send to results service.
+[2024-03-09 00:36:05Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\denve\Desktop\eformative\actions-runner\_diag\blocks\da3b7306-4418-4b98-9333-cb29a5c3df55_0086247d-e3af-4c40-a90f-19eba5d60628.1
+[2024-03-09 00:36:06Z INFO JobServerQueue] Got a step log file to send to results service.
+[2024-03-09 00:36:06Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\denve\Desktop\eformative\actions-runner\_diag\blocks\da3b7306-4418-4b98-9333-cb29a5c3df55_5ec383c5-2326-4483-bb16-901aab019230.1
+[2024-03-09 00:36:06Z INFO JobServerQueue] Got a job log file to send to results service.
+[2024-03-09 00:36:06Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, C:\Users\denve\Desktop\eformative\actions-runner\_diag\blocks\da3b7306-4418-4b98-9333-cb29a5c3df55_ca395085-040a-526b-2ce8-bdc85f692774.1
+[2024-03-09 00:36:06Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2024-03-09 00:36:06Z INFO JobServerQueue] Results upload queue drained.
+[2024-03-09 00:36:07Z INFO JobServerQueue] Timeline update queue drained.
+[2024-03-09 00:36:07Z INFO JobServerQueue] Disposing job server ...
+[2024-03-09 00:36:07Z INFO JobServerQueue] Disposing results server ...
+[2024-03-09 00:36:07Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2024-03-09 00:36:07Z INFO JobServerQueue] Actions upload time: 8553 ms, Result upload time: 13065 ms
+[2024-03-09 00:36:07Z INFO TempDirectoryManager] Cleaning runner temp folder: C:\Users\denve\Desktop\eformative\actions-runner\.github\_temp
+[2024-03-09 00:36:07Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 00:36:07Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 00:36:07Z INFO HostContext] Well known directory 'Diag': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag'
+[2024-03-09 00:36:07Z INFO HostContext] Well known config file 'Telemetry': 'C:\Users\denve\Desktop\eformative\actions-runner\_diag\.telemetry'
+[2024-03-09 00:36:07Z INFO JobRunner] Raising job completed event
+[2024-03-09 00:36:07Z INFO Worker] Job completed.

@@ -1,0 +1,235 @@
+[2024-03-09 01:24:52Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2024-03-09 01:24:52Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:52Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:52Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials'
+[2024-03-09 01:24:54Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:54Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:54Z INFO HostContext] Well known config file 'Runner': 'C:\Users\denve\Desktop\eformative\actions-runner\.runner'
+[2024-03-09 01:24:54Z INFO Listener] Runner is built for Windows (X64) - win-x64.
+[2024-03-09 01:24:54Z INFO Listener] RuntimeInformation: Microsoft Windows 10.0.19045.
+[2024-03-09 01:24:54Z INFO Listener] Version: 2.314.1
+[2024-03-09 01:24:54Z INFO Listener] Commit: 976290d966e6cc3e748a49bf8fdbe139ff764201
+[2024-03-09 01:24:54Z INFO Listener] Culture: en-US
+[2024-03-09 01:24:54Z INFO Listener] UI Culture: en-US
+[2024-03-09 01:24:54Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:54Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:54Z INFO Listener] Validating directory permissions for: 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:54Z INFO CommandLineParser] Parse
+[2024-03-09 01:24:54Z INFO CommandLineParser] Parsing 1 args
+[2024-03-09 01:24:54Z INFO CommandLineParser] parsing argument
+[2024-03-09 01:24:54Z INFO CommandLineParser] HasArgs: False
+[2024-03-09 01:24:54Z INFO CommandLineParser] Adding Command: run
+[2024-03-09 01:24:54Z INFO Listener] Arguments parsed
+[2024-03-09 01:24:55Z INFO Runner] ExecuteCommand
+[2024-03-09 01:24:55Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\denve\Desktop\eformative\actions-runner\bin\Runner.Listener.dll
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:55Z INFO ConfigurationStore] binPath: C:\Users\denve\Desktop\eformative\actions-runner\bin
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:55Z INFO ConfigurationStore] RootFolder: C:\Users\denve\Desktop\eformative\actions-runner
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:55Z INFO HostContext] Well known config file 'Runner': 'C:\Users\denve\Desktop\eformative\actions-runner\.runner'
+[2024-03-09 01:24:55Z INFO ConfigurationStore] ConfigFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.runner
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:55Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials'
+[2024-03-09 01:24:55Z INFO ConfigurationStore] CredFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.credentials
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:55Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials_migrated'
+[2024-03-09 01:24:55Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.credentials_migrated
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:55Z INFO HostContext] Well known config file 'Service': 'C:\Users\denve\Desktop\eformative\actions-runner\.service'
+[2024-03-09 01:24:55Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\denve\Desktop\eformative\actions-runner\.service
+[2024-03-09 01:24:55Z INFO CommandSettings] Flag 'help': 'False'
+[2024-03-09 01:24:55Z INFO CommandSettings] Flag 'version': 'False'
+[2024-03-09 01:24:55Z INFO CommandSettings] Flag 'commit': 'False'
+[2024-03-09 01:24:55Z INFO CommandSettings] Flag 'check': 'False'
+[2024-03-09 01:24:55Z INFO CommandSettings] Command 'configure': 'False'
+[2024-03-09 01:24:55Z INFO CommandSettings] Command 'remove': 'False'
+[2024-03-09 01:24:55Z INFO CommandSettings] Command 'warmup': 'False'
+[2024-03-09 01:24:55Z INFO ConfigurationManager] LoadSettings
+[2024-03-09 01:24:55Z INFO ConfigurationStore] IsConfigured()
+[2024-03-09 01:24:55Z INFO ConfigurationStore] IsConfigured: True
+[2024-03-09 01:24:55Z INFO ConfigurationManager] Is configured: True
+[2024-03-09 01:24:55Z INFO ConfigurationStore] Read setting file: 324 chars
+[2024-03-09 01:24:55Z INFO ConfigurationManager] Settings Loaded
+[2024-03-09 01:24:55Z INFO ConfigurationStore] IsServiceConfigured()
+[2024-03-09 01:24:55Z INFO ConfigurationStore] IsServiceConfigured: False
+[2024-03-09 01:24:55Z INFO CommandSettings] Command 'run': 'True'
+[2024-03-09 01:24:55Z INFO ConfigurationStore] IsConfigured()
+[2024-03-09 01:24:55Z INFO ConfigurationStore] IsConfigured: True
+[2024-03-09 01:24:55Z INFO ConfigurationManager] Is configured: True
+[2024-03-09 01:24:55Z INFO Runner] Could not parse the argument value '' for StartupType. Defaulting to Manual
+[2024-03-09 01:24:55Z INFO Runner] Set runner startup type - Manual
+[2024-03-09 01:24:55Z INFO CommandSettings] Flag 'once': 'False'
+[2024-03-09 01:24:55Z INFO CommandSettings] Flag 'once': 'False'
+[2024-03-09 01:24:55Z INFO Runner] RunAsync
+[2024-03-09 01:24:55Z INFO ConfigurationManager] LoadSettings
+[2024-03-09 01:24:55Z INFO ConfigurationStore] IsConfigured()
+[2024-03-09 01:24:55Z INFO ConfigurationStore] IsConfigured: True
+[2024-03-09 01:24:55Z INFO ConfigurationManager] Is configured: True
+[2024-03-09 01:24:55Z INFO ConfigurationManager] Settings Loaded
+[2024-03-09 01:24:55Z INFO MessageListener] {
+  "AgentId": 22,
+  "AgentName": "eformative runner",
+  "PoolId": 1,
+  "PoolName": "Default",
+  "ServerUrl": "https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/",
+  "GitHubUrl": "https://github.com/NekoCarreraDesigns/eformative",
+  "WorkFolder": ".github"
+}
+[2024-03-09 01:24:55Z INFO MessageListener] Loading Credentials
+[2024-03-09 01:24:55Z INFO ConfigurationStore] HasCredentials()
+[2024-03-09 01:24:55Z INFO ConfigurationStore] stored True
+[2024-03-09 01:24:55Z INFO CredentialManager] GetCredentialProvider
+[2024-03-09 01:24:55Z INFO CredentialManager] Creating type OAuth
+[2024-03-09 01:24:55Z INFO CredentialManager] Creating credential type: OAuth
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:24:55Z INFO HostContext] Well known directory 'Root': 'C:\Users\denve\Desktop\eformative\actions-runner'
+[2024-03-09 01:24:55Z INFO HostContext] Well known config file 'RSACredentials': 'C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams'
+[2024-03-09 01:24:55Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 01:24:55Z INFO MessageListener] Attempt to create session.
+[2024-03-09 01:24:55Z INFO MessageListener] Connecting to the Runner Server...
+[2024-03-09 01:24:55Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:24:55Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2024-03-09 01:24:56Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:24:56Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:24:56Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2024-03-09 01:24:56Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:24:56Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:24:56Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2024-03-09 01:24:56Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:24:57Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:24:57Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:24:57Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:24:57Z INFO MessageListener] VssConnection created
+[2024-03-09 01:24:57Z INFO Terminal] WRITE LINE: 
+[2024-03-09 01:24:57Z INFO Terminal] WRITE LINE: 
+[2024-03-09 01:24:57Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 01:24:58Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 01:24:58Z INFO GitHubActionsService] AAD Correlation ID for this token request: Unknown
+[2024-03-09 01:24:58Z ERR  GitHubActionsService] POST request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/sessions failed. HTTP Status: Conflict
+[2024-03-09 01:24:58Z ERR  MessageListener] Catch exception during create session.
+[2024-03-09 01:24:59Z ERR  MessageListener] GitHub.DistributedTask.WebApi.TaskAgentSessionConflictException: The actions runner eformative runner already has an active session for owner DESKTOP-ALDPUH5.
+   at GitHub.Services.WebApi.VssHttpClientBase.HandleResponseAsync(HttpResponseMessage response, CancellationToken cancellationToken)
+   at GitHub.Services.WebApi.VssHttpClientBase.SendAsync(HttpRequestMessage message, HttpCompletionOption completionOption, Object userState, CancellationToken cancellationToken)
+   at GitHub.Services.WebApi.VssHttpClientBase.SendAsync[T](HttpRequestMessage message, Object userState, CancellationToken cancellationToken)
+   at GitHub.Services.WebApi.VssHttpClientBase.SendAsync[T](HttpMethod method, IEnumerable`1 additionalHeaders, Guid locationId, Object routeValues, ApiResourceVersion version, HttpContent content, IEnumerable`1 queryParameters, Object userState, CancellationToken cancellationToken)
+   at GitHub.Runner.Listener.MessageListener.CreateSessionAsync(CancellationToken token)
+[2024-03-09 01:24:59Z INFO MessageListener] The session for this runner already exists.
+[2024-03-09 01:24:59Z ERR  Terminal] WRITE ERROR: A session for this runner already exists.
+[2024-03-09 01:24:59Z INFO MessageListener] The session conflict exception haven't reached retry limit.
+[2024-03-09 01:24:59Z ERR  Terminal] WRITE ERROR: 2024-03-09 01:24:59Z: Runner connect error: The actions runner eformative runner already has an active session for owner DESKTOP-ALDPUH5.. Retrying until reconnected.
+[2024-03-09 01:24:59Z INFO MessageListener] Sleeping for 30 seconds before retrying.
+[2024-03-09 01:25:29Z INFO MessageListener] Attempt to create session.
+[2024-03-09 01:25:29Z INFO MessageListener] Connecting to the Runner Server...
+[2024-03-09 01:25:29Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:25:29Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2024-03-09 01:25:29Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:25:29Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:25:29Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2024-03-09 01:25:29Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:25:29Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:25:29Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2024-03-09 01:25:29Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:25:29Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:25:29Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:25:29Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:25:29Z INFO MessageListener] VssConnection created
+[2024-03-09 01:25:29Z INFO Terminal] WRITE LINE: 
+[2024-03-09 01:25:29Z INFO Terminal] WRITE LINE: 
+[2024-03-09 01:25:29Z ERR  GitHubActionsService] POST request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/sessions failed. HTTP Status: Conflict
+[2024-03-09 01:25:29Z ERR  MessageListener] Catch exception during create session.
+[2024-03-09 01:25:29Z ERR  MessageListener] GitHub.DistributedTask.WebApi.TaskAgentSessionConflictException: The actions runner eformative runner already has an active session for owner DESKTOP-ALDPUH5.
+   at GitHub.Services.WebApi.VssHttpClientBase.HandleResponseAsync(HttpResponseMessage response, CancellationToken cancellationToken)
+   at GitHub.Services.WebApi.VssHttpClientBase.SendAsync(HttpRequestMessage message, HttpCompletionOption completionOption, Object userState, CancellationToken cancellationToken)
+   at GitHub.Services.WebApi.VssHttpClientBase.SendAsync[T](HttpRequestMessage message, Object userState, CancellationToken cancellationToken)
+   at GitHub.Services.WebApi.VssHttpClientBase.SendAsync[T](HttpMethod method, IEnumerable`1 additionalHeaders, Guid locationId, Object routeValues, ApiResourceVersion version, HttpContent content, IEnumerable`1 queryParameters, Object userState, CancellationToken cancellationToken)
+   at GitHub.Runner.Listener.MessageListener.CreateSessionAsync(CancellationToken token)
+[2024-03-09 01:25:29Z INFO MessageListener] The session for this runner already exists.
+[2024-03-09 01:25:29Z ERR  Terminal] WRITE ERROR: A session for this runner already exists.
+[2024-03-09 01:25:29Z INFO MessageListener] The session conflict exception haven't reached retry limit.
+[2024-03-09 01:25:29Z INFO MessageListener] Sleeping for 30 seconds before retrying.
+[2024-03-09 01:25:59Z INFO MessageListener] Attempt to create session.
+[2024-03-09 01:25:59Z INFO MessageListener] Connecting to the Runner Server...
+[2024-03-09 01:25:59Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:25:59Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2024-03-09 01:25:59Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:25:59Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:25:59Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2024-03-09 01:25:59Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:25:59Z INFO RunnerServer] EstablishVssConnection
+[2024-03-09 01:25:59Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2024-03-09 01:25:59Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2024-03-09 01:26:00Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:26:00Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:26:00Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2024-03-09 01:26:00Z INFO MessageListener] VssConnection created
+[2024-03-09 01:26:00Z INFO Terminal] WRITE LINE: 
+[2024-03-09 01:26:00Z INFO Terminal] WRITE LINE: 
+[2024-03-09 01:26:00Z INFO MessageListener] Session created.
+[2024-03-09 01:26:00Z INFO Terminal] WRITE LINE: 2024-03-09 01:26:00Z: Runner reconnected.
+[2024-03-09 01:26:00Z INFO Terminal] WRITE LINE: Current runner version: '2.314.1'
+[2024-03-09 01:26:00Z INFO Terminal] WRITE LINE: 2024-03-09 01:26:00Z: Listening for Jobs
+[2024-03-09 01:26:00Z INFO JobDispatcher] Set runner/worker IPC timeout to 30 seconds.
+[2024-03-09 01:26:56Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\denve\Desktop\eformative\actions-runner\.credentials_rsaparams
+[2024-03-09 01:26:56Z INFO MessageListener] Message '5' received from session 'e36fde99-35bc-4fb1-803a-261724a9e020'.
+[2024-03-09 01:26:56Z INFO Runner] Received job message of length 24637 from service, with hash '220de9ad1d8c029c7f9035c9e6c29b2e83fbed0b963ec8d30e8df78bf70ff7ae'
+[2024-03-09 01:26:57Z INFO JobDispatcher] Job request 56 for plan 4e0b65d5-d130-45d7-874b-9669672eb5b7 job ca395085-040a-526b-2ce8-bdc85f692774 received.
+[2024-03-09 01:26:57Z INFO JobDispatcher] Pull OrchestrationId 4e0b65d5-d130-45d7-874b-9669672eb5b7.build.__default from JWT claims
+[2024-03-09 01:26:57Z INFO MessageListener] Received job status event. JobState: Busy
+[2024-03-09 01:26:57Z INFO MessageListener] _getMessagesTokenSource is already disposed.
+[2024-03-09 01:26:57Z INFO Terminal] WRITE LINE: 2024-03-09 01:26:57Z: Running job: build
+[2024-03-09 01:26:57Z INFO JobDispatcher] Start renew job request 56 for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-09 01:26:57Z INFO JobDispatcher] Successfully renew job request 56, job is valid till 3/9/2024 1:36:56 AM
+[2024-03-09 01:26:57Z INFO HostContext] Well known directory 'Bin': 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper] Starting process:
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\denve\Desktop\eformative\actions-runner\bin\Runner.Worker.exe'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   Arguments: 'spawnclient 2152 2164'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\denve\Desktop\eformative\actions-runner\bin'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'True'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper]   High priority process: 'True'
+[2024-03-09 01:26:57Z INFO ProcessInvokerWrapper] Process started with process id 5276, waiting for process exit.
+[2024-03-09 01:26:57Z INFO JobDispatcher] Send job request message to worker for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-09 01:26:57Z INFO ProcessChannel] Sending message of length 24637, with hash '220de9ad1d8c029c7f9035c9e6c29b2e83fbed0b963ec8d30e8df78bf70ff7ae'
+[2024-03-09 01:26:59Z INFO JobNotification] Entering JobStarted Notification
+[2024-03-09 01:26:59Z INFO JobNotification] Entering StartMonitor
+[2024-03-09 01:27:58Z INFO JobDispatcher] Successfully renew job request 56, job is valid till 3/9/2024 1:37:57 AM
+[2024-03-09 01:28:58Z INFO JobDispatcher] Successfully renew job request 56, job is valid till 3/9/2024 1:38:57 AM
+[2024-03-09 01:29:58Z INFO JobDispatcher] Successfully renew job request 56, job is valid till 3/9/2024 1:39:57 AM
+[2024-03-09 01:30:58Z INFO JobDispatcher] Successfully renew job request 56, job is valid till 3/9/2024 1:40:57 AM
+[2024-03-09 01:31:58Z INFO JobDispatcher] Successfully renew job request 56, job is valid till 3/9/2024 1:41:57 AM
+[2024-03-09 01:32:58Z INFO JobDispatcher] Successfully renew job request 56, job is valid till 3/9/2024 1:42:57 AM
+[2024-03-09 01:33:58Z INFO JobDispatcher] Successfully renew job request 56, job is valid till 3/9/2024 1:43:58 AM
+[2024-03-09 01:34:50Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 01:34:50Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2024-03-09 01:34:50Z INFO ProcessInvokerWrapper] Finished process 5276 with exit code 102, and elapsed time 00:07:52.9828616.
+[2024-03-09 01:34:50Z INFO JobDispatcher] Worker finished for job ca395085-040a-526b-2ce8-bdc85f692774. Code: 102
+[2024-03-09 01:34:50Z INFO JobDispatcher] finish job request for job ca395085-040a-526b-2ce8-bdc85f692774 with result: Failed
+[2024-03-09 01:34:50Z INFO Terminal] WRITE LINE: 2024-03-09 01:34:50Z: Job build completed with result: Failed
+[2024-03-09 01:34:50Z INFO JobDispatcher] Stop renew job request for job ca395085-040a-526b-2ce8-bdc85f692774.
+[2024-03-09 01:34:50Z INFO JobDispatcher] job renew has been cancelled, stop renew job request 56.
+[2024-03-09 01:34:50Z INFO JobNotification] Entering JobCompleted Notification
+[2024-03-09 01:34:50Z INFO JobNotification] Entering EndMonitor
+[2024-03-09 01:34:50Z INFO MessageListener] Received job status event. JobState: Online
+[2024-03-09 01:34:50Z WARN GitHubActionsService] GET request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/messages?sessionId=e36fde99-35bc-4fb1-803a-261724a9e020&lastMessageId=5&status=Busy&runnerVersion=2.314.1&os=Windows&architecture=X64&disableUpdate=false has been cancelled.
+[2024-03-09 01:34:50Z INFO MessageListener] Get messages has been cancelled using local token source. Continue to get messages with new status.
+[2024-03-09 01:36:43Z INFO Terminal] WRITE LINE: Exiting...
+[2024-03-09 01:36:43Z INFO ConfigurationStore] IsServiceConfigured()
+[2024-03-09 01:36:43Z INFO ConfigurationStore] IsServiceConfigured: False
+[2024-03-09 01:36:43Z INFO HostContext] Runner will be shutdown for UserCancelled
+[2024-03-09 01:36:43Z WARN GitHubActionsService] GET request to https://pipelinesghubeus10.actions.githubusercontent.com/ErNVkWKtNpYH2bOUVfg5VbEMcywmrNl1c2EjvAPpM0ayAdtzcZ/_apis/distributedtask/pools/1/messages?sessionId=e36fde99-35bc-4fb1-803a-261724a9e020&lastMessageId=5&status=Online&runnerVersion=2.314.1&os=Windows&architecture=X64&disableUpdate=false has been cancelled.
+[2024-03-09 01:36:43Z INFO MessageListener] Get next message has been cancelled.
+[2024-03-09 01:36:43Z INFO JobDispatcher] Shutting down JobDispatcher. Make sure all WorkerDispatcher has finished.
+[2024-03-09 01:36:43Z INFO JobDispatcher] Ensure WorkerDispatcher for job ca395085-040a-526b-2ce8-bdc85f692774 run to finish, cancel any running job.
+[2024-03-09 01:36:43Z INFO JobDispatcher] Job request ca395085-040a-526b-2ce8-bdc85f692774 processed succeed.
+[2024-03-09 01:36:43Z INFO Runner] Deleting Runner Session...
+[2024-03-09 01:36:43Z INFO Listener] Runner execution been cancelled.
